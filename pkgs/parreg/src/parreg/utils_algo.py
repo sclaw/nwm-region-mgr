@@ -10,6 +10,7 @@ import pandas as pd
 from shapely.geometry import Point
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
+from utils import DistanceStore
 
 warnings.filterwarnings("ignore", category=FutureWarning, module="sklearn")
 logger = logging.getLogger(__name__)
@@ -212,14 +213,17 @@ def assign_donors(
     receivers: list,
     config: dict,
     dist_attr: pd.DataFrame,
-    dist_spatial: pd.DataFrame,
+    dist_store_path: str,
     df_attr: pd.DataFrame,
 ) -> pd.DataFrame:
     """Assign donors based on clusters and spatial distance and apply additional constrains."""
     df_donor = pd.DataFrame()
+    store = DistanceStore(db_path=dist_store_path)
     for receiver in receivers:
         # get spatial distances
-        dists1 = dist_spatial.loc[receiver, donors].to_numpy()
+        dists_list = store.get_distances(receiver, donors)
+        dists1 = [dists_list[d] for d in donors]
+        logger.info(f"distances for receiver {receiver}: {dists1}")
         donors1 = donors.copy()
 
         # apply additional donor constraints1

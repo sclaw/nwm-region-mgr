@@ -8,7 +8,7 @@ from .config_utils import (
     LoggingConfig,
 )
 from .dict_utils import convert_enum_to_value, flatten_dict, remove_nulls
-from .hydrofabric_utils import area_weighted_average, find_gages_within_buffer
+from .hydrofabric_utils import DistanceStore, area_weighted_average, find_gages_within_buffer
 from .io_utils import read_table, save_data
 from .logging_utils import setup_logging
 from .plot_utils import plot_histogram, plot_spatial_map
@@ -26,6 +26,7 @@ __all__ = [
     "flatten_dict",
     "find_gages_within_buffer",
     "area_weighted_average",
+    "DistanceStore",
     "read_table",
     "save_data",
     "setup_logging",

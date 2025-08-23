@@ -17,6 +17,7 @@ Notes:
 import logging
 import random
 import warnings
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -137,7 +138,7 @@ class ClusterPairer(Pairer):
             df_attr_reduced,
             processed_receivers_df,
             self.config,
-            self.dist_spatial,
+            self.dist_store_path,
             self.df_attr_all,
             self._apply_algorithm,
         )
@@ -154,7 +155,7 @@ class ClusterGroupPairer:
         df_attr_reduced: pd.DataFrame,
         processed_receivers_df: pd.DataFrame,
         config: dict,
-        dist_spatial: pd.DataFrame,
+        dist_store_path: str | Path,
         df_attr_all: pd.DataFrame,
         _apply_algorithm,
     ):
@@ -164,7 +165,7 @@ class ClusterGroupPairer:
         self.df_attr_reduced = df_attr_reduced
         self.processed_receivers_df = processed_receivers_df
         self.config = config
-        self.dist_spatial = dist_spatial
+        self.dist_store_path = dist_store_path
         self.df_attr_all = df_attr_all
         self._apply_algorithm = _apply_algorithm
 
@@ -301,7 +302,7 @@ class ClusterGroupPairer:
             receivers_for_proximity_algorithm,
             self.config,
             None,
-            self.dist_spatial,
+            self.dist_store_path,
             self.df_attr_all,
         )
 
@@ -481,7 +482,7 @@ class ClusterGroupPairer:
                 recs3,
                 self.config,
                 None,
-                self.dist_spatial,
+                self.dist_store_path,
                 self.df_attr_all,
             ), cluster_labels
         else:
@@ -529,7 +530,7 @@ class ClusterGroupPairer:
                     receivers_to_be_processed,
                     self.config,
                     None,
-                    self.dist_spatial,
+                    self.dist_store_path,
                     self.df_attr_all,
                 ), cluster_labels
         # for receivers in clusters without donors, choose from all donors based on spatial proximity
@@ -541,7 +542,7 @@ class ClusterGroupPairer:
                 receivers_to_be_processed,
                 self.config,
                 None,
-                self.dist_spatial,
+                self.dist_store_path,
                 self.df_attr_all,
             ), cluster_labels
 

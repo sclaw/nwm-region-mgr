@@ -1,9 +1,11 @@
 """Functions to handle hydrofabric data and operations."""
 
 import logging
+import sqlite3
 from pathlib import Path
 
 import geopandas as gpd
+import numpy as np
 from shapely.geometry import GeometryCollection, Point
 from shapely.ops import unary_union
 
@@ -173,3 +175,129 @@ def area_weighted_average(
     gdf_fine[new_col] = gdf_fine[fine_id_col].map(weighted_avg)
 
     return gdf_fine
+
+
+class DistanceStore:
+    def __init__(self, db_path="distances.db"):
+        import sqlite3
+
+        self.conn = sqlite3.connect(db_path)
+        self._create_tables()
+
+    def _create_tables(self):
+        cur = self.conn.cursor()
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS donors (
+                donor_id   INTEGER PRIMARY KEY,
+                donor_name TEXT UNIQUE
+            )
+        """)
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS receivers (
+                receiver_id   INTEGER PRIMARY KEY,
+                receiver_name TEXT UNIQUE
+            )
+        """)
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS distances (
+                receiver_id INTEGER,
+                donor_id    INTEGER,
+                distance    REAL,
+                PRIMARY KEY (receiver_id, donor_id),
+                FOREIGN KEY (receiver_id) REFERENCES receivers(receiver_id),
+                FOREIGN KEY (donor_id)    REFERENCES donors(donor_id)
+            )
+        """)
+        self.conn.commit()
+
+    def _get_or_insert(self, table, name):
+        cur = self.conn.cursor()
+        cur.execute(f"INSERT OR IGNORE INTO {table} ({table[:-1]}_name) VALUES (?)", (name,))
+        self.conn.commit()
+        cur.execute(f"SELECT {table[:-1]}_id FROM {table} WHERE {table[:-1]}_name = ?", (name,))
+        return cur.fetchone()[0]
+
+    def compute_and_store(self, gdf_donors, gdf_receivers, chunk_size=5000, max_distance=None):
+        """
+        Compute donor-receiver distances (in km) and store only those <= max_distance if provided.
+        Works for both lat/lon (EPSG:4326) and projected CRS.
+        """
+        donors = gdf_donors.copy()
+        receivers = gdf_receivers.copy()
+
+        # Ensure CRS is defined
+        if donors.crs is None or receivers.crs is None:
+            raise ValueError("CRS is missing in one of the GeoDataFrames.")
+        if donors.crs != receivers.crs:
+            receivers = receivers.to_crs(donors.crs)
+
+        # Use centroids
+        donors["centroid"] = donors.geometry.centroid
+        receivers["centroid"] = receivers.geometry.centroid
+
+        donor_ids = {row.divide_id: self._get_or_insert("donors", row.divide_id) for row in donors.itertuples()}
+        receiver_ids = {
+            row.divide_id: self._get_or_insert("receivers", row.divide_id) for row in receivers.itertuples()
+        }
+
+        cur = self.conn.cursor()
+
+        is_latlon = donors.crs.to_string() == "EPSG:4326"
+
+        donor_coords = np.array([[p.x, p.y] for p in donors.centroid])
+        radius = 6371.0  # Earth radius in km (for lat/lon)
+
+        for start in range(0, len(receivers), chunk_size):
+            recv_chunk = receivers.iloc[start : start + chunk_size]
+            recv_coords = np.array([[p.x, p.y] for p in recv_chunk.centroid])
+
+            if is_latlon:
+                # Haversine vectorized
+                lat_a = np.radians(donor_coords[:, 1])[None, :]
+                lon_a = np.radians(donor_coords[:, 0])[None, :]
+                lat_b = np.radians(recv_coords[:, 1])[:, None]
+                lon_b = np.radians(recv_coords[:, 0])[:, None]
+
+                dlat = lat_b - lat_a
+                dlon = lon_b - lon_a
+                a = np.sin(dlat / 2.0) ** 2 + np.cos(lat_b) * np.cos(lat_a) * np.sin(dlon / 2.0) ** 2
+                c = 2 * np.arcsin(np.sqrt(a))
+                dist_matrix = radius * c  # km
+            else:
+                # Projected CRS: Euclidean distance
+                dx = donor_coords[:, 0][None, :] - recv_coords[:, 0][:, None]
+                dy = donor_coords[:, 1][None, :] - recv_coords[:, 1][:, None]
+                dist_matrix = np.sqrt(dx**2 + dy**2) / 1000.0  # km
+
+            rows = []
+            for r_idx, recv in enumerate(recv_chunk.itertuples()):
+                recv_id = receiver_ids[recv.divide_id]
+                for d_idx, donor in enumerate(donors.itertuples()):
+                    distance = int(round(dist_matrix[r_idx, d_idx]))  # float(dist_matrix[r_idx, d_idx])
+                    if (max_distance is None) or (distance <= max_distance):
+                        rows.append((recv_id, donor_ids[donor.divide_id], distance))
+
+            cur.executemany("INSERT OR REPLACE INTO distances VALUES (?, ?, ?)", rows)
+            self.conn.commit()
+
+    def get_distances(self, receiver_name, donor_names):
+        """Retrieve distances for one receiver vs. a list of donors."""
+        cur = self.conn.cursor()
+        cur.execute("SELECT receiver_id FROM receivers WHERE receiver_name=?", (receiver_name,))
+        recv = cur.fetchone()
+        if recv is None:
+            return {}
+        recv_id = recv[0]
+
+        placeholders = ",".join(["?"] * len(donor_names))
+        cur.execute(
+            f"""
+            SELECT d.donor_name, dist.distance
+            FROM distances dist
+            JOIN donors d ON dist.donor_id = d.donor_id
+            WHERE dist.receiver_id = ?
+              AND d.donor_name IN ({placeholders})
+            """,
+            [recv_id, *donor_names],
+        )
+        return dict(cur.fetchall())

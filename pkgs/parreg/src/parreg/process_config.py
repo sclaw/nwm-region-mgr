@@ -53,7 +53,7 @@ from formreg.process_config import FormulationRegionalizationProcessor as FRP
 # from pydantic import BaseModel, ValidationError
 from shapely.geometry import Point
 from shapely.ops import unary_union
-from utils import BaseConfigProcessor, read_table, save_data
+from utils import BaseConfigProcessor, DistanceStore, read_table, save_data
 
 from . import plot_outputs as po
 from . import utils_algo
@@ -82,9 +82,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
         """Get the formulation file name for a given VPU."""
         co = config.output.get("formulation", None)
         if co is None:
-            logger.warning(
-                "No 'formulation' section found in formulation output config."
-            )
+            logger.warning("No 'formulation' section found in formulation output config.")
             return ""
 
         return co.get_file_path(vpu=vpu)
@@ -102,21 +100,13 @@ class RegionalizationProcessor(BaseConfigProcessor):
                 d[vpu_key] = d[first_key].replace(first_key, vpu_key)
             return d
 
-        config1.general.ngen_hydrofabric_file = add_entry_if_missing(
-            config.general.ngen_hydrofabric_file, vpu
-        )
-        config1.output.get("summary_score").stem = add_entry_if_missing(
-            config.output.get("summary_score").stem, vpu
-        )
-        config1.output.get("formulation").stem = add_entry_if_missing(
-            config.output.get("formulation").stem, vpu
-        )
+        config1.general.ngen_hydrofabric_file = add_entry_if_missing(config.general.ngen_hydrofabric_file, vpu)
+        config1.output.get("summary_score").stem = add_entry_if_missing(config.output.get("summary_score").stem, vpu)
+        config1.output.get("formulation").stem = add_entry_if_missing(config.output.get("formulation").stem, vpu)
 
         # save the expanded configuration
         if config1 != config:
-            config1.output["config_final"].save_to_file(
-                config1, data_str="Expanded final configuration"
-            )
+            config1.output["config_final"].save_to_file(config1, data_str="Expanded final configuration")
 
         return config1
 
@@ -136,20 +126,14 @@ class RegionalizationProcessor(BaseConfigProcessor):
             outfile = co.get_file_path(vpu=self.vpu, algorithm=pairer_name)
             if not outfile.exists():
                 all_exist = False
-                logger.info(
-                    f"Missing pair file for VPU {self.vpu}, algorithm {pairer_name}. Will proceed."
-                )
+                logger.info(f"Missing pair file for VPU {self.vpu}, algorithm {pairer_name}. Will proceed.")
                 break  # No need to check further, we know not all exist
 
         if all_exist:
-            logger.info(
-                f"All pair files already exist for VPU {self.vpu}, skipping parameter regionalization."
-            )
+            logger.info(f"All pair files already exist for VPU {self.vpu}, skipping parameter regionalization.")
             return
 
-        logger.info(
-            f"========= Processing parameter regionalization for VPU: {vpu} ========="
-        )
+        logger.info(f"========= Processing parameter regionalization for VPU: {vpu} =========")
 
         # get donors and receivers
         with self.timing_block("get_donors_receivers"):
@@ -171,7 +155,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
 
         # generate pairings
         with self.timing_block("generate_pairing"):
-            self.generate_pairing(df_attr_all, self.dist_spatial, frp.config)
+            self.generate_pairing(df_attr_all, frp.config)
 
         logger.info(f"Parameter regionalization for VPU {vpu} completed.")
 
@@ -184,13 +168,9 @@ class RegionalizationProcessor(BaseConfigProcessor):
         if donors.empty:
             raise ValueError(f"No donors found in the donor gage file: {gage_file}")
         if "longitude" not in donors.columns or "latitude" not in donors.columns:
-            raise ValueError(
-                f"Donor gage file must contain 'longitude' and 'latitude' columns: {gage_file}"
-            )
+            raise ValueError(f"Donor gage file must contain 'longitude' and 'latitude' columns: {gage_file}")
         if "gage_id" not in donors.columns:
-            raise ValueError(
-                f"Donor gage file must contain 'gage_id' column: {gage_file}"
-            )
+            raise ValueError(f"Donor gage file must contain 'gage_id' column: {gage_file}")
         return donors
 
     @property
@@ -199,19 +179,14 @@ class RegionalizationProcessor(BaseConfigProcessor):
         """Create a GeoDataFrame of donors with geometry as points."""
         return gpd.GeoDataFrame(
             self.donors_df,
-            geometry=[
-                Point(xy)
-                for xy in zip(self.donors_df["longitude"], self.donors_df["latitude"])
-            ],
+            geometry=[Point(xy) for xy in zip(self.donors_df["longitude"], self.donors_df["latitude"])],
             crs="EPSG:4326",
         )
 
     @property
     def hydrofabric_gdf(self) -> gpd.GeoDataFrame:
         """Hydrofabric geodataframe with only valid geometries."""
-        gdf = gpd.read_file(
-            self.config.general.ngen_hydrofabric_file[self.vpu], layer="divides"
-        )
+        gdf = gpd.read_file(self.config.general.ngen_hydrofabric_file[self.vpu], layer="divides")
         return gdf[gdf.is_valid]
 
     @property
@@ -244,14 +219,12 @@ class RegionalizationProcessor(BaseConfigProcessor):
 
         """
         # Find donors in the buffered VPU
-        donor_basins = self.donor_gdf_3857[
-            self.donor_gdf_3857.geometry.within(self.hydrofabric_buffered_polygon)
-        ]["gage_id"].tolist()
+        donor_basins = self.donor_gdf_3857[self.donor_gdf_3857.geometry.within(self.hydrofabric_buffered_polygon)][
+            "gage_id"
+        ].tolist()
 
         if not donor_basins:
-            logger.warning(
-                "No donor basins found. Please check the donor gage file and hydrofabric file."
-            )
+            logger.warning("No donor basins found. Please check the donor gage file and hydrofabric file.")
 
         return donor_basins
 
@@ -286,9 +259,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
 
         if missing_donors:
             # Subset new donors GeoDataFrame to only missing donors
-            missing_donors_gdf = donors_gdf[
-                donors_gdf["divide_id"].isin(missing_donors)
-            ]
+            missing_donors_gdf = donors_gdf[donors_gdf["divide_id"].isin(missing_donors)]
 
             # Compute distances for missing donors
             missing_distances_df = utils_algo.compute_pairwise_centroid_distances(
@@ -336,9 +307,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
 
         if missing_receivers:
             # Subset new receivers GeoDataFrame to only missing receivers
-            missing_receivers_gdf = receivers_gdf[
-                receivers_gdf["divide_id"].isin(missing_receivers)
-            ]
+            missing_receivers_gdf = receivers_gdf[receivers_gdf["divide_id"].isin(missing_receivers)]
 
             # Compute distances for missing receivers
             missing_distances_df = utils_algo.compute_pairwise_centroid_distances(
@@ -369,23 +338,17 @@ class RegionalizationProcessor(BaseConfigProcessor):
     def donor_vpus(self):
         """Determine the VPUs of the donor basins."""
         df_cwt = read_table(self.config.general.gage_divide_cwt_file)
-        return (
-            df_cwt[df_cwt["gage_id"].isin(self.donor_basins)]["vpuid"].unique().tolist()
-        )
+        return df_cwt[df_cwt["gage_id"].isin(self.donor_basins)]["vpuid"].unique().tolist()
 
     def build_hydrofabric_path(self, vpu1):
         """Build hydrofabric path."""
         file1 = self.config.general.ngen_hydrofabric_file[self.vpu]
         if vpu1 != self.vpu:
             # rename the hydrofabric file to match the current VPU
-            file1 = self.config.general.ngen_hydrofabric_file[self.vpu].replace(
-                "vpu_" + self.vpu, "vpu_" + vpu1
-            )
+            file1 = self.config.general.ngen_hydrofabric_file[self.vpu].replace("vpu_" + self.vpu, "vpu_" + vpu1)
             # make sure the file exists
             if not Path(file1).is_file():
-                raise FileNotFoundError(
-                    f"Hydrofabric file for VPU {vpu1} not found: {file1}"
-                )
+                raise FileNotFoundError(f"Hydrofabric file for VPU {vpu1} not found: {file1}")
         return file1
 
     def get_initial_donor_df(self, vpu: str) -> pd.DataFrame:
@@ -393,40 +356,22 @@ class RegionalizationProcessor(BaseConfigProcessor):
         # determine inital donor gages
         df_cwt = read_table(self.config.general.gage_divide_cwt_file)
         if self.config.general.donor_gage_file:
-            logger.info(
-                f"Initial donors based on all gages in {self.config.general.donor_gage_file}"
-            )
-            df = read_table(
-                self.config.general.donor_gage_file, dtype={self.gage_id_name: str}
-            )
+            logger.info(f"Initial donors based on all gages in {self.config.general.donor_gage_file}")
+            df = read_table(self.config.general.donor_gage_file, dtype={self.gage_id_name: str})
             donors = df[self.gage_id_name].unique().tolist()
         else:
-            logger.info(
-                f"Initial donors based on all gages in {self.config.general.gage_divide_cwt_file}"
-            )
+            logger.info(f"Initial donors based on all gages in {self.config.general.gage_divide_cwt_file}")
             donors = df_cwt[self.gage_id_name].unique().tolist()
 
         # initial donor catchments
-        donor_cats = (
-            df_cwt[df_cwt[self.general_id_name].isin(donors)][self.general_id_name]
-            .unique()
-            .tolist()
-        )
+        donor_cats = df_cwt[df_cwt[self.general_id_name].isin(donors)][self.general_id_name].unique().tolist()
 
         # filter by vpu
         if "vpuid" in df_cwt.columns:
             df_cwt = df_cwt[df_cwt["vpuid"] == vpu]
             donors = df_cwt[self.gage_id_name].unique().tolist()
-            donor_cats = (
-                df_cwt.loc[
-                    df_cwt[self.gage_id_name].isin(set(donors)), self.general_id_name
-                ]
-                .unique()
-                .tolist()
-            )
-            logger.info(
-                f"Number of initial donors for VPU {vpu}: {len(donors)} gages, {len(donor_cats)} catchments"
-            )
+            donor_cats = df_cwt.loc[df_cwt[self.gage_id_name].isin(set(donors)), self.general_id_name].unique().tolist()
+            logger.info(f"Number of initial donors for VPU {vpu}: {len(donors)} gages, {len(donor_cats)} catchments")
         else:
             raise ValueError(
                 f"Column 'vpuid' not found in {self.config.general.gage_divide_cwt_file}. Cannot filter by VPU."
@@ -459,16 +404,12 @@ class RegionalizationProcessor(BaseConfigProcessor):
             init_donor_df = self.get_initial_donor_df(vpu1)
 
             # get the qualified donors
-            donor_dict = self.config.donor.get_qualified_donors(
-                self.config, self.donor_basins, init_donor_df
-            )
+            donor_dict = self.config.donor.get_qualified_donors(self.config, self.donor_basins, init_donor_df)
             donors0 = donor_dict[self.general_id_name]
             donor_basin_all.extend(donor_dict[self.gage_id_name])
 
             file1 = self.build_hydrofabric_path(vpu1)
-            gdf = gpd.read_file(
-                file1, layer=self.config.general.layer_name.get("ngen", "divides")
-            )
+            gdf = gpd.read_file(file1, layer=self.config.general.layer_name.get("ngen", "divides"))
             gdf1 = gdf[gdf[self.general_id_name].isin(donors0)]
             donors = gdf1[self.general_id_name].tolist()
 
@@ -484,12 +425,8 @@ class RegionalizationProcessor(BaseConfigProcessor):
                 if self.config.general.approach_calib_basins == "summary_score":
                     # if using summary score (rather than regionalization) to assign formulations for calibrated basins,
                     # exclude these calibrated catchments from receivers
-                    init_donor_cats = (
-                        init_donor_df[self.general_id_name].unique().tolist()
-                    )
-                    gdf_receivers = gdf_receivers[
-                        ~gdf_receivers[self.general_id_name].isin(init_donor_cats)
-                    ]
+                    init_donor_cats = init_donor_df[self.general_id_name].unique().tolist()
+                    gdf_receivers = gdf_receivers[~gdf_receivers[self.general_id_name].isin(init_donor_cats)]
             else:
                 continue
             if gdf_receivers.empty:
@@ -497,9 +434,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
                     f"No receivers found in VPU {self.vpu}. Please check the hydrofabric file and donor gage file."
                 )
 
-        logger.info(
-            f"Total number of donor basins in VPU {self.vpu}: {len(donor_basin_all)}"
-        )
+        logger.info(f"Total number of donor basins in VPU {self.vpu}: {len(donor_basin_all)}")
 
         return gdf_receivers, gdf_donors, donor_basin_all
 
@@ -578,19 +513,13 @@ class RegionalizationProcessor(BaseConfigProcessor):
             df_form_all = pd.concat([df_form_all, df_form])
 
         # filter df_form_all to only include donors and receivers
-        df_form_all = df_form_all[
-            df_form_all[self.general_id_name].isin(self.donors + self.receivers)
-        ]
+        df_form_all = df_form_all[df_form_all[self.general_id_name].isin(self.donors + self.receivers)]
 
         # formulation dictionary
-        form_dict = (
-            df_form_all.groupby("formulation")["divide_id"].apply(list).to_dict()
-        )
+        form_dict = df_form_all.groupby("formulation")["divide_id"].apply(list).to_dict()
 
         # check if all donors and receivers have a formulation
-        donors_missing = set(self.donors) - set(
-            df_form_all[self.general_id_name].values
-        )
+        donors_missing = set(self.donors) - set(df_form_all[self.general_id_name].values)
         if donors_missing:
             logger.warning(
                 f"{len(donors_missing)} donors are missing formulations: "
@@ -599,9 +528,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
             )
 
         # check if all receivers have a formulation
-        receivers_missing = set(self.receivers) - set(
-            df_form_all[self.general_id_name].values
-        )
+        receivers_missing = set(self.receivers) - set(df_form_all[self.general_id_name].values)
         if receivers_missing:
             logger.warning(
                 f"{len(receivers_missing)} receivers are missing formulations: "
@@ -612,52 +539,38 @@ class RegionalizationProcessor(BaseConfigProcessor):
         # add donors and receivers with missing formulation to form_dict, assigning formulation as 'unknown'
         if donors_missing or receivers_missing:
             form_dict["unknown"] = list(donors_missing) + list(receivers_missing)
-            logger.info(
-                "Assigning 'unknown' formulation to donors and receivers with missing formulations"
-            )
+            logger.info("Assigning 'unknown' formulation to donors and receivers with missing formulations")
 
         self.formulation_dict = form_dict
 
     def compute_donor_receiver_spatial_distance(self):
         """Compute spatial distance."""
-        if self.dist_file.exists():
-            logger.info(f"Spatial distance file already exists: {self.dist_file}")
-            df_spatial_dist = read_table(self.dist_file)
-
-            # check if the spatial distance data includes all donors and receivers
-            # if not, identify the missing donors and receivers, compute the distance for them and add to the existing dataframe
-            logger.info(
-                "Updating existing spatial distance file (if needed) to include all donors and receivers ..."
-            )
-            df_spatial_dist, file_changed1 = self.update_spatial_distance_donors(
-                self.general_id_name,
-                self.gdf_donors,
-                self.gdf_receivers,
-                df_spatial_dist,
-            )
-            df_spatial_dist, file_changed2 = self.update_spatial_distance_receivers(
-                self.general_id_name,
-                self.gdf_donors,
-                self.gdf_receivers,
-                df_spatial_dist,
-            )
-            file_changed = file_changed1 or file_changed2
-
+        out = self.config.output["spatial_distance"]
+        self.dist_store_path = out.get_file_path(self.vpu)
+        if Path(self.dist_store_path).exists():
+            logger.info(f"Spatial distance DB file already exists: {self.dist_store_path}")
         else:
             logger.info("Compute donor-receiver spatial distance...")
             start_time = time.time()
-            df_spatial_dist = utils_algo.compute_pairwise_centroid_distances(
-                self.gdf_donors,
+            dist_store = DistanceStore(self.dist_store_path)
+            max_distance = self.config.algorithms.algo_general.max_spa_dist
+            logger.info(f"Using max spatial distance of {max_distance} meters")
+            dist_store.compute_and_store(
                 self.gdf_receivers,
-                self.general_id_name,
-                self.general_id_name,
+                self.gdf_donors,
+                chunk_size=5000,
+                max_distance=max_distance,
             )
+            # df_spatial_dist = utils_algo.compute_pairwise_centroid_distances(
+            #     self.gdf_donors,
+            #     self.gdf_receivers,
+            #     self.general_id_name,
+            #     self.general_id_name,
+            # )
             end_time = time.time()
-            logger.info(
-                f"Spatial distance computed in {end_time - start_time:.4f} seconds"
-            )
-            file_changed = True
-        return df_spatial_dist, file_changed
+            logger.info(f"Spatial distance computed in {end_time - start_time:.4f} seconds")
+            # file_changed = True
+        # return df_spatial_dist, file_changed
 
     def write_spatial_file(self, df_spatial_dist: pd.DataFrame, file_changed: bool):
         """Save the spatial distance data."""
@@ -670,9 +583,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
             if self.dist_file.is_file():
                 backup_file = self.dist_file.with_suffix(".bak")
                 self.dist_file.rename(backup_file)
-                logger.info(
-                    f"Backup of existing spatial distance file created: {backup_file}"
-                )
+                logger.info(f"Backup of existing spatial distance file created: {backup_file}")
 
             # save the spatial distance data
             save_data(df_spatial_dist, self.dist_file, index=True)
@@ -680,18 +591,14 @@ class RegionalizationProcessor(BaseConfigProcessor):
 
     def get_donors_receivers(self):
         """Get the donors and receivers for a given VPU from the config."""
-        logger.info(
-            f"Total number of donor catchments in VPU {self.vpu}: {len(self.donors)}"
-        )
-        logger.info(
-            f"Total number of receiver catchments in VPU {self.vpu}: {len(self.receivers)}"
-        )
+        logger.info(f"Total number of donor catchments in VPU {self.vpu}: {len(self.donors)}")
+        logger.info(f"Total number of receiver catchments in VPU {self.vpu}: {len(self.receivers)}")
 
         # compute spatial distance file
-        df_spatial_dist, file_changed = self.compute_donor_receiver_spatial_distance()
+        self.compute_donor_receiver_spatial_distance()
 
         # save spatial distance file
-        self.write_spatial_file(df_spatial_dist, file_changed)
+        # self.write_spatial_file(df_spatial_dist, file_changed)
 
         # plot donor basin spatial map
         po.plot_donor_spatial_map(
@@ -703,7 +610,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
             self.combined_geom,
         )
 
-        self.dist_spatial = df_spatial_dist
+        # self.dist_spatial = df_spatial_dist
 
     @property
     def datasets(self) -> list:
@@ -719,23 +626,15 @@ class RegionalizationProcessor(BaseConfigProcessor):
             dataset = getattr(self.config.attr_datasets, dataset_name)
             df_attrs = dataset.get_attr_data()
 
-            df_attrs = df_attrs.rename(
-                columns=lambda x: x
-                if x == self.general_id_name
-                else f"{dataset_name}_{x}"
-            )
+            df_attrs = df_attrs.rename(columns=lambda x: x if x == self.general_id_name else f"{dataset_name}_{x}")
 
             # subset the attribute data to only include donors and receivers for the current VPU
-            df_attrs = df_attrs[
-                df_attrs[self.general_id_name].isin(self.donors + self.receivers)
-            ]
+            df_attrs = df_attrs[df_attrs[self.general_id_name].isin(self.donors + self.receivers)]
             df_attrs_all.append(df_attrs)
 
         # Merge all attribute data frames column-wise, based on divide_id
         df_attrs_all = reduce(
-            lambda left, right: pd.merge(
-                left, right, on=self.general_id_name, how="outer"
-            ),
+            lambda left, right: pd.merge(left, right, on=self.general_id_name, how="outer"),
             df_attrs_all,
         )
 
@@ -744,11 +643,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
         # move the is_donor column to be the second column
         return df_attrs_all[
             [self.general_id_name, "is_donor"]
-            + [
-                col
-                for col in df_attrs_all.columns
-                if col not in [self.general_id_name, "is_donor"]
-            ]
+            + [col for col in df_attrs_all.columns if col not in [self.general_id_name, "is_donor"]]
         ]
 
     @cached_property
@@ -765,34 +660,22 @@ class RegionalizationProcessor(BaseConfigProcessor):
     def check_missing_attrs(self, ids: list, list_type: str):
         """Check for missing attributes."""
         if list_type not in ["donors", "receivers"]:
-            raise TypeError(
-                f"Expected either 'donors' or 'receivers'; received '{list_type}'"
-            )
+            raise TypeError(f"Expected either 'donors' or 'receivers'; received '{list_type}'")
 
         if not set(ids).issubset(self.df_attrs_all[self.general_id_name]):
-            logger.warning(
-                f"Not all {list_type} are included in the attribute data for VPU {self.vpu}."
-            )
-            missing_ids = [
-                x
-                for x in ids
-                if x not in self.df_attrs_all[self.general_id_name].values
-            ]
+            logger.warning(f"Not all {list_type} are included in the attribute data for VPU {self.vpu}.")
+            missing_ids = [x for x in ids if x not in self.df_attrs_all[self.general_id_name].values]
             logger.debug(f"Missing {list_type}: {missing_ids}")
 
     @property
     def donors_w_attrs(self):
         """Donors with attributes."""
-        return self.df_attrs_all[self.df_attrs_all["is_donor"]][
-            self.general_id_name
-        ].tolist()
+        return self.df_attrs_all[self.df_attrs_all["is_donor"]][self.general_id_name].tolist()
 
     @property
     def receivers_w_attrs(self):
         """Receivers with attributes."""
-        return self.df_attrs_all[~self.df_attrs_all["is_donor"]][
-            self.general_id_name
-        ].tolist()
+        return self.df_attrs_all[~self.df_attrs_all["is_donor"]][self.general_id_name].tolist()
 
     @property
     def number_of_receivers_w_attrs(self):
@@ -804,14 +687,10 @@ class RegionalizationProcessor(BaseConfigProcessor):
         """Number of donors with attributes."""
         return len(self.donors_w_attrs)
 
-    def check_attrs_in_spatial_distance_data(
-        self, ids: list, list_type: str, df_spatial_dist: pd.DataFrame
-    ):
+    def check_attrs_in_spatial_distance_data(self, ids: list, list_type: str, df_spatial_dist: pd.DataFrame):
         """Check if all donors in attribute data are included in the columns of the spatial distance data."""
         if list_type not in ["donors", "receivers"]:
-            raise TypeError(
-                f"Expected either 'donors' or 'receivers'; received '{list_type}'"
-            )
+            raise TypeError(f"Expected either 'donors' or 'receivers'; received '{list_type}'")
 
         if not set(ids).issubset(df_spatial_dist.columns):
             logger.warning(
@@ -846,9 +725,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
                 f"There are missing data for attributes in vpu {self.vpu}. "
                 f"Check the missing attribute counts plot given below."
             )
-            logger.debug(
-                f"Missing data percentage for each attribute:\n{df_missing.loc[df_missing > 0]}"
-            )
+            logger.debug(f"Missing data percentage for each attribute:\n{df_missing.loc[df_missing > 0]}")
             # plot the missing attribute counts
             po.plot_missing_attr_counts(self.config, self.vpu, self.df_attrs_all)
 
@@ -880,9 +757,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
                         on=divide_id_col,
                         how="right",
                     )
-                    df_attr = gpd.GeoDataFrame(
-                        df_attr, geometry="geometry", crs=self.get_vpu_gdf().crs
-                    )
+                    df_attr = gpd.GeoDataFrame(df_attr, geometry="geometry", crs=self.get_vpu_gdf().crs)
 
                 plot_dict = {
                     "vpu": self.vpu,
@@ -894,9 +769,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
 
     def process_attr_data(self):
         """Process the attribute data for a given VPU from the config."""
-        logger.info(
-            f"Processing attribute data for VPU {self.vpu} ... datasets: {self.datasets}"
-        )
+        logger.info(f"Processing attribute data for VPU {self.vpu} ... datasets: {self.datasets}")
 
         # check if all donors/receivers have attributes
         self.check_missing_attrs(self.donors, "donors")
@@ -905,19 +778,11 @@ class RegionalizationProcessor(BaseConfigProcessor):
         # plot spatial map of attribute data
         self.plot_attribute_data()
 
-        logger.info(
-            f"Number of donors with attribute data: {self.number_of_donors_w_attrs}"
-        )
-        logger.info(
-            f"Number of receivers with attribute data: {self.number_of_receivers_w_attrs}"
-        )
+        logger.info(f"Number of donors with attribute data: {self.number_of_donors_w_attrs}")
+        logger.info(f"Number of receivers with attribute data: {self.number_of_receivers_w_attrs}")
 
-        self.check_attrs_in_spatial_distance_data(
-            self.donors_w_attrs, "donors", self.dist_spatial
-        )
-        self.check_attrs_in_spatial_distance_data(
-            self.receivers_w_attrs, "receivers", self.dist_spatial
-        )
+        # self.check_attrs_in_spatial_distance_data(self.donors_w_attrs, "donors", self.dist_spatial)
+        # self.check_attrs_in_spatial_distance_data(self.receivers_w_attrs, "receivers", self.dist_spatial)
 
         # check percent missing
         self.check_percent_missing()
@@ -925,9 +790,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
         # save attribute data
         self.save_attribute_data()
 
-    def set_snow_flag(
-        self, df_attrs: pd.DataFrame, snow_file: str | Path
-    ) -> pd.DataFrame:
+    def set_snow_flag(self, df_attrs: pd.DataFrame, snow_file: str | Path) -> pd.DataFrame:
         """Set a boolean flag to indicate whether a catchment is snow-driven.
 
         Add a boolean 'snowy' column to existing attributes dataframe to indicate whether
@@ -944,14 +807,10 @@ class RegionalizationProcessor(BaseConfigProcessor):
         if self.config.snow_cover.consider_snowness is False:
             # if snow_cover is not considered, set all catchments to non-snowy
             df_attrs["snowy"] = False
-            logger.info(
-                "Snowness is not considered in the pairing. All catchments are set to non-snowy."
-            )
+            logger.info("Snowness is not considered in the pairing. All catchments are set to non-snowy.")
 
         else:
-            logger.info(
-                "Setting snowy flag for catchments based on snow_cover configuration."
-            )
+            logger.info("Setting snowy flag for catchments based on snow_cover configuration.")
             df_snow = read_table(Path(snow_file), dtype={self.general_id_name: str})
             snow_col = self.config.snow_cover.column
             df_snow["snowy"] = df_snow[snow_col].apply(
@@ -983,17 +842,13 @@ class RegionalizationProcessor(BaseConfigProcessor):
     @property
     def pairer_names(self) -> list:
         """Run only those algorithms specified to run in the config file."""
-        return [
-            x for x in self.pairers.keys() if x in self.config.general.algorithm_list
-        ]
+        return [x for x in self.pairers.keys() if x in self.config.general.algorithm_list]
 
     def construct_output_filepath(self, pairer_name: str) -> Path:
         """Construct output filepath."""
         return self.config.output.pairs._get_file_path(self.vpu)
 
-    def update_algorithm_config(
-        self, pairer_name: str, df_attrs_all: pd.DataFrame
-    ) -> dict:
+    def update_algorithm_config(self, pairer_name: str, df_attrs_all: pd.DataFrame) -> dict:
         """Update the algorithm config."""
         id_name = self.general_id_name
         config = self.config.model_dump()
@@ -1003,18 +858,12 @@ class RegionalizationProcessor(BaseConfigProcessor):
         else:  # if the pairer is not in the config (e.g., proximity), use the general algorithm config
             algorithm_config = config["algorithms"]["algo_general"].copy()
 
-        algorithm_config["max_spa_dist"] = config["algorithms"]["algo_general"][
-            "max_spa_dist"
-        ]
+        algorithm_config["max_spa_dist"] = config["algorithms"]["algo_general"]["max_spa_dist"]
         algorithm_config["njobs"] = config["general"]["n_procs"]
         algorithm_config["non_attr_cols"] = [id_name, "is_donor", "snowy"]
 
         # add attributes to algorithm_config
-        main_attrs = [
-            x
-            for x in df_attrs_all.columns
-            if x not in algorithm_config["non_attr_cols"]
-        ]
+        main_attrs = [x for x in df_attrs_all.columns if x not in algorithm_config["non_attr_cols"]]
         base_attrs = self.get_base_attr_list_all
         # make sure base_attrs are in main_attrs
         missed_base_attrs = set(base_attrs) - set(main_attrs)
@@ -1033,9 +882,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
 
         return algorithm_config
 
-    def plot_pairing_outputs(
-        self, algorithm: str, df_pairs: pd.DataFrame = None, d1: dict = None
-    ) -> None:
+    def plot_pairing_outputs(self, algorithm: str, df_pairs: pd.DataFrame = None, d1: dict = None) -> None:
         """Plot the donor-receiver distances for the given algorithm.
 
         Args:
@@ -1084,7 +931,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
         self,
         pairer_name: str,
         df_attr_all: pd.DataFrame,
-        dist_spatial: pd.DataFrame,
+        # dist_spatial: pd.DataFrame,
         processed_receivers_df: pd.DataFrame = None,
         receivers_tobe_processed: list = None,
     ) -> pd.DataFrame:
@@ -1095,7 +942,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
         Args:
             pairer_name: name of the pairing algorithm to use (e.g., "proximity")
             df_attr_all: dataframe containing the full attribute data for all receivers and donors
-            dist_spatial: dataframe containing the pair-wise spatial distance between donors and receivers
+            #dist_spatial: dataframe containing the pair-wise spatial distance between donors and receivers
             processed_receivers_df: dataframe containing the already processed receivers
             receivers_tobe_processed: list of receivers to be processed
 
@@ -1109,27 +956,22 @@ class RegionalizationProcessor(BaseConfigProcessor):
         # determine the receivers to be processed
         if processed_receivers_df is not None:
             receivers_processed = processed_receivers_df[self.general_id_name].tolist()
-            receivers_tobe_processed = list(
-                set(receivers_tobe_processed) - set(receivers_processed)
-            )
+            receivers_tobe_processed = list(set(receivers_tobe_processed) - set(receivers_processed))
 
         new_receivers_df = processed_receivers_df.copy()
         if receivers_tobe_processed:
-            logger.info(
-                f"Processing {len(receivers_tobe_processed)} receivers using {pairer_name} algorithm."
-            )
+            logger.info(f"Processing {len(receivers_tobe_processed)} receivers using {pairer_name} algorithm.")
 
             # initialize the pairer
             if pairer_name not in self.pairers or pairer_name != "proximity":
-                raise ValueError(
-                    f"Pairer {pairer_name} is not supported or not selected in the configuration."
-                )
+                raise ValueError(f"Pairer {pairer_name} is not supported or not selected in the configuration.")
 
             algorithm_config = self.update_algorithm_config(pairer_name, df_attr_all)
             pairer = self.pairers[pairer_name](
                 config=algorithm_config,
                 df_attr_all=df_attr_all,
-                dist_spatial=dist_spatial,
+                dist_store_path=self.dist_store_path,
+                # dist_spatial=dist_spatial,
             )
 
             # conduct pairing for the remaining receivers
@@ -1138,9 +980,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
 
         return new_receivers_df
 
-    def generate_pairing(
-        self, df_attr_all: pd.DataFrame, dist_spatial: pd.DataFrame, form_config: Any
-    ):
+    def generate_pairing(self, df_attr_all: pd.DataFrame, form_config: Any):
         """Conduct donor-receiver pairing for a given VPU based on the configuration.
 
         For a given VPU, generate donor-receiver pairing results for each algorithm selected in the configuration,
@@ -1148,7 +988,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
 
         Args:
             df_attr_all: dataframe containing the full attribute data for all receivers and donors
-            dist_spatial: dataframe containing the pair-wise spatial distance between donors and receivers
+            #dist_spatial: dataframe containing the pair-wise spatial distance between donors and receivers
             form_config: configuration object containing the settings for formulation regionalization
 
         Returns:
@@ -1169,14 +1009,10 @@ class RegionalizationProcessor(BaseConfigProcessor):
                 logger.info(f"Pair file already exist: {outfile}")
                 logger.info(f"Skip the current pairing run: {pairer_name}")
             else:
-                logger.info(
-                    f"*************** Identify donors for VPU {self.vpu} using: {pairer_name} **************"
-                )
+                logger.info(f"*************** Identify donors for VPU {self.vpu} using: {pairer_name} **************")
                 start_time = time.time()
 
-                algorithm_config = self.update_algorithm_config(
-                    pairer_name, df_attr_all
-                )
+                algorithm_config = self.update_algorithm_config(pairer_name, df_attr_all)
 
                 # loop through formulations to conduct pairing separately for each formulation
                 df_pairs_all = pd.DataFrame()
@@ -1195,11 +1031,11 @@ class RegionalizationProcessor(BaseConfigProcessor):
 
                     if receivers_in_form and not donors_in_form:
                         msg = f"No donors found for formulation #{form_no} ['{form_key}'] in VPU {self.vpu}. "
-                        msg += f"Formulation will not be used for pairing for these receivers ({len(receivers_in_form)})."
+                        msg += (
+                            f"Formulation will not be used for pairing for these receivers ({len(receivers_in_form)})."
+                        )
                         logger.warning(msg)
-                        donors_in_form = (
-                            self.donors
-                        )  # use all donors if no donors in the current formulation
+                        donors_in_form = self.donors  # use all donors if no donors in the current formulation
 
                     logger.info(
                         f"Processing formulation #{form_no}: "
@@ -1209,9 +1045,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
 
                     # filter the attribute data to only include donors and receivers in the current formulation
                     df_attr_form = df_attr_all[
-                        df_attr_all[self.general_id_name].isin(
-                            donors_in_form + receivers_in_form
-                        )
+                        df_attr_all[self.general_id_name].isin(donors_in_form + receivers_in_form)
                     ]
                     # order df_attr_form by is_donor and divide_id
                     df_attr_form = df_attr_form.sort_values(
@@ -1222,9 +1056,8 @@ class RegionalizationProcessor(BaseConfigProcessor):
                     pairer = self.pairers[pairer_name](
                         config=algorithm_config,
                         df_attr_all=df_attr_form,
-                        dist_spatial=dist_spatial.loc[
-                            receivers_in_form, donors_in_form
-                        ],
+                        dist_store_path=self.dist_store_path,
+                        # dist_spatial=dist_spatial.loc[receivers_in_form, donors_in_form],
                     )
                     processed_receivers_df = pairer.pair()
 
@@ -1232,7 +1065,7 @@ class RegionalizationProcessor(BaseConfigProcessor):
                     processed_receivers_df = self.supplementary_pairing(
                         "proximity",
                         df_attr_all,
-                        dist_spatial,
+                        # dist_spatial,
                         processed_receivers_df,
                         receivers_in_form,
                     )
@@ -1256,18 +1089,12 @@ class RegionalizationProcessor(BaseConfigProcessor):
                 # identify catchments that are missing from the pairing results for the current VPU
                 init_donor_df = self.get_initial_donor_df(self.vpu)
                 existing_ids = set(df_pairs_all[self.general_id_name])
-                cats_missing = [
-                    d
-                    for d in init_donor_df[self.general_id_name]
-                    if d not in existing_ids
-                ]
+                cats_missing = [d for d in init_donor_df[self.general_id_name] if d not in existing_ids]
 
                 # assuming all missing catchments are calibrated catchments,
                 # regardless of whether they are used as donors or not
                 if cats_missing:
-                    logger.info(
-                        "Add donor catchments to the pairing results with zero distances."
-                    )
+                    logger.info("Add donor catchments to the pairing results with zero distances.")
                     df_donors = pd.DataFrame(
                         {
                             self.general_id_name: cats_missing,
@@ -1280,14 +1107,10 @@ class RegionalizationProcessor(BaseConfigProcessor):
                     if "distAttr" in df_pairs_all.columns:
                         df_donors["distAttr"] = 0
 
-                    df_pairs_all = pd.concat(
-                        [df_pairs_all, df_donors], ignore_index=True
-                    )
+                    df_pairs_all = pd.concat([df_pairs_all, df_donors], ignore_index=True)
 
                 # sort the pairing results by divide_id
-                df_pairs_all = df_pairs_all.sort_values(
-                    by=[self.general_id_name], ascending=True
-                )
+                df_pairs_all = df_pairs_all.sort_values(by=[self.general_id_name], ascending=True)
 
                 # save donor receiver pairing to csv file
                 co.save_to_file(

@@ -12,6 +12,7 @@ import time
 import numpy as np
 import pandas as pd
 from joblib import Parallel, delayed
+from utils import DistanceStore
 
 from . import utils_algo
 from .pairer import Pairer
@@ -67,24 +68,34 @@ class DistancePairer(Pairer):
         5.  Filter candidate donors by max_attr_dist (attribute distance filter).
         6.  Ensure that the minimum attribute distance for the donor is less than min_attr_dist.
         7.  If no donors meet all constraints/filters, set a new buffer distance and try again.
+
         """
+        store = DistanceStore(db_path=self.dist_store_path)
+        distances_to_donors = store.get_distances(receiver, candidate_donors_for_round)
+
         buffer = self.config["min_spa_dist"] - 100  # unit: km
         while buffer < self.config["max_spa_dist"] - 100:
             buffer = buffer + 100
 
             # if there exists donor catchment within a short distance,
-            distances_to_donors = self.dist_spatial.loc[receiver]
-            donors_within_spatial_distance = distances_to_donors.loc[
-                distances_to_donors <= self.config["zero_spa_dist"]
-            ].index.tolist()
+            donors_within_spatial_distance = [
+                d for d, dist in distances_to_donors.items() if dist <= self.config["zero_spa_dist"]
+            ]
+
+            # distances_to_donors = self.dist_spatial.loc[receiver]
+            # donors_within_spatial_distance = distances_to_donors.loc[
+            #     distances_to_donors <= self.config["zero_spa_dist"]
+            # ].index.tolist()
 
             # select that catchment as donor; (list of one donor)
             if len(donors_within_spatial_distance) > 0:
                 # select that catchment as donor;
-                donors = [distances_to_donors[donors_within_spatial_distance].idxmin()]
+                # donors = [distances_to_donors[donors_within_spatial_distance].idxmin()]
+                donors = min(distances_to_donors, key=distances_to_donors.get)
             else:
                 # otherwise, narrow down to donors within the buffer
-                donors = distances_to_donors.loc[distances_to_donors <= buffer].index.tolist()
+                donors = [d for d, dist in distances_to_donors.items() if dist <= buffer]
+                # donors = distances_to_donors.loc[distances_to_donors <= buffer].index.tolist()
 
             # potential donors in the same snowy category
             donors = list(set(donors).intersection(set(candidate_donors_for_round)))
@@ -139,7 +150,7 @@ class DistancePairer(Pairer):
                         [receiver],
                         self.config,
                         attr_distance_to_current_donors,
-                        self.dist_spatial,
+                        self.dist_store_path,
                         self.df_attr_all,
                     ),
                 ),
@@ -368,6 +379,6 @@ class ProximityPairer(Pairer):
             receivers,
             self.config,
             None,
-            self.dist_spatial,
+            self.dist_store_path,
             None,
         )
