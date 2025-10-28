@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r docs/source/requirements.txt
-          pip install --no-deps .
+          pip install .
       - name: API build
         run: |
           sphinx-apidoc -o  docs/source/API nwm_region_mgr/ -M -E -T -d 1
