@@ -1,6 +1,6 @@
-sphinxnumpydoc
+sphinx_autodoc_typehints
 sphinx_rtd_theme
+myst_parser
 sphinx_design
+sphinxcontrib-svg2pdfconverter
 pydata-sphinx-theme
-sphinx-autodoc-typehints
-myst-parser
