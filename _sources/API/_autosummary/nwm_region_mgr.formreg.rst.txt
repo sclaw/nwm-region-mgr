@@ -1,0 +1,38 @@
+﻿nwm\_region\_mgr.formreg
+========================
+
+.. automodule:: nwm_region_mgr.formreg
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+        .. rubric:: Modules
+
+        .. autosummary::
+            :toctree:
+            :template: autosummary/module.rst
+            :recursive:
+            
+                config_schema
+                process_config
+                select_formulation
+                summary_score
+
+    
+
+

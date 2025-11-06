@@ -1,0 +1,117 @@
+nwm\_region\_mgr.parreg.config\_schema.AlgoGeneral
+==================================================
+
+.. currentmodule:: nwm_region_mgr.parreg.config_schema
+
+.. autoclass:: AlgoGeneral
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~AlgoGeneral.model_computed_fields
+      
+      
+        ~AlgoGeneral.model_config
+      
+      
+        ~AlgoGeneral.model_extra
+      
+      
+        ~AlgoGeneral.model_fields
+      
+      
+        ~AlgoGeneral.model_fields_set
+      
+      
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~AlgoGeneral.construct
+      
+      
+        ~AlgoGeneral.copy
+      
+      
+        ~AlgoGeneral.dict
+      
+      
+        ~AlgoGeneral.from_orm
+      
+      
+        ~AlgoGeneral.json
+      
+      
+        ~AlgoGeneral.model_construct
+      
+      
+        ~AlgoGeneral.model_copy
+      
+      
+        ~AlgoGeneral.model_dump
+      
+      
+        ~AlgoGeneral.model_dump_json
+      
+      
+        ~AlgoGeneral.model_json_schema
+      
+      
+        ~AlgoGeneral.model_parametrized_name
+      
+      
+        ~AlgoGeneral.model_post_init
+      
+      
+        ~AlgoGeneral.model_rebuild
+      
+      
+        ~AlgoGeneral.model_validate
+      
+      
+        ~AlgoGeneral.model_validate_json
+      
+      
+        ~AlgoGeneral.model_validate_strings
+      
+      
+        ~AlgoGeneral.parse_file
+      
+      
+        ~AlgoGeneral.parse_obj
+      
+      
+        ~AlgoGeneral.parse_raw
+      
+      
+        ~AlgoGeneral.schema
+      
+      
+        ~AlgoGeneral.schema_json
+      
+      
+        ~AlgoGeneral.update_forward_refs
+      
+      
+        ~AlgoGeneral.validate
+      
+
+   
+   

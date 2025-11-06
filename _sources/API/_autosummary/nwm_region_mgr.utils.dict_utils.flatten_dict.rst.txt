@@ -1,0 +1,6 @@
+nwm\_region\_mgr.utils.dict\_utils.flatten\_dict
+================================================
+
+.. currentmodule:: nwm_region_mgr.utils.dict_utils
+
+.. autofunction:: flatten_dict

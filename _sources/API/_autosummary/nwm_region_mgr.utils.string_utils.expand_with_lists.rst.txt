@@ -1,0 +1,6 @@
+nwm\_region\_mgr.utils.string\_utils.expand\_with\_lists
+========================================================
+
+.. currentmodule:: nwm_region_mgr.utils.string_utils
+
+.. autofunction:: expand_with_lists

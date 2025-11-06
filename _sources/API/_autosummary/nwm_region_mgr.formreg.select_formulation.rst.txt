@@ -1,0 +1,40 @@
+nwm\_region\_mgr.formreg.select\_formulation
+============================================
+
+.. automodule:: nwm_region_mgr.formreg.select_formulation
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+            .. rubric:: Functions
+
+            .. autosummary::
+                :toctree:
+                :nosignatures:
+                :template: autosummary/base.rst
+                
+                    check_gage_formulation_uniqueness
+                    plot_formulation_results
+                    save_formulation_results
+                    select_formulation
+                    select_formulation_all
+                    select_formulation_donors_only
+
+        
+    
+
+    
+        
+    
+
+
+    
+
+

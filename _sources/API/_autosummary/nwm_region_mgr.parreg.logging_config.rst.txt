@@ -1,0 +1,35 @@
+nwm\_region\_mgr.parreg.logging\_config
+=======================================
+
+.. automodule:: nwm_region_mgr.parreg.logging_config
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+            .. rubric:: Functions
+
+            .. autosummary::
+                :toctree:
+                :nosignatures:
+                :template: autosummary/base.rst
+                
+                    setup_logging
+
+        
+    
+
+    
+        
+    
+
+
+    
+
+

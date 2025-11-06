@@ -1,0 +1,119 @@
+nwm\_region\_mgr.parreg.config\_schema.SnowCoverConfig
+======================================================
+
+.. currentmodule:: nwm_region_mgr.parreg.config_schema
+
+.. autoclass:: SnowCoverConfig
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~SnowCoverConfig.model_computed_fields
+      
+      
+        ~SnowCoverConfig.model_config
+      
+      
+        ~SnowCoverConfig.model_extra
+      
+      
+        ~SnowCoverConfig.model_fields
+      
+      
+        ~SnowCoverConfig.model_fields_set
+      
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~SnowCoverConfig.construct
+      
+      
+        ~SnowCoverConfig.copy
+      
+      
+        ~SnowCoverConfig.dict
+      
+      
+        ~SnowCoverConfig.from_orm
+      
+      
+        ~SnowCoverConfig.json
+      
+      
+        ~SnowCoverConfig.model_construct
+      
+      
+        ~SnowCoverConfig.model_copy
+      
+      
+        ~SnowCoverConfig.model_dump
+      
+      
+        ~SnowCoverConfig.model_dump_json
+      
+      
+        ~SnowCoverConfig.model_json_schema
+      
+      
+        ~SnowCoverConfig.model_parametrized_name
+      
+      
+        ~SnowCoverConfig.model_post_init
+      
+      
+        ~SnowCoverConfig.model_rebuild
+      
+      
+        ~SnowCoverConfig.model_validate
+      
+      
+        ~SnowCoverConfig.model_validate_json
+      
+      
+        ~SnowCoverConfig.model_validate_strings
+      
+      
+        ~SnowCoverConfig.parse_file
+      
+      
+        ~SnowCoverConfig.parse_obj
+      
+      
+        ~SnowCoverConfig.parse_raw
+      
+      
+        ~SnowCoverConfig.schema
+      
+      
+        ~SnowCoverConfig.schema_json
+      
+      
+        ~SnowCoverConfig.update_forward_refs
+      
+      
+        ~SnowCoverConfig.validate
+      
+      
+        ~SnowCoverConfig.validate_snow_cover_config
+      
+
+   
+   

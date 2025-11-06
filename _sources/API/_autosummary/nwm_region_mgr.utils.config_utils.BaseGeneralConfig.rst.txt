@@ -1,0 +1,128 @@
+nwm\_region\_mgr.utils.config\_utils.BaseGeneralConfig
+======================================================
+
+.. currentmodule:: nwm_region_mgr.utils.config_utils
+
+.. autoclass:: BaseGeneralConfig
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~BaseGeneralConfig.model_computed_fields
+      
+      
+        ~BaseGeneralConfig.model_config
+      
+      
+        ~BaseGeneralConfig.model_extra
+      
+      
+        ~BaseGeneralConfig.model_fields
+      
+      
+        ~BaseGeneralConfig.model_fields_set
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~BaseGeneralConfig.construct
+      
+      
+        ~BaseGeneralConfig.copy
+      
+      
+        ~BaseGeneralConfig.dict
+      
+      
+        ~BaseGeneralConfig.from_orm
+      
+      
+        ~BaseGeneralConfig.json
+      
+      
+        ~BaseGeneralConfig.lower_case_ids
+      
+      
+        ~BaseGeneralConfig.model_construct
+      
+      
+        ~BaseGeneralConfig.model_copy
+      
+      
+        ~BaseGeneralConfig.model_dump
+      
+      
+        ~BaseGeneralConfig.model_dump_json
+      
+      
+        ~BaseGeneralConfig.model_json_schema
+      
+      
+        ~BaseGeneralConfig.model_parametrized_name
+      
+      
+        ~BaseGeneralConfig.model_post_init
+      
+      
+        ~BaseGeneralConfig.model_rebuild
+      
+      
+        ~BaseGeneralConfig.model_validate
+      
+      
+        ~BaseGeneralConfig.model_validate_json
+      
+      
+        ~BaseGeneralConfig.model_validate_strings
+      
+      
+        ~BaseGeneralConfig.parse_file
+      
+      
+        ~BaseGeneralConfig.parse_obj
+      
+      
+        ~BaseGeneralConfig.parse_raw
+      
+      
+        ~BaseGeneralConfig.schema
+      
+      
+        ~BaseGeneralConfig.schema_json
+      
+      
+        ~BaseGeneralConfig.update_forward_refs
+      
+      
+        ~BaseGeneralConfig.validate
+      
+
+   
+   

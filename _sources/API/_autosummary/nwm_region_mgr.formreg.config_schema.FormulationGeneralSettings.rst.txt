@@ -1,0 +1,137 @@
+nwm\_region\_mgr.formreg.config\_schema.FormulationGeneralSettings
+==================================================================
+
+.. currentmodule:: nwm_region_mgr.formreg.config_schema
+
+.. autoclass:: FormulationGeneralSettings
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~FormulationGeneralSettings.model_computed_fields
+      
+      
+        ~FormulationGeneralSettings.model_config
+      
+      
+        ~FormulationGeneralSettings.model_extra
+      
+      
+        ~FormulationGeneralSettings.model_fields
+      
+      
+        ~FormulationGeneralSettings.model_fields_set
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~FormulationGeneralSettings.check_approach_calib_basins
+      
+      
+        ~FormulationGeneralSettings.construct
+      
+      
+        ~FormulationGeneralSettings.copy
+      
+      
+        ~FormulationGeneralSettings.dict
+      
+      
+        ~FormulationGeneralSettings.from_orm
+      
+      
+        ~FormulationGeneralSettings.json
+      
+      
+        ~FormulationGeneralSettings.lower_case_ids
+      
+      
+        ~FormulationGeneralSettings.model_construct
+      
+      
+        ~FormulationGeneralSettings.model_copy
+      
+      
+        ~FormulationGeneralSettings.model_dump
+      
+      
+        ~FormulationGeneralSettings.model_dump_json
+      
+      
+        ~FormulationGeneralSettings.model_json_schema
+      
+      
+        ~FormulationGeneralSettings.model_parametrized_name
+      
+      
+        ~FormulationGeneralSettings.model_post_init
+      
+      
+        ~FormulationGeneralSettings.model_rebuild
+      
+      
+        ~FormulationGeneralSettings.model_validate
+      
+      
+        ~FormulationGeneralSettings.model_validate_json
+      
+      
+        ~FormulationGeneralSettings.model_validate_strings
+      
+      
+        ~FormulationGeneralSettings.parse_file
+      
+      
+        ~FormulationGeneralSettings.parse_obj
+      
+      
+        ~FormulationGeneralSettings.parse_raw
+      
+      
+        ~FormulationGeneralSettings.schema
+      
+      
+        ~FormulationGeneralSettings.schema_json
+      
+      
+        ~FormulationGeneralSettings.update_forward_refs
+      
+      
+        ~FormulationGeneralSettings.validate
+      
+
+   
+   

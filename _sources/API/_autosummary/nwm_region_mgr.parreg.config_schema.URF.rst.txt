@@ -1,0 +1,124 @@
+nwm\_region\_mgr.parreg.config\_schema.URF
+==========================================
+
+.. currentmodule:: nwm_region_mgr.parreg.config_schema
+
+.. autoclass:: URF
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~URF.model_computed_fields
+      
+      
+        ~URF.model_config
+      
+      
+        ~URF.model_extra
+      
+      
+        ~URF.model_fields
+      
+      
+        ~URF.model_fields_set
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~URF.construct
+      
+      
+        ~URF.copy
+      
+      
+        ~URF.dict
+      
+      
+        ~URF.from_orm
+      
+      
+        ~URF.json
+      
+      
+        ~URF.model_construct
+      
+      
+        ~URF.model_copy
+      
+      
+        ~URF.model_dump
+      
+      
+        ~URF.model_dump_json
+      
+      
+        ~URF.model_json_schema
+      
+      
+        ~URF.model_parametrized_name
+      
+      
+        ~URF.model_post_init
+      
+      
+        ~URF.model_rebuild
+      
+      
+        ~URF.model_validate
+      
+      
+        ~URF.model_validate_json
+      
+      
+        ~URF.model_validate_strings
+      
+      
+        ~URF.parse_file
+      
+      
+        ~URF.parse_obj
+      
+      
+        ~URF.parse_raw
+      
+      
+        ~URF.schema
+      
+      
+        ~URF.schema_json
+      
+      
+        ~URF.update_forward_refs
+      
+      
+        ~URF.validate
+      
+
+   
+   

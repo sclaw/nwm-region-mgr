@@ -1,0 +1,6 @@
+nwm\_region\_mgr.formreg.select\_formulation.select\_formulation\_all
+=====================================================================
+
+.. currentmodule:: nwm_region_mgr.formreg.select_formulation
+
+.. autofunction:: select_formulation_all

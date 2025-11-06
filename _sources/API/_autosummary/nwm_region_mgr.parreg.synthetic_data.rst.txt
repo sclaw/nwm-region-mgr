@@ -1,0 +1,37 @@
+nwm\_region\_mgr.parreg.synthetic\_data
+=======================================
+
+.. automodule:: nwm_region_mgr.parreg.synthetic_data
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+            .. rubric:: Functions
+
+            .. autosummary::
+                :toctree:
+                :nosignatures:
+                :template: autosummary/base.rst
+                
+                    create_synthetic_data
+                    default_synthetic_data
+                    f_synthetic_data
+
+        
+    
+
+    
+        
+    
+
+
+    
+
+

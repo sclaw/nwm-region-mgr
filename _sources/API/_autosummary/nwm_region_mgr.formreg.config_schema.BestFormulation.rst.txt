@@ -1,0 +1,115 @@
+nwm\_region\_mgr.formreg.config\_schema.BestFormulation
+=======================================================
+
+.. currentmodule:: nwm_region_mgr.formreg.config_schema
+
+.. autoclass:: BestFormulation
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~BestFormulation.model_computed_fields
+      
+      
+        ~BestFormulation.model_config
+      
+      
+        ~BestFormulation.model_extra
+      
+      
+        ~BestFormulation.model_fields
+      
+      
+        ~BestFormulation.model_fields_set
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~BestFormulation.construct
+      
+      
+        ~BestFormulation.copy
+      
+      
+        ~BestFormulation.dict
+      
+      
+        ~BestFormulation.from_orm
+      
+      
+        ~BestFormulation.json
+      
+      
+        ~BestFormulation.model_construct
+      
+      
+        ~BestFormulation.model_copy
+      
+      
+        ~BestFormulation.model_dump
+      
+      
+        ~BestFormulation.model_dump_json
+      
+      
+        ~BestFormulation.model_json_schema
+      
+      
+        ~BestFormulation.model_parametrized_name
+      
+      
+        ~BestFormulation.model_post_init
+      
+      
+        ~BestFormulation.model_rebuild
+      
+      
+        ~BestFormulation.model_validate
+      
+      
+        ~BestFormulation.model_validate_json
+      
+      
+        ~BestFormulation.model_validate_strings
+      
+      
+        ~BestFormulation.parse_file
+      
+      
+        ~BestFormulation.parse_obj
+      
+      
+        ~BestFormulation.parse_raw
+      
+      
+        ~BestFormulation.schema
+      
+      
+        ~BestFormulation.schema_json
+      
+      
+        ~BestFormulation.update_forward_refs
+      
+      
+        ~BestFormulation.validate
+      
+
+   
+   

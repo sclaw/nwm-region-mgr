@@ -1,0 +1,114 @@
+nwm\_region\_mgr.utils.config\_utils.BaseConfig
+===============================================
+
+.. currentmodule:: nwm_region_mgr.utils.config_utils
+
+.. autoclass:: BaseConfig
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~BaseConfig.model_computed_fields
+      
+      
+        ~BaseConfig.model_config
+      
+      
+        ~BaseConfig.model_extra
+      
+      
+        ~BaseConfig.model_fields
+      
+      
+        ~BaseConfig.model_fields_set
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~BaseConfig.construct
+      
+      
+        ~BaseConfig.copy
+      
+      
+        ~BaseConfig.dict
+      
+      
+        ~BaseConfig.from_orm
+      
+      
+        ~BaseConfig.json
+      
+      
+        ~BaseConfig.model_construct
+      
+      
+        ~BaseConfig.model_copy
+      
+      
+        ~BaseConfig.model_dump
+      
+      
+        ~BaseConfig.model_dump_json
+      
+      
+        ~BaseConfig.model_json_schema
+      
+      
+        ~BaseConfig.model_parametrized_name
+      
+      
+        ~BaseConfig.model_post_init
+      
+      
+        ~BaseConfig.model_rebuild
+      
+      
+        ~BaseConfig.model_validate
+      
+      
+        ~BaseConfig.model_validate_json
+      
+      
+        ~BaseConfig.model_validate_strings
+      
+      
+        ~BaseConfig.parse_file
+      
+      
+        ~BaseConfig.parse_obj
+      
+      
+        ~BaseConfig.parse_raw
+      
+      
+        ~BaseConfig.schema
+      
+      
+        ~BaseConfig.schema_json
+      
+      
+        ~BaseConfig.update_forward_refs
+      
+      
+        ~BaseConfig.validate
+      
+
+   
+   

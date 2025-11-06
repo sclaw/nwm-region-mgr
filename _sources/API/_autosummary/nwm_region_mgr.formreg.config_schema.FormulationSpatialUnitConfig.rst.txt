@@ -1,0 +1,116 @@
+nwm\_region\_mgr.formreg.config\_schema.FormulationSpatialUnitConfig
+====================================================================
+
+.. currentmodule:: nwm_region_mgr.formreg.config_schema
+
+.. autoclass:: FormulationSpatialUnitConfig
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~FormulationSpatialUnitConfig.model_computed_fields
+      
+      
+        ~FormulationSpatialUnitConfig.model_config
+      
+      
+        ~FormulationSpatialUnitConfig.model_extra
+      
+      
+        ~FormulationSpatialUnitConfig.model_fields
+      
+      
+        ~FormulationSpatialUnitConfig.model_fields_set
+      
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~FormulationSpatialUnitConfig.construct
+      
+      
+        ~FormulationSpatialUnitConfig.copy
+      
+      
+        ~FormulationSpatialUnitConfig.dict
+      
+      
+        ~FormulationSpatialUnitConfig.from_orm
+      
+      
+        ~FormulationSpatialUnitConfig.json
+      
+      
+        ~FormulationSpatialUnitConfig.model_construct
+      
+      
+        ~FormulationSpatialUnitConfig.model_copy
+      
+      
+        ~FormulationSpatialUnitConfig.model_dump
+      
+      
+        ~FormulationSpatialUnitConfig.model_dump_json
+      
+      
+        ~FormulationSpatialUnitConfig.model_json_schema
+      
+      
+        ~FormulationSpatialUnitConfig.model_parametrized_name
+      
+      
+        ~FormulationSpatialUnitConfig.model_post_init
+      
+      
+        ~FormulationSpatialUnitConfig.model_rebuild
+      
+      
+        ~FormulationSpatialUnitConfig.model_validate
+      
+      
+        ~FormulationSpatialUnitConfig.model_validate_json
+      
+      
+        ~FormulationSpatialUnitConfig.model_validate_strings
+      
+      
+        ~FormulationSpatialUnitConfig.parse_file
+      
+      
+        ~FormulationSpatialUnitConfig.parse_obj
+      
+      
+        ~FormulationSpatialUnitConfig.parse_raw
+      
+      
+        ~FormulationSpatialUnitConfig.schema
+      
+      
+        ~FormulationSpatialUnitConfig.schema_json
+      
+      
+        ~FormulationSpatialUnitConfig.update_forward_refs
+      
+      
+        ~FormulationSpatialUnitConfig.validate
+      
+
+   
+   

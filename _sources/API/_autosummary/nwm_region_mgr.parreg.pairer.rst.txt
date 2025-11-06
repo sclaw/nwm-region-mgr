@@ -1,0 +1,35 @@
+nwm\_region\_mgr.parreg.pairer
+==============================
+
+.. automodule:: nwm_region_mgr.parreg.pairer
+
+    
+        
+    
+
+    
+        
+            .. rubric:: Classes
+
+            .. autosummary::
+                :toctree:
+                :nosignatures:
+                :template: autosummary/class.rst
+                
+                    Pairer
+
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+
+

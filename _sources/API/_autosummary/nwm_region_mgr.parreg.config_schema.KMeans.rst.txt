@@ -1,0 +1,120 @@
+nwm\_region\_mgr.parreg.config\_schema.KMeans
+=============================================
+
+.. currentmodule:: nwm_region_mgr.parreg.config_schema
+
+.. autoclass:: KMeans
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~KMeans.model_computed_fields
+      
+      
+        ~KMeans.model_config
+      
+      
+        ~KMeans.model_extra
+      
+      
+        ~KMeans.model_fields
+      
+      
+        ~KMeans.model_fields_set
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~KMeans.construct
+      
+      
+        ~KMeans.copy
+      
+      
+        ~KMeans.dict
+      
+      
+        ~KMeans.from_orm
+      
+      
+        ~KMeans.json
+      
+      
+        ~KMeans.model_construct
+      
+      
+        ~KMeans.model_copy
+      
+      
+        ~KMeans.model_dump
+      
+      
+        ~KMeans.model_dump_json
+      
+      
+        ~KMeans.model_json_schema
+      
+      
+        ~KMeans.model_parametrized_name
+      
+      
+        ~KMeans.model_post_init
+      
+      
+        ~KMeans.model_rebuild
+      
+      
+        ~KMeans.model_validate
+      
+      
+        ~KMeans.model_validate_json
+      
+      
+        ~KMeans.model_validate_strings
+      
+      
+        ~KMeans.parse_file
+      
+      
+        ~KMeans.parse_obj
+      
+      
+        ~KMeans.parse_raw
+      
+      
+        ~KMeans.schema
+      
+      
+        ~KMeans.schema_json
+      
+      
+        ~KMeans.update_forward_refs
+      
+      
+        ~KMeans.validate
+      
+
+   
+   

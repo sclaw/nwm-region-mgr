@@ -1,0 +1,122 @@
+nwm\_region\_mgr.parreg.config\_schema.AttrDatasetConfig
+========================================================
+
+.. currentmodule:: nwm_region_mgr.parreg.config_schema
+
+.. autoclass:: AttrDatasetConfig
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~AttrDatasetConfig.model_computed_fields
+      
+      
+        ~AttrDatasetConfig.model_config
+      
+      
+        ~AttrDatasetConfig.model_extra
+      
+      
+        ~AttrDatasetConfig.model_fields
+      
+      
+        ~AttrDatasetConfig.model_fields_set
+      
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~AttrDatasetConfig.construct
+      
+      
+        ~AttrDatasetConfig.copy
+      
+      
+        ~AttrDatasetConfig.dict
+      
+      
+        ~AttrDatasetConfig.from_orm
+      
+      
+        ~AttrDatasetConfig.get_attr_data
+      
+      
+        ~AttrDatasetConfig.json
+      
+      
+        ~AttrDatasetConfig.model_construct
+      
+      
+        ~AttrDatasetConfig.model_copy
+      
+      
+        ~AttrDatasetConfig.model_dump
+      
+      
+        ~AttrDatasetConfig.model_dump_json
+      
+      
+        ~AttrDatasetConfig.model_json_schema
+      
+      
+        ~AttrDatasetConfig.model_parametrized_name
+      
+      
+        ~AttrDatasetConfig.model_post_init
+      
+      
+        ~AttrDatasetConfig.model_rebuild
+      
+      
+        ~AttrDatasetConfig.model_validate
+      
+      
+        ~AttrDatasetConfig.model_validate_json
+      
+      
+        ~AttrDatasetConfig.model_validate_strings
+      
+      
+        ~AttrDatasetConfig.parse_file
+      
+      
+        ~AttrDatasetConfig.parse_obj
+      
+      
+        ~AttrDatasetConfig.parse_raw
+      
+      
+        ~AttrDatasetConfig.schema
+      
+      
+        ~AttrDatasetConfig.schema_json
+      
+      
+        ~AttrDatasetConfig.update_forward_refs
+      
+      
+        ~AttrDatasetConfig.validate
+      
+      
+        ~AttrDatasetConfig.validate_either_field_exists
+      
+
+   
+   

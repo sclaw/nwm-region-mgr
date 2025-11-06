@@ -1,0 +1,121 @@
+nwm\_region\_mgr.parreg.config\_schema.Gower
+============================================
+
+.. currentmodule:: nwm_region_mgr.parreg.config_schema
+
+.. autoclass:: Gower
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~Gower.model_computed_fields
+      
+      
+        ~Gower.model_config
+      
+      
+        ~Gower.model_extra
+      
+      
+        ~Gower.model_fields
+      
+      
+        ~Gower.model_fields_set
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~Gower.construct
+      
+      
+        ~Gower.copy
+      
+      
+        ~Gower.dict
+      
+      
+        ~Gower.from_orm
+      
+      
+        ~Gower.json
+      
+      
+        ~Gower.model_construct
+      
+      
+        ~Gower.model_copy
+      
+      
+        ~Gower.model_dump
+      
+      
+        ~Gower.model_dump_json
+      
+      
+        ~Gower.model_json_schema
+      
+      
+        ~Gower.model_parametrized_name
+      
+      
+        ~Gower.model_post_init
+      
+      
+        ~Gower.model_rebuild
+      
+      
+        ~Gower.model_validate
+      
+      
+        ~Gower.model_validate_json
+      
+      
+        ~Gower.model_validate_strings
+      
+      
+        ~Gower.parse_file
+      
+      
+        ~Gower.parse_obj
+      
+      
+        ~Gower.parse_raw
+      
+      
+        ~Gower.schema
+      
+      
+        ~Gower.schema_json
+      
+      
+        ~Gower.update_forward_refs
+      
+      
+        ~Gower.validate
+      
+
+   
+   

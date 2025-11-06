@@ -1,0 +1,175 @@
+nwm\_region\_mgr.formreg.config\_schema.Orientation
+===================================================
+
+.. currentmodule:: nwm_region_mgr.formreg.config_schema
+
+.. autoclass:: Orientation
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~Orientation.positive
+      
+      
+        ~Orientation.negative
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+        ~Orientation.encode
+      
+      
+        ~Orientation.replace
+      
+      
+        ~Orientation.split
+      
+      
+        ~Orientation.rsplit
+      
+      
+        ~Orientation.join
+      
+      
+        ~Orientation.capitalize
+      
+      
+        ~Orientation.casefold
+      
+      
+        ~Orientation.title
+      
+      
+        ~Orientation.center
+      
+      
+        ~Orientation.count
+      
+      
+        ~Orientation.expandtabs
+      
+      
+        ~Orientation.find
+      
+      
+        ~Orientation.partition
+      
+      
+        ~Orientation.index
+      
+      
+        ~Orientation.ljust
+      
+      
+        ~Orientation.lower
+      
+      
+        ~Orientation.lstrip
+      
+      
+        ~Orientation.rfind
+      
+      
+        ~Orientation.rindex
+      
+      
+        ~Orientation.rjust
+      
+      
+        ~Orientation.rstrip
+      
+      
+        ~Orientation.rpartition
+      
+      
+        ~Orientation.splitlines
+      
+      
+        ~Orientation.strip
+      
+      
+        ~Orientation.swapcase
+      
+      
+        ~Orientation.translate
+      
+      
+        ~Orientation.upper
+      
+      
+        ~Orientation.startswith
+      
+      
+        ~Orientation.endswith
+      
+      
+        ~Orientation.removeprefix
+      
+      
+        ~Orientation.removesuffix
+      
+      
+        ~Orientation.isascii
+      
+      
+        ~Orientation.islower
+      
+      
+        ~Orientation.isupper
+      
+      
+        ~Orientation.istitle
+      
+      
+        ~Orientation.isspace
+      
+      
+        ~Orientation.isdecimal
+      
+      
+        ~Orientation.isdigit
+      
+      
+        ~Orientation.isnumeric
+      
+      
+        ~Orientation.isalpha
+      
+      
+        ~Orientation.isalnum
+      
+      
+        ~Orientation.isidentifier
+      
+      
+        ~Orientation.isprintable
+      
+      
+        ~Orientation.zfill
+      
+      
+        ~Orientation.format
+      
+      
+        ~Orientation.format_map
+      
+      
+        ~Orientation.maketrans
+      
+      
+
+   
+   

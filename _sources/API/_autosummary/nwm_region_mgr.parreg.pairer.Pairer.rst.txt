@@ -1,0 +1,115 @@
+nwm\_region\_mgr.parreg.pairer.Pairer
+=====================================
+
+.. currentmodule:: nwm_region_mgr.parreg.pairer
+
+.. autoclass:: Pairer
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~Pairer.model_computed_fields
+      
+      
+        ~Pairer.model_config
+      
+      
+        ~Pairer.model_extra
+      
+      
+        ~Pairer.model_fields
+      
+      
+        ~Pairer.model_fields_set
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~Pairer.construct
+      
+      
+        ~Pairer.copy
+      
+      
+        ~Pairer.dict
+      
+      
+        ~Pairer.from_orm
+      
+      
+        ~Pairer.json
+      
+      
+        ~Pairer.model_construct
+      
+      
+        ~Pairer.model_copy
+      
+      
+        ~Pairer.model_dump
+      
+      
+        ~Pairer.model_dump_json
+      
+      
+        ~Pairer.model_json_schema
+      
+      
+        ~Pairer.model_parametrized_name
+      
+      
+        ~Pairer.model_post_init
+      
+      
+        ~Pairer.model_rebuild
+      
+      
+        ~Pairer.model_validate
+      
+      
+        ~Pairer.model_validate_json
+      
+      
+        ~Pairer.model_validate_strings
+      
+      
+        ~Pairer.parse_file
+      
+      
+        ~Pairer.parse_obj
+      
+      
+        ~Pairer.parse_raw
+      
+      
+        ~Pairer.schema
+      
+      
+        ~Pairer.schema_json
+      
+      
+        ~Pairer.update_forward_refs
+      
+      
+        ~Pairer.validate
+      
+
+   
+   

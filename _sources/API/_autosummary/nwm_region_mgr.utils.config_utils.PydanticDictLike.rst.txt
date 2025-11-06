@@ -1,0 +1,121 @@
+nwm\_region\_mgr.utils.config\_utils.PydanticDictLike
+=====================================================
+
+.. currentmodule:: nwm_region_mgr.utils.config_utils
+
+.. autoclass:: PydanticDictLike
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~PydanticDictLike.model_computed_fields
+      
+      
+        ~PydanticDictLike.model_config
+      
+      
+        ~PydanticDictLike.model_extra
+      
+      
+        ~PydanticDictLike.model_fields
+      
+      
+        ~PydanticDictLike.model_fields_set
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~PydanticDictLike.construct
+      
+      
+        ~PydanticDictLike.copy
+      
+      
+        ~PydanticDictLike.dict
+      
+      
+        ~PydanticDictLike.from_orm
+      
+      
+        ~PydanticDictLike.items
+      
+      
+        ~PydanticDictLike.json
+      
+      
+        ~PydanticDictLike.keys
+      
+      
+        ~PydanticDictLike.model_construct
+      
+      
+        ~PydanticDictLike.model_copy
+      
+      
+        ~PydanticDictLike.model_dump
+      
+      
+        ~PydanticDictLike.model_dump_json
+      
+      
+        ~PydanticDictLike.model_json_schema
+      
+      
+        ~PydanticDictLike.model_parametrized_name
+      
+      
+        ~PydanticDictLike.model_post_init
+      
+      
+        ~PydanticDictLike.model_rebuild
+      
+      
+        ~PydanticDictLike.model_validate
+      
+      
+        ~PydanticDictLike.model_validate_json
+      
+      
+        ~PydanticDictLike.model_validate_strings
+      
+      
+        ~PydanticDictLike.parse_file
+      
+      
+        ~PydanticDictLike.parse_obj
+      
+      
+        ~PydanticDictLike.parse_raw
+      
+      
+        ~PydanticDictLike.schema
+      
+      
+        ~PydanticDictLike.schema_json
+      
+      
+        ~PydanticDictLike.update_forward_refs
+      
+      
+        ~PydanticDictLike.validate
+      
+      
+        ~PydanticDictLike.values
+      
+
+   
+   

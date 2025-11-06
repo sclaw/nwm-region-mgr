@@ -1,0 +1,6 @@
+nwm\_region\_mgr.formreg.summary\_score.formulation\_summary\_score
+===================================================================
+
+.. currentmodule:: nwm_region_mgr.formreg.summary_score
+
+.. autofunction:: formulation_summary_score

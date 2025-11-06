@@ -1,0 +1,6 @@
+nwm\_region\_mgr.utils.plot\_utils.plot\_point\_map
+===================================================
+
+.. currentmodule:: nwm_region_mgr.utils.plot_utils
+
+.. autofunction:: plot_point_map

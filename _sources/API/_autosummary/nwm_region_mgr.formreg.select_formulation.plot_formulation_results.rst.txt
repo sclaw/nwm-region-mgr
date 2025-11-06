@@ -1,0 +1,6 @@
+nwm\_region\_mgr.formreg.select\_formulation.plot\_formulation\_results
+=======================================================================
+
+.. currentmodule:: nwm_region_mgr.formreg.select_formulation
+
+.. autofunction:: plot_formulation_results

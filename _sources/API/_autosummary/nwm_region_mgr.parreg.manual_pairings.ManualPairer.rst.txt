@@ -1,0 +1,76 @@
+nwm\_region\_mgr.parreg.manual\_pairings.ManualPairer
+=====================================================
+
+.. currentmodule:: nwm_region_mgr.parreg.manual_pairings
+
+.. autoclass:: ManualPairer
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~ManualPairer.cwt_df
+      
+      
+        ~ManualPairer.divide_col
+      
+      
+        ~ManualPairer.divides_from_gages
+      
+      
+        ~ManualPairer.divides_from_manual
+      
+      
+        ~ManualPairer.donor_col
+      
+      
+        ~ManualPairer.gage_col
+      
+      
+        ~ManualPairer.manual_pairings_df
+      
+      
+        ~ManualPairer.manual_pairings_file
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~ManualPairer.check_donor_column
+      
+      
+        ~ManualPairer.check_manual_pairings_overlaps
+      
+      
+        ~ManualPairer.get_regionalization_output_file
+      
+      
+        ~ManualPairer.manually_update_pairings
+      
+      
+        ~ManualPairer.regionalization_df
+      
+      
+        ~ManualPairer.run_manual_pairing
+      
+      
+        ~ManualPairer.update_by_divide
+      
+      
+        ~ManualPairer.update_by_gage
+      
+
+   
+   

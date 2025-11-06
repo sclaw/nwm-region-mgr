@@ -1,0 +1,1435 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Configuration File Builder &#8212; nwm_region_mgr  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=d1833e3e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'config_builder/index';</script>
+    <script src="../_static/form2yaml.js?v=4b298b11"></script>
+    <script src="../_static/components/form-field.js?v=f85f97bb"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="General Configuration File" href="general.html" />
+    <link rel="prev" title="Frequently Asked Questions" href="../faq.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item"><a class="navbar-brand logo" href="../index.html">
+    <span class="logo" style="font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: bold; font-size: 24px; color: var(--pst-color-secondary);">
+        nwm_region_mgr
+      </span>
+  </a></div>
+    
+      <div class="navbar-item">0.1.0</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../faq.html">
+    FAQ
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Config Builder
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../tech_reference/index.html">
+    Technical Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../API/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../faq.html">
+    FAQ
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Config Builder
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../tech_reference/index.html">
+    Technical Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../API/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="general.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formreg.html">Formulation Regionalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parreg.html">Parameter Regionalization</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Configuration File Builder</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="configuration-file-builder">
+<h1>Configuration File Builder<a class="headerlink" href="#configuration-file-builder" title="Link to this heading">#</a></h1>
+<p>Welcome to the Configuration File Builder! The tabs on the left will take you to the builder for each of the specific
+config files. Once in the builder, you will be prompted to enter setup information for your regionalization run, or you
+can scroll to the bottom to fill in default values.  Once done, hit “download” to save the generated configuration YAML
+file to your local system.</p>
+<p>Example files and schemas for all configuration fields and subfields are included below.</p>
+<section id="config-general-yaml">
+<h2>config_general.yaml<a class="headerlink" href="#config-general-yaml" title="Link to this heading">#</a></h2>
+<section id="example-file">
+<h3>Example File<a class="headerlink" href="#example-file" title="Link to this heading">#</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">general</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">run_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;test&#39;</span><span class="w"> </span><span class="c1">#-----------------------------------------------Name of the run, used to create output folders and files.</span>
+<span class="w">  </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;conus&#39;</span><span class="w"> </span><span class="c1">#------------------------------------------------Which National Water Model Domain this run uses.</span>
+<span class="w">  </span><span class="nt">vpu_list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;09&#39;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1">#-----------------------------------------------List of vector processing units (VPUs) within the domain or &#39;all&#39; to process all.</span>
+<span class="w">  </span><span class="nt">base_dir</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/root/nwm-region-mgr/data/inputs&#39;</span><span class="w"> </span><span class="c1">#-------------------Path to base directory for input/output files.</span>
+<span class="w">  </span><span class="nt">ngen_hydrofabric_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;vpu_09.gpkg&#39;</span><span class="w"> </span><span class="c1">#---------------------------Path to NextGen hydrofabric file. Can be: 1) a single file path (Path or str), e.g., &#39;vpu_01.gpkg&#39; or 2) a dictionary mapping VPU strings to file paths, e.g., {&#39;09&#39;: &#39;vpu_09.gpkg&#39;}</span>
+<span class="w">  </span><span class="nt">gage_divide_cwt_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;calib_gage_divide_{domain}.parquet&#39;</span><span class="w"> </span><span class="c1">#-----Path to CSV or parquet file with gage divide CWTs, with columns &#39;divide_id&#39; and &#39;gage_id&#39;.</span>
+<span class="w">  </span><span class="nt">donor_gage_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;gages_nwm4_calib_all.csv&#39;</span><span class="w"> </span><span class="c1">#--------------------Path to CSV file with donor gage information, including &#39;gage_id&#39;, &#39;longitude&#39;, and &#39;latitude&#39;.</span>
+<span class="w">  </span><span class="nt">calval_stats_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;stat_calval_all_{domain}.parquet&#39;</span><span class="w"> </span><span class="c1">#----------Path to file with calibration/validation statistics, e.g., &#39;stat_calval_all_conus.parquet&#39;.</span>
+<span class="w">  </span><span class="nt">calib_param_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;sampled_params_{domain}.csv&#39;</span><span class="w"> </span><span class="c1">#----------------Path to file containing calibration parameters for all gages in the domain.</span>
+<span class="w">  </span><span class="nt">approach_calib_basins</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;regionalization&#39;</span><span class="w"> </span><span class="c1">#-----------------------Strategy for assigning formulations to calibrated basins.</span>
+<span class="w">  </span><span class="nt">id_col</span><span class="p">:</span><span class="w"> </span><span class="c1">#--------------------------------------------------------Dictionary mapping column names for unique identifiers in all applicable files.</span>
+<span class="w">    </span><span class="nt">divide</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;divide_id&#39;</span>
+<span class="w">    </span><span class="nt">gage</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;gage_id&#39;</span>
+<span class="w">    </span><span class="nt">huc12</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;huc_12&#39;</span>
+<span class="w">    </span><span class="nt">vpu</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;vpuid&#39;</span>
+<span class="w">    </span><span class="nt">drainage_area</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;areasqkm&#39;</span>
+<span class="w">  </span><span class="nt">layer_name</span><span class="p">:</span><span class="w"> </span><span class="c1">#----------------------------------------------------Dictionary mapping layer names for hydrofabric files.</span>
+<span class="w">    </span><span class="nt">huc12</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;WBDSnapshot_National&#39;</span>
+<span class="w">    </span><span class="nt">ngen</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;divides&#39;</span>
+<span class="w">  </span><span class="nt">logging</span><span class="p">:</span><span class="w"> </span><span class="c1">#-------------------------------------------------------Logging configuration for the application.</span>
+<span class="w">    </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;DEBUG&#39;</span><span class="w"> </span><span class="c1">#-----------------------------------------------Logging level.</span>
+<span class="w">    </span><span class="nt">log_to_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"> </span><span class="c1">#--------------------------------------------Whether to log to a file.</span>
+</pre></div>
+</div>
+</section>
+<section id="schema-reference-general">
+<h3>Schema Reference (general)<a class="headerlink" href="#schema-reference-general" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>run_name</p></td>
+<td><p>str</p></td>
+<td><p>Name of the run, used to create output folders and files.</p></td>
+<td><p>required</p></td>
+<td><p>test</p></td>
+</tr>
+<tr class="row-odd"><td><p>domain</p></td>
+<td><p>str = conus | ak | hi | prvi</p></td>
+<td><p>Which National Water Model Domain this run uses.</p></td>
+<td><p>required</p></td>
+<td><p>conus</p></td>
+</tr>
+<tr class="row-even"><td><p>vpu_list</p></td>
+<td><p>List[str] | str</p></td>
+<td><p>List of vector processing units (VPUs) within the domain or ‘all’ to process all.</p></td>
+<td><p>required</p></td>
+<td><p>[‘09’]</p></td>
+</tr>
+<tr class="row-odd"><td><p>base_dir</p></td>
+<td><p>str</p></td>
+<td><p>Path to base directory for input/output files.</p></td>
+<td><p>required</p></td>
+<td><p>/root/nwm-region-mgr/data/inputs</p></td>
+</tr>
+<tr class="row-even"><td><p>ngen_hydrofabric_file</p></td>
+<td><p>Path | str | Dict[str, Path] | Dict[str, str]</p></td>
+<td><p>Path to NextGen hydrofabric file. Can be: 1) a single file path (Path or str), e.g., ‘vpu_01.gpkg’ or 2) a dictionary mapping VPU strings to file paths, e.g., {‘09’: ‘vpu_09.gpkg’}</p></td>
+<td><p>required</p></td>
+<td><p>vpu_09.gpkg</p></td>
+</tr>
+<tr class="row-odd"><td><p>gage_divide_cwt_file</p></td>
+<td><p>Path | str</p></td>
+<td><p>Path to CSV or parquet file with gage divide CWTs, with columns ‘divide_id’ and ‘gage_id’.</p></td>
+<td><p>required</p></td>
+<td><p>calib_gage_divide_{domain}.parquet</p></td>
+</tr>
+<tr class="row-even"><td><p>donor_gage_file</p></td>
+<td><p>Path | str</p></td>
+<td><p>Path to CSV file with donor gage information, including ‘gage_id’, ‘longitude’, and ‘latitude’.</p></td>
+<td><p>required</p></td>
+<td><p>gages_nwm4_calib_all.csv</p></td>
+</tr>
+<tr class="row-odd"><td><p>calval_stats_file</p></td>
+<td><p>Path | str</p></td>
+<td><p>Path to file with calibration/validation statistics, e.g., ‘stat_calval_all_conus.parquet’.</p></td>
+<td><p>required</p></td>
+<td><p>stat_calval_all_{domain}.parquet</p></td>
+</tr>
+<tr class="row-even"><td><p>calib_param_file</p></td>
+<td><p>Path | str</p></td>
+<td><p>Path to file containing calibration parameters for all gages in the domain.</p></td>
+<td><p>required</p></td>
+<td><p>sampled_params_{domain}.csv</p></td>
+</tr>
+<tr class="row-odd"><td><p>approach_calib_basins</p></td>
+<td><p>str = regionalization | summary_score</p></td>
+<td><p>Strategy for assigning formulations to calibrated basins.</p></td>
+<td><p>required</p></td>
+<td><p>regionalization</p></td>
+</tr>
+<tr class="row-even"><td><p>id_col</p></td>
+<td><p>FieldCrosswalk</p></td>
+<td><p>Dictionary mapping column names for unique identifiers in all applicable files.</p></td>
+<td><p>FieldCrosswalk</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>layer_name</p></td>
+<td><p>LayerCrosswalk</p></td>
+<td><p>Dictionary mapping layer names for hydrofabric files.</p></td>
+<td><p>LayerCrosswalk</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p>logging</p></td>
+<td><p>LoggingConfig</p></td>
+<td><p>Logging configuration for the application.</p></td>
+<td><p>LoggingConfig</p></td>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="schema-reference-id-col">
+<h3>Schema Reference (id_col)<a class="headerlink" href="#schema-reference-id-col" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>divide</p></td>
+<td><p>str</p></td>
+<td><p>No description provided</p></td>
+<td><p>divide_id</p></td>
+<td><p>divide_id</p></td>
+</tr>
+<tr class="row-odd"><td><p>gage</p></td>
+<td><p>str</p></td>
+<td><p>No description provided</p></td>
+<td><p>gage_id</p></td>
+<td><p>gage_id</p></td>
+</tr>
+<tr class="row-even"><td><p>huc12</p></td>
+<td><p>str</p></td>
+<td><p>No description provided</p></td>
+<td><p>huc_12</p></td>
+<td><p>huc_12</p></td>
+</tr>
+<tr class="row-odd"><td><p>vpu</p></td>
+<td><p>str</p></td>
+<td><p>No description provided</p></td>
+<td><p>vpuid</p></td>
+<td><p>vpuid</p></td>
+</tr>
+<tr class="row-even"><td><p>drainage_area</p></td>
+<td><p>str</p></td>
+<td><p>No description provided</p></td>
+<td><p>areasqkm</p></td>
+<td><p>areasqkm</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="schema-reference-layer-name">
+<h3>Schema Reference (layer_name)<a class="headerlink" href="#schema-reference-layer-name" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>huc12</p></td>
+<td><p>str</p></td>
+<td><p>No description provided</p></td>
+<td><p>WBDSnapshot_National</p></td>
+<td><p>WBDSnapshot_National</p></td>
+</tr>
+<tr class="row-odd"><td><p>ngen</p></td>
+<td><p>str</p></td>
+<td><p>No description provided</p></td>
+<td><p>divides</p></td>
+<td><p>divides</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="schema-reference-logging">
+<h3>Schema Reference (logging)<a class="headerlink" href="#schema-reference-logging" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>level</p></td>
+<td><p>str = debug | info | warning | error | critical</p></td>
+<td><p>Logging level.</p></td>
+<td><p>INFO</p></td>
+<td><p>DEBUG</p></td>
+</tr>
+<tr class="row-odd"><td><p>log_to_file</p></td>
+<td><p>bool</p></td>
+<td><p>Whether to log to a file.</p></td>
+<td><p>True</p></td>
+<td><p>True</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="config-formreg-yaml">
+<h2>config_formreg.yaml<a class="headerlink" href="#config-formreg-yaml" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Example File<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">general</span><span class="p">:</span><span class="w"> </span><span class="c1">#---------------------------------------------------------General settings for the formulation regionalization application.</span>
+<span class="w">  </span><span class="nt">run_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;test&#39;</span><span class="w"> </span><span class="c1">#-----------------------------------------------Name of the run, used to create output folders and files.</span>
+<span class="w">  </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;conus&#39;</span><span class="w"> </span><span class="c1">#------------------------------------------------Which National Water Model Domain this run uses.</span>
+<span class="w">  </span><span class="nt">vpu_list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;09&#39;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1">#-----------------------------------------------List of vector processing units (VPUs) within the domain or &#39;all&#39; to process all.</span>
+<span class="w">  </span><span class="nt">base_dir</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/root/nwm-region-mgr/data/inputs&#39;</span><span class="w"> </span><span class="c1">#-------------------Path to base directory for input/output files.</span>
+<span class="w">  </span><span class="nt">ngen_hydrofabric_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;vpu_09.gpkg&#39;</span><span class="w"> </span><span class="c1">#---------------------------Path to NextGen hydrofabric file. Can be: 1) a single file path (Path or str), e.g., &#39;vpu_01.gpkg&#39; or 2) a dictionary mapping VPU strings to file paths, e.g., {&#39;09&#39;: &#39;vpu_09.gpkg&#39;}</span>
+<span class="w">  </span><span class="nt">gage_divide_cwt_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;calib_gage_divide_{domain}.parquet&#39;</span><span class="w"> </span><span class="c1">#-----Path to CSV or parquet file with gage divide CWTs, with columns &#39;divide_id&#39; and &#39;gage_id&#39;.</span>
+<span class="w">  </span><span class="nt">donor_gage_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;gages_nwm4_calib_all.csv&#39;</span><span class="w"> </span><span class="c1">#--------------------Path to CSV file with donor gage information, including &#39;gage_id&#39;, &#39;longitude&#39;, and &#39;latitude&#39;.</span>
+<span class="w">  </span><span class="nt">calval_stats_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;stat_calval_all_{domain}.parquet&#39;</span><span class="w"> </span><span class="c1">#----------Path to file with calibration/validation statistics, e.g., &#39;stat_calval_all_conus.parquet&#39;.</span>
+<span class="w">  </span><span class="nt">calib_param_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;sampled_params_{domain}.csv&#39;</span><span class="w"> </span><span class="c1">#----------------Path to file containing calibration parameters for all gages in the domain.</span>
+<span class="w">  </span><span class="nt">approach_calib_basins</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;regionalization&#39;</span><span class="w"> </span><span class="c1">#-----------------------Strategy for assigning formulations to calibrated basins.</span>
+<span class="w">  </span><span class="nt">id_col</span><span class="p">:</span><span class="w"> </span><span class="c1">#--------------------------------------------------------Dictionary mapping column names for unique identifiers in all applicable files.</span>
+<span class="w">    </span><span class="nt">divide</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;divide_id&#39;</span>
+<span class="w">    </span><span class="nt">gage</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;gage_id&#39;</span>
+<span class="w">    </span><span class="nt">huc12</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;huc_12&#39;</span>
+<span class="w">    </span><span class="nt">vpu</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;vpuid&#39;</span>
+<span class="w">    </span><span class="nt">drainage_area</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;areasqkm&#39;</span>
+<span class="w">  </span><span class="nt">layer_name</span><span class="p">:</span><span class="w"> </span><span class="c1">#----------------------------------------------------Dictionary mapping layer names for hydrofabric files.</span>
+<span class="w">    </span><span class="nt">huc12</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;WBDSnapshot_National&#39;</span>
+<span class="w">    </span><span class="nt">ngen</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;divides&#39;</span>
+<span class="w">  </span><span class="nt">logging</span><span class="p">:</span><span class="w"> </span><span class="c1">#-------------------------------------------------------Logging configuration for the application.</span>
+<span class="w">    </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;DEBUG&#39;</span><span class="w"> </span><span class="c1">#-----------------------------------------------Logging level.</span>
+<span class="w">    </span><span class="nt">log_to_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"> </span><span class="c1">#--------------------------------------------Whether to log to a file.</span>
+<span class="w">  </span><span class="nt">calib_basins_only</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"> </span><span class="c1">#---------------------------------------Whether to run formulation selection only for calibrated basins (based on summary score).</span>
+<span class="w">  </span><span class="nt">consider_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"> </span><span class="c1">#-------------------------------------------Whether to consider computational costs of formulations in the regionalization process.</span>
+<span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="nt">spatial_unit</span><span class="p">:</span><span class="w"> </span><span class="c1">#----------------------------------------------------Spatial discretization settings for the application.</span>
+<span class="w">  </span><span class="nt">huc_level</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;huc-12&#39;</span><span class="w"> </span><span class="c1">#--------------------------------------------USGS HUC level used for discretization, e.g., &#39;huc-8&#39;.</span>
+<span class="w">  </span><span class="nt">nmin_calib_basin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"> </span><span class="c1">#--------------------------------------------Minimum number of calibration basins required per spatial unit to consider it valid.</span>
+<span class="w">  </span><span class="nt">basin_fill_method</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;upscaling&#39;</span><span class="w"> </span><span class="c1">#---------------------------------Method to handle units with too few calibration basins. Options: &#39;upscaling&#39;, &#39;nearest-neighbor&#39;.</span>
+<span class="w">  </span><span class="nt">best_formulation</span><span class="p">:</span><span class="w"> </span><span class="c1">#----------------------------------------------Strategy to determine the best formulation for each spatial unit.</span>
+<span class="w">    </span><span class="nt">method</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;total_score&#39;</span><span class="w"> </span><span class="c1">#----------------------------------------Method to determine the best formulation, options: &#39;total_score&#39;, &#39;total_count&#39;.</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;basin&#39;</span><span class="w"> </span><span class="c1">#------------------------------------------------Type of spatial unit for best formulation, options: &#39;basin&#39;, &#39;divide&#39;.</span>
+<span class="w">    </span><span class="nt">tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w"> </span><span class="c1">#----------------------------------------------Score tolerance as a fraction of the best score, must be between 0.0 and 1.0.</span>
+<span class="nt">summary_score</span><span class="p">:</span><span class="w"> </span><span class="c1">#---------------------------------------------------Summary score computation configuration for the application.</span>
+<span class="w">  </span><span class="nt">metrics</span><span class="p">:</span><span class="w"> </span><span class="c1">#-------------------------------------------------------Dictionary of metrics used in the summary score, keyed by metric name.</span>
+<span class="w">    </span><span class="nt">cor</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">upper</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">lower</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.5</span>
+<span class="w">      </span><span class="nt">orientation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">positive</span>
+<span class="w">      </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
+<span class="nt">formulation_cost</span><span class="p">:</span><span class="w"> </span><span class="c1">#------------------------------------------------Computational cost configuration for each formulation.</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Schema Reference (general)<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>run_name</p></td>
+<td><p>str</p></td>
+<td><p>Name of the run, used to create output folders and files.</p></td>
+<td><p>required</p></td>
+<td><p>test</p></td>
+</tr>
+<tr class="row-odd"><td><p>domain</p></td>
+<td><p>str = conus | ak | hi | prvi</p></td>
+<td><p>Which National Water Model Domain this run uses.</p></td>
+<td><p>required</p></td>
+<td><p>conus</p></td>
+</tr>
+<tr class="row-even"><td><p>vpu_list</p></td>
+<td><p>List[str] | str</p></td>
+<td><p>List of vector processing units (VPUs) within the domain or ‘all’ to process all.</p></td>
+<td><p>required</p></td>
+<td><p>[‘09’]</p></td>
+</tr>
+<tr class="row-odd"><td><p>base_dir</p></td>
+<td><p>str</p></td>
+<td><p>Path to base directory for input/output files.</p></td>
+<td><p>required</p></td>
+<td><p>/root/nwm-region-mgr/data/inputs</p></td>
+</tr>
+<tr class="row-even"><td><p>ngen_hydrofabric_file</p></td>
+<td><p>Path | str | Dict[str, Path] | Dict[str, str]</p></td>
+<td><p>Path to NextGen hydrofabric file. Can be: 1) a single file path (Path or str), e.g., ‘vpu_01.gpkg’ or 2) a dictionary mapping VPU strings to file paths, e.g., {‘09’: ‘vpu_09.gpkg’}</p></td>
+<td><p>required</p></td>
+<td><p>vpu_09.gpkg</p></td>
+</tr>
+<tr class="row-odd"><td><p>gage_divide_cwt_file</p></td>
+<td><p>Path | str</p></td>
+<td><p>Path to CSV or parquet file with gage divide CWTs, with columns ‘divide_id’ and ‘gage_id’.</p></td>
+<td><p>required</p></td>
+<td><p>calib_gage_divide_{domain}.parquet</p></td>
+</tr>
+<tr class="row-even"><td><p>donor_gage_file</p></td>
+<td><p>Path | str</p></td>
+<td><p>Path to CSV file with donor gage information, including ‘gage_id’, ‘longitude’, and ‘latitude’.</p></td>
+<td><p>required</p></td>
+<td><p>gages_nwm4_calib_all.csv</p></td>
+</tr>
+<tr class="row-odd"><td><p>calval_stats_file</p></td>
+<td><p>Path | str</p></td>
+<td><p>Path to file with calibration/validation statistics, e.g., ‘stat_calval_all_conus.parquet’.</p></td>
+<td><p>required</p></td>
+<td><p>stat_calval_all_{domain}.parquet</p></td>
+</tr>
+<tr class="row-even"><td><p>calib_param_file</p></td>
+<td><p>Path | str</p></td>
+<td><p>Path to file containing calibration parameters for all gages in the domain.</p></td>
+<td><p>required</p></td>
+<td><p>sampled_params_{domain}.csv</p></td>
+</tr>
+<tr class="row-odd"><td><p>approach_calib_basins</p></td>
+<td><p>str = regionalization | summary_score</p></td>
+<td><p>Strategy for assigning formulations to calibrated basins.</p></td>
+<td><p>required</p></td>
+<td><p>regionalization</p></td>
+</tr>
+<tr class="row-even"><td><p>id_col</p></td>
+<td><p>FieldCrosswalk</p></td>
+<td><p>Dictionary mapping column names for unique identifiers in all applicable files.</p></td>
+<td><p>FieldCrosswalk</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>layer_name</p></td>
+<td><p>LayerCrosswalk</p></td>
+<td><p>Dictionary mapping layer names for hydrofabric files.</p></td>
+<td><p>LayerCrosswalk</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p>logging</p></td>
+<td><p>LoggingConfig</p></td>
+<td><p>Logging configuration for the application.</p></td>
+<td><p>LoggingConfig</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>calib_basins_only</p></td>
+<td><p>bool</p></td>
+<td><p>Whether to run formulation selection only for calibrated basins (based on summary score).</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p>consider_cost</p></td>
+<td><p>bool</p></td>
+<td><p>Whether to consider computational costs of formulations in the regionalization process.</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="schema-reference-spatial-unit">
+<h3>Schema Reference (spatial_unit)<a class="headerlink" href="#schema-reference-spatial-unit" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>huc_level</p></td>
+<td><p>str = huc-2 | huc-4 | huc-6 | huc-8 | huc-10 | huc-12</p></td>
+<td><p>USGS HUC level used for discretization, e.g., ‘huc-8’.</p></td>
+<td><p>huc-8</p></td>
+<td><p>huc-12</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmin_calib_basin</p></td>
+<td><p>int</p></td>
+<td><p>Minimum number of calibration basins required per spatial unit to consider it valid.</p></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>basin_fill_method</p></td>
+<td><p>str = upscaling | nearest-neighbor</p></td>
+<td><p>Method to handle units with too few calibration basins. Options: ‘upscaling’, ‘nearest-neighbor’.</p></td>
+<td><p>upscaling</p></td>
+<td><p>upscaling</p></td>
+</tr>
+<tr class="row-odd"><td><p>best_formulation</p></td>
+<td><p>BestFormulation</p></td>
+<td><p>Strategy to determine the best formulation for each spatial unit.</p></td>
+<td><p>BestFormulation</p></td>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="schema-reference-best-formulation">
+<h3>Schema Reference (best_formulation)<a class="headerlink" href="#schema-reference-best-formulation" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>method</p></td>
+<td><p>str = total_score | total_count</p></td>
+<td><p>Method to determine the best formulation, options: ‘total_score’, ‘total_count’.</p></td>
+<td><p>required</p></td>
+<td><p>total_score</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p>str = basin | divide</p></td>
+<td><p>Type of spatial unit for best formulation, options: ‘basin’, ‘divide’.</p></td>
+<td><p>required</p></td>
+<td><p>basin</p></td>
+</tr>
+<tr class="row-even"><td><p>tolerance</p></td>
+<td><p>float</p></td>
+<td><p>Score tolerance as a fraction of the best score, must be between 0.0 and 1.0.</p></td>
+<td><p>0.05</p></td>
+<td><p>0.05</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="schema-reference-summary-score">
+<h3>Schema Reference (summary_score)<a class="headerlink" href="#schema-reference-summary-score" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>metrics</p></td>
+<td><p>Dict[str, MetricConfig]</p></td>
+<td><p>Dictionary of metrics used in the summary score, keyed by metric name.</p></td>
+<td><p>required</p></td>
+<td><p>{‘cor’: {‘upper’: 1, ‘lower’: -0.5, ‘orientation’: ‘positive’, ‘weight’: 0.25}}</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="schema-reference-metric-eval-period">
+<h3>Schema Reference (metric_eval_period)<a class="headerlink" href="#schema-reference-metric-eval-period" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>col_name</p></td>
+<td><p>str</p></td>
+<td><p>Name of the column in the donor stats file that contains the evaluation period.</p></td>
+<td><p>required</p></td>
+<td><p>evalPeriod</p></td>
+</tr>
+<tr class="row-odd"><td><p>value</p></td>
+<td><p>str</p></td>
+<td><p>Value of the evaluation period to filter the donor stats file.</p></td>
+<td><p>required</p></td>
+<td><p>full</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="schema-reference-metric">
+<h3>Schema Reference (metric)<a class="headerlink" href="#schema-reference-metric" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>orientation</p></td>
+<td><p>str = positive | negative</p></td>
+<td><p>Orientation of the metric, either ‘positive’ or ‘negative’.</p></td>
+<td><p>positive</p></td>
+<td><p>positive</p></td>
+</tr>
+<tr class="row-odd"><td><p>weight</p></td>
+<td><p>float</p></td>
+<td><p>Weight of the metric in the summary score, must be between 0.0 and 1.0.</p></td>
+<td><p>0.0</p></td>
+<td><p>0.25</p></td>
+</tr>
+<tr class="row-even"><td><p>absolute</p></td>
+<td><p>bool</p></td>
+<td><p>Whether to use the absolute value of the metric for normalization.</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="schema-reference-formulation-cost">
+<h3>Schema Reference (formulation_cost)<a class="headerlink" href="#schema-reference-formulation-cost" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+</table>
+</div>
+</section>
+</section>
+<section id="config-parreg-yaml">
+<h2>config_parreg.yaml<a class="headerlink" href="#config-parreg-yaml" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3>Example File<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">general</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">general</span><span class="p">:</span><span class="w"> </span><span class="c1">#---------------------------------------------------------General configuration settings specific to parameter regionalization.</span>
+<span class="w">    </span><span class="nt">run_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;test&#39;</span><span class="w"> </span><span class="c1">#-----------------------------------------------Name of the run, used to create output folders and files.</span>
+<span class="w">    </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;conus&#39;</span><span class="w"> </span><span class="c1">#------------------------------------------------Which National Water Model Domain this run uses.</span>
+<span class="w">    </span><span class="nt">vpu_list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;09&#39;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1">#-----------------------------------------------List of vector processing units (VPUs) within the domain or &#39;all&#39; to process all.</span>
+<span class="w">    </span><span class="nt">base_dir</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/root/nwm-region-mgr/data/inputs&#39;</span><span class="w"> </span><span class="c1">#-------------------Path to base directory for input/output files.</span>
+<span class="w">    </span><span class="nt">ngen_hydrofabric_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;vpu_09.gpkg&#39;</span><span class="w"> </span><span class="c1">#---------------------------Path to NextGen hydrofabric file. Can be: 1) a single file path (Path or str), e.g., &#39;vpu_01.gpkg&#39; or 2) a dictionary mapping VPU strings to file paths, e.g., {&#39;09&#39;: &#39;vpu_09.gpkg&#39;}</span>
+<span class="w">    </span><span class="nt">gage_divide_cwt_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;calib_gage_divide_{domain}.parquet&#39;</span><span class="w"> </span><span class="c1">#-----Path to CSV or parquet file with gage divide CWTs, with columns &#39;divide_id&#39; and &#39;gage_id&#39;.</span>
+<span class="w">    </span><span class="nt">donor_gage_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;gages_nwm4_calib_all.csv&#39;</span><span class="w"> </span><span class="c1">#--------------------Path to CSV file with donor gage information, including &#39;gage_id&#39;, &#39;longitude&#39;, and &#39;latitude&#39;.</span>
+<span class="w">    </span><span class="nt">calval_stats_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;stat_calval_all_{domain}.parquet&#39;</span><span class="w"> </span><span class="c1">#----------Path to file with calibration/validation statistics, e.g., &#39;stat_calval_all_conus.parquet&#39;.</span>
+<span class="w">    </span><span class="nt">calib_param_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;sampled_params_{domain}.csv&#39;</span><span class="w"> </span><span class="c1">#----------------Path to file containing calibration parameters for all gages in the domain.</span>
+<span class="w">    </span><span class="nt">approach_calib_basins</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;regionalization&#39;</span><span class="w"> </span><span class="c1">#-----------------------Strategy for assigning formulations to calibrated basins.</span>
+<span class="w">    </span><span class="nt">id_col</span><span class="p">:</span><span class="w"> </span><span class="c1">#--------------------------------------------------------Dictionary mapping column names for unique identifiers in all applicable files.</span>
+<span class="w">      </span><span class="nt">divide</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;divide_id&#39;</span>
+<span class="w">      </span><span class="nt">gage</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;gage_id&#39;</span>
+<span class="w">      </span><span class="nt">huc12</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;huc_12&#39;</span>
+<span class="w">      </span><span class="nt">vpu</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;vpuid&#39;</span>
+<span class="w">      </span><span class="nt">drainage_area</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;areasqkm&#39;</span>
+<span class="w">    </span><span class="nt">layer_name</span><span class="p">:</span><span class="w"> </span><span class="c1">#----------------------------------------------------Dictionary mapping layer names for hydrofabric files.</span>
+<span class="w">      </span><span class="nt">huc12</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;WBDSnapshot_National&#39;</span>
+<span class="w">      </span><span class="nt">ngen</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;divides&#39;</span>
+<span class="w">    </span><span class="nt">logging</span><span class="p">:</span><span class="w"> </span><span class="c1">#-------------------------------------------------------Logging configuration for the application.</span>
+<span class="w">      </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;DEBUG&#39;</span><span class="w"> </span><span class="c1">#-----------------------------------------------Logging level.</span>
+<span class="w">      </span><span class="nt">log_to_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"> </span><span class="c1">#--------------------------------------------Whether to log to a file.</span>
+<span class="w">    </span><span class="nt">n_procs</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;-1&#39;</span><span class="w"> </span><span class="c1">#--------------------------------------------------Number of processors to use for parallel processing. Set to -1 to use all available processors.</span>
+<span class="w">    </span><span class="nt">attr_dataset_list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;hlr&#39;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1">#-------------------------------------List of attribute dataset names to use. Valid options include &#39;ngen&#39;, &#39;hlr&#39;.</span>
+<span class="w">    </span><span class="nt">algorithm_list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;gower&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;kmeans&#39;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1">#----------------------------Algorithms to use. Valid options (&#39;gower&#39;, &#39;urf&#39;, &#39;kmeans&#39;, &#39;kmedoids&#39;, &#39;hdbscan&#39;, &#39;birch&#39;).</span>
+<span class="w">  </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">  </span><span class="nt">donor</span><span class="p">:</span><span class="w"> </span><span class="c1">#-----------------------------------------------------------Configuration for donor selection.</span>
+<span class="w">    </span><span class="nt">buffer_km</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100.0</span><span class="w"> </span><span class="c1">#-----------------------------------------------Size of buffer (in km) around current VPU to identify qualified donors.</span>
+<span class="w">  </span><span class="nt">attr_datasets</span><span class="p">:</span><span class="w"> </span><span class="c1">#---------------------------------------------------Configuration for attribute datasets that can be used in the regionalization process.</span>
+<span class="w">    </span><span class="nt">ngen</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">attr_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
+<span class="w">      </span><span class="nt">attr_select_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attr_selection_ngen.csv</span>
+<span class="w">      </span><span class="nt">attr_data_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attr_ngen_{domain}.parquet</span>
+<span class="w">      </span><span class="nt">base_attr_list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;elevation&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;slope&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;aspect&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">snow_cover</span><span class="p">:</span><span class="w"> </span><span class="c1">#------------------------------------------------------Configuration for snow cover data.</span>
+<span class="w">    </span><span class="nt">consider_snowness</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"> </span><span class="c1">#---------------------------------------Whether to consider snow cover data in the regionalization process.</span>
+<span class="w">  </span><span class="nt">algorithms</span><span class="p">:</span><span class="w"> </span><span class="c1">#------------------------------------------------------Algorithm configuration class.  See specific algorithms for additional arguments.</span>
+<span class="w">    </span><span class="nt">algo_general</span><span class="p">:</span><span class="w"> </span><span class="c1">#--------------------------------------------------Base config for all algorithms.</span>
+<span class="w">      </span><span class="nt">min_snow_frac</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">max_spa_dist</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">max_attr_diff</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">n_donor_max</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">min_var_pca</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>Schema Reference (general)<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>run_name</p></td>
+<td><p>str</p></td>
+<td><p>Name of the run, used to create output folders and files.</p></td>
+<td><p>required</p></td>
+<td><p>test</p></td>
+</tr>
+<tr class="row-odd"><td><p>domain</p></td>
+<td><p>str = conus | ak | hi | prvi</p></td>
+<td><p>Which National Water Model Domain this run uses.</p></td>
+<td><p>required</p></td>
+<td><p>conus</p></td>
+</tr>
+<tr class="row-even"><td><p>vpu_list</p></td>
+<td><p>List[str] | str</p></td>
+<td><p>List of vector processing units (VPUs) within the domain or ‘all’ to process all.</p></td>
+<td><p>required</p></td>
+<td><p>[‘09’]</p></td>
+</tr>
+<tr class="row-odd"><td><p>base_dir</p></td>
+<td><p>str</p></td>
+<td><p>Path to base directory for input/output files.</p></td>
+<td><p>required</p></td>
+<td><p>/root/nwm-region-mgr/data/inputs</p></td>
+</tr>
+<tr class="row-even"><td><p>ngen_hydrofabric_file</p></td>
+<td><p>Path | str | Dict[str, Path] | Dict[str, str]</p></td>
+<td><p>Path to NextGen hydrofabric file. Can be: 1) a single file path (Path or str), e.g., ‘vpu_01.gpkg’ or 2) a dictionary mapping VPU strings to file paths, e.g., {‘09’: ‘vpu_09.gpkg’}</p></td>
+<td><p>required</p></td>
+<td><p>vpu_09.gpkg</p></td>
+</tr>
+<tr class="row-odd"><td><p>gage_divide_cwt_file</p></td>
+<td><p>Path | str</p></td>
+<td><p>Path to CSV or parquet file with gage divide CWTs, with columns ‘divide_id’ and ‘gage_id’.</p></td>
+<td><p>required</p></td>
+<td><p>calib_gage_divide_{domain}.parquet</p></td>
+</tr>
+<tr class="row-even"><td><p>donor_gage_file</p></td>
+<td><p>Path | str</p></td>
+<td><p>Path to CSV file with donor gage information, including ‘gage_id’, ‘longitude’, and ‘latitude’.</p></td>
+<td><p>required</p></td>
+<td><p>gages_nwm4_calib_all.csv</p></td>
+</tr>
+<tr class="row-odd"><td><p>calval_stats_file</p></td>
+<td><p>Path | str</p></td>
+<td><p>Path to file with calibration/validation statistics, e.g., ‘stat_calval_all_conus.parquet’.</p></td>
+<td><p>required</p></td>
+<td><p>stat_calval_all_{domain}.parquet</p></td>
+</tr>
+<tr class="row-even"><td><p>calib_param_file</p></td>
+<td><p>Path | str</p></td>
+<td><p>Path to file containing calibration parameters for all gages in the domain.</p></td>
+<td><p>required</p></td>
+<td><p>sampled_params_{domain}.csv</p></td>
+</tr>
+<tr class="row-odd"><td><p>approach_calib_basins</p></td>
+<td><p>str = regionalization | summary_score</p></td>
+<td><p>Strategy for assigning formulations to calibrated basins.</p></td>
+<td><p>required</p></td>
+<td><p>regionalization</p></td>
+</tr>
+<tr class="row-even"><td><p>id_col</p></td>
+<td><p>FieldCrosswalk</p></td>
+<td><p>Dictionary mapping column names for unique identifiers in all applicable files.</p></td>
+<td><p>FieldCrosswalk</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>layer_name</p></td>
+<td><p>LayerCrosswalk</p></td>
+<td><p>Dictionary mapping layer names for hydrofabric files.</p></td>
+<td><p>LayerCrosswalk</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p>logging</p></td>
+<td><p>LoggingConfig</p></td>
+<td><p>Logging configuration for the application.</p></td>
+<td><p>LoggingConfig</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>n_procs</p></td>
+<td><p>int</p></td>
+<td><p>Number of processors to use for parallel processing. Set to -1 to use all available processors.</p></td>
+<td><p>1</p></td>
+<td><p>-1</p></td>
+</tr>
+<tr class="row-even"><td><p>attr_dataset_list</p></td>
+<td><p>List[str = ngen | hlr]</p></td>
+<td><p>List of attribute dataset names to use. Valid options include ‘ngen’, ‘hlr’.</p></td>
+<td><p>[]</p></td>
+<td><p>[‘hlr’]</p></td>
+</tr>
+<tr class="row-odd"><td><p>algorithm_list</p></td>
+<td><p>List[str = gower | urf | kmeans | kmedoids | hdbscan | birch]</p></td>
+<td><p>Algorithms to use. Valid options (‘gower’, ‘urf’, ‘kmeans’, ‘kmedoids’, ‘hdbscan’, ‘birch’).</p></td>
+<td><p>[]</p></td>
+<td><p>[‘gower’, ‘kmeans’]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="schema-reference-donor">
+<h3>Schema Reference (donor)<a class="headerlink" href="#schema-reference-donor" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>buffer_km</p></td>
+<td><p>float | NoneType</p></td>
+<td><p>Size of buffer (in km) around current VPU to identify qualified donors.</p></td>
+<td><p>0.0</p></td>
+<td><p>100.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id5">
+<h3>Schema Reference (metric_eval_period)<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>col_name</p></td>
+<td><p>str</p></td>
+<td><p>Name of the column in the donor stats file that contains the evaluation period.</p></td>
+<td><p>required</p></td>
+<td><p>evalPeriod</p></td>
+</tr>
+<tr class="row-odd"><td><p>value</p></td>
+<td><p>str</p></td>
+<td><p>Value of the evaluation period to filter the donor stats file.</p></td>
+<td><p>required</p></td>
+<td><p>full</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="schema-reference-metric-threshold">
+<h3>Schema Reference (metric_threshold)<a class="headerlink" href="#schema-reference-metric-threshold" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>absolute</p></td>
+<td><p>bool | NoneType</p></td>
+<td><p>If True, apply the absolute value of the metric before applying the thresholds.</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="schema-reference-attr-datasets-config">
+<h3>Schema Reference (attr_datasets_config)<a class="headerlink" href="#schema-reference-attr-datasets-config" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+</table>
+</div>
+</section>
+<section id="schema-reference-snow-cover">
+<h3>Schema Reference (snow_cover)<a class="headerlink" href="#schema-reference-snow-cover" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>consider_snowness</p></td>
+<td><p>bool | NoneType</p></td>
+<td><p>Whether to consider snow cover data in the regionalization process.</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="schema-reference-algorithms">
+<h3>Schema Reference (algorithms)<a class="headerlink" href="#schema-reference-algorithms" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>algo_general</p></td>
+<td><p>AlgoGeneral</p></td>
+<td><p>Base config for all algorithms.</p></td>
+<td><p>AlgoGeneral</p></td>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="schema-reference-algorithm">
+<h3>Schema Reference (algorithm)<a class="headerlink" href="#schema-reference-algorithm" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>min_snow_frac</p></td>
+<td><p>float</p></td>
+<td><p>No description provided</p></td>
+<td><p>required</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>max_spa_dist</p></td>
+<td><p>float</p></td>
+<td><p>No description provided</p></td>
+<td><p>required</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>max_attr_diff</p></td>
+<td><p>Dict[str, float]</p></td>
+<td><p>No description provided</p></td>
+<td><p>required</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>n_donor_max</p></td>
+<td><p>int</p></td>
+<td><p>No description provided</p></td>
+<td><p>required</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>min_var_pca</p></td>
+<td><p>float</p></td>
+<td><p>No description provided</p></td>
+<td><p>required</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="schema-reference-output">
+<h3>Schema Reference (output)<a class="headerlink" href="#schema-reference-output" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type(s)</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Example(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>save</p></td>
+<td><p>bool</p></td>
+<td><p>No description provided</p></td>
+<td><p>required</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>path</p></td>
+<td><p>Path | str</p></td>
+<td><p>No description provided</p></td>
+<td><p>required</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../faq.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Frequently Asked Questions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="general.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">General Configuration File</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-general-yaml">config_general.yaml</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-file">Example File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-general">Schema Reference (general)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-id-col">Schema Reference (id_col)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-layer-name">Schema Reference (layer_name)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-logging">Schema Reference (logging)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-formreg-yaml">config_formreg.yaml</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Schema Reference (general)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-spatial-unit">Schema Reference (spatial_unit)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-best-formulation">Schema Reference (best_formulation)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-summary-score">Schema Reference (summary_score)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-metric-eval-period">Schema Reference (metric_eval_period)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-metric">Schema Reference (metric)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-formulation-cost">Schema Reference (formulation_cost)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-parreg-yaml">config_parreg.yaml</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Example File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Schema Reference (general)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-donor">Schema Reference (donor)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Schema Reference (metric_eval_period)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-metric-threshold">Schema Reference (metric_threshold)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-attr-datasets-config">Schema Reference (attr_datasets_config)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-snow-cover">Schema Reference (snow_cover)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-algorithms">Schema Reference (algorithms)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-algorithm">Schema Reference (algorithm)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-reference-output">Schema Reference (output)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/config_builder/index.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, RTX.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

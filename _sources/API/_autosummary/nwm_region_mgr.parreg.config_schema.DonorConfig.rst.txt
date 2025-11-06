@@ -1,0 +1,118 @@
+nwm\_region\_mgr.parreg.config\_schema.DonorConfig
+==================================================
+
+.. currentmodule:: nwm_region_mgr.parreg.config_schema
+
+.. autoclass:: DonorConfig
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~DonorConfig.model_computed_fields
+      
+      
+        ~DonorConfig.model_config
+      
+      
+        ~DonorConfig.model_extra
+      
+      
+        ~DonorConfig.model_fields
+      
+      
+        ~DonorConfig.model_fields_set
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~DonorConfig.construct
+      
+      
+        ~DonorConfig.copy
+      
+      
+        ~DonorConfig.dict
+      
+      
+        ~DonorConfig.from_orm
+      
+      
+        ~DonorConfig.get_qualified_donors
+      
+      
+        ~DonorConfig.json
+      
+      
+        ~DonorConfig.model_construct
+      
+      
+        ~DonorConfig.model_copy
+      
+      
+        ~DonorConfig.model_dump
+      
+      
+        ~DonorConfig.model_dump_json
+      
+      
+        ~DonorConfig.model_json_schema
+      
+      
+        ~DonorConfig.model_parametrized_name
+      
+      
+        ~DonorConfig.model_post_init
+      
+      
+        ~DonorConfig.model_rebuild
+      
+      
+        ~DonorConfig.model_validate
+      
+      
+        ~DonorConfig.model_validate_json
+      
+      
+        ~DonorConfig.model_validate_strings
+      
+      
+        ~DonorConfig.parse_file
+      
+      
+        ~DonorConfig.parse_obj
+      
+      
+        ~DonorConfig.parse_raw
+      
+      
+        ~DonorConfig.schema
+      
+      
+        ~DonorConfig.schema_json
+      
+      
+        ~DonorConfig.update_forward_refs
+      
+      
+        ~DonorConfig.validate
+      
+
+   
+   

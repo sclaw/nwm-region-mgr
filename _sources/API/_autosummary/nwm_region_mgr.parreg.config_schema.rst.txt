@@ -1,0 +1,49 @@
+nwm\_region\_mgr.parreg.config\_schema
+======================================
+
+.. automodule:: nwm_region_mgr.parreg.config_schema
+
+    
+        
+    
+
+    
+        
+            .. rubric:: Classes
+
+            .. autosummary::
+                :toctree:
+                :nosignatures:
+                :template: autosummary/class.rst
+                
+                    AlgoGeneral
+                    AlgorithmConfig
+                    AttrDatasetConfig
+                    Birch
+                    Config
+                    DonorConfig
+                    GeneralConfig
+                    Gower
+                    HDBSCAN
+                    KMeans
+                    KMedoids
+                    MetricEvalPeriod
+                    MetricThreshold
+                    SnowCoverConfig
+                    URF
+
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+
+

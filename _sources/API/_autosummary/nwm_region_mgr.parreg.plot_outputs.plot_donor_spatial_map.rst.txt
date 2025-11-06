@@ -1,0 +1,6 @@
+nwm\_region\_mgr.parreg.plot\_outputs.plot\_donor\_spatial\_map
+===============================================================
+
+.. currentmodule:: nwm_region_mgr.parreg.plot_outputs
+
+.. autofunction:: plot_donor_spatial_map

@@ -1,0 +1,118 @@
+nwm\_region\_mgr.parreg.config\_schema.MetricThreshold
+======================================================
+
+.. currentmodule:: nwm_region_mgr.parreg.config_schema
+
+.. autoclass:: MetricThreshold
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~MetricThreshold.model_computed_fields
+      
+      
+        ~MetricThreshold.model_config
+      
+      
+        ~MetricThreshold.model_extra
+      
+      
+        ~MetricThreshold.model_fields
+      
+      
+        ~MetricThreshold.model_fields_set
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~MetricThreshold.construct
+      
+      
+        ~MetricThreshold.copy
+      
+      
+        ~MetricThreshold.dict
+      
+      
+        ~MetricThreshold.from_orm
+      
+      
+        ~MetricThreshold.json
+      
+      
+        ~MetricThreshold.model_construct
+      
+      
+        ~MetricThreshold.model_copy
+      
+      
+        ~MetricThreshold.model_dump
+      
+      
+        ~MetricThreshold.model_dump_json
+      
+      
+        ~MetricThreshold.model_json_schema
+      
+      
+        ~MetricThreshold.model_parametrized_name
+      
+      
+        ~MetricThreshold.model_post_init
+      
+      
+        ~MetricThreshold.model_rebuild
+      
+      
+        ~MetricThreshold.model_validate
+      
+      
+        ~MetricThreshold.model_validate_json
+      
+      
+        ~MetricThreshold.model_validate_strings
+      
+      
+        ~MetricThreshold.parse_file
+      
+      
+        ~MetricThreshold.parse_obj
+      
+      
+        ~MetricThreshold.parse_raw
+      
+      
+        ~MetricThreshold.schema
+      
+      
+        ~MetricThreshold.schema_json
+      
+      
+        ~MetricThreshold.update_forward_refs
+      
+      
+        ~MetricThreshold.validate
+      
+      
+        ~MetricThreshold.validate_either_field_exists
+      
+
+   
+   

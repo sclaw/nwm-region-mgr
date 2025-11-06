@@ -1,0 +1,1427 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>nwm_region_mgr.formreg.select_formulation &#8212; nwm_region_mgr  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=d1833e3e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/nwm_region_mgr/formreg/select_formulation';</script>
+    <script src="../../../_static/form2yaml.js?v=4b298b11"></script>
+    <script src="../../../_static/components/form-field.js?v=f85f97bb"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item"><a class="navbar-brand logo" href="../../../index.html">
+    <span class="logo" style="font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: bold; font-size: 24px; color: var(--pst-color-secondary);">
+        nwm_region_mgr
+      </span>
+  </a></div>
+    
+      <div class="navbar-item">0.1.0</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../faq.html">
+    FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../config_builder/index.html">
+    Config Builder
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../tech_reference/index.html">
+    Technical Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../API/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../faq.html">
+    FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../config_builder/index.html">
+    Config Builder
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../tech_reference/index.html">
+    Technical Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../API/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">nwm_region_mgr.formreg.select_formulation</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for nwm_region_mgr.formreg.select_formulation</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Select formulations for regionalization.</span>
+
+<span class="sd">This module provides functions to select formulations based on summary scores of calibrated basins,</span>
+<span class="sd">as well as formulation costs if provided in the configuration.</span>
+
+<span class="sd">Functions:</span>
+<span class="sd">- _get_gages_with_shared_formulations: Identify the formulations shared by a number of gages.</span>
+<span class="sd">- _find_gages_nearest_neighbor: Find gages for a given HUC ID using the nearest neighbor method.</span>
+<span class="sd">- _find_gages_upscaling: Find gages for a given HUC ID using the upscaling method.</span>
+<span class="sd">- _find_calibration_gages: Find gages for a given HUC ID in the summary scores DataFrame.</span>
+<span class="sd">- _get_formulation_costs: Retrieve formulation costs from the configuration.</span>
+<span class="sd">- _select_formulation_given_score: Select a formulation for each spatial unit based on the method specified.</span>
+<span class="sd">- _identify_best_formulation_per_gage: Identify the best formulation for each gage based on summary scores and costs.</span>
+<span class="sd">- select_formulation_donors_only: Select formulations for donor basins only.</span>
+<span class="sd">- select_formulation_all: Select formulations for all basins.</span>
+<span class="sd">- save_formulation_results: Save the formulation selection results to file.</span>
+<span class="sd">- plot_formulation_results: Plot the formulation selection results.</span>
+<span class="sd">- select_formulation: Head function to select formulations for each spatial unit in the VPU.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">combinations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">fiona</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">nwm_region_mgr.formreg</span><span class="w"> </span><span class="kn">import</span> <span class="n">config_schema</span> <span class="k">as</span> <span class="n">cs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nwm_region_mgr.utils</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">check_columns_dataframe</span><span class="p">,</span>
+    <span class="n">find_gages_within_buffer</span><span class="p">,</span>
+    <span class="n">read_table</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_gages_with_shared_formulations</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">min_gages</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Identify the largest formulation set shared by at least `min_gages` gages.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (pd.DataFrame): Must contain &#39;gage_id&#39; and &#39;formulation&#39; columns.</span>
+<span class="sd">        min_gages (int): Minimum number of gages that must share the same formulations.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (True, [gages], [shared_formulations]) if found, else (False, [], [])</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Build mapping from gage_id -&gt; set of formulations</span>
+    <span class="n">gage_to_formulations</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;gage_id&quot;</span><span class="p">)[</span><span class="s2">&quot;formulation&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">frozenset</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="c1"># All unique gage_ids and their formulation sets</span>
+    <span class="n">gage_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">gage_to_formulations</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">gage_form_sets</span> <span class="o">=</span> <span class="n">gage_to_formulations</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="c1"># Step 1: Get all unique formulations across gages</span>
+    <span class="n">all_formulations</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="o">*</span><span class="n">gage_form_sets</span><span class="p">)</span>
+
+    <span class="c1"># Step 2: Loop through combinations of formulations, largest sets first</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_formulations</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># Start from largest combos</span>
+        <span class="k">for</span> <span class="n">combo</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="n">all_formulations</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+            <span class="n">combo_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">combo</span><span class="p">)</span>
+            <span class="n">matching_gages</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">gage_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">g_form</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">gage_form_sets</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">combo_set</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">g_form</span><span class="p">)</span>
+            <span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">matching_gages</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">min_gages</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">matching_gages</span><span class="p">)</span><span class="si">}</span><span class="s2"> gages (</span><span class="si">{</span><span class="n">matching_gages</span><span class="si">}</span><span class="s2">) sharing formulations: </span><span class="si">{</span><span class="n">combo_set</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="n">matching_gages</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">combo_set</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_find_gages_nearest_neighbor</span><span class="p">(</span>
+    <span class="n">huc_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">gage_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">gage_id_col</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">min_gages</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">gdf</span><span class="p">:</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">list</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find gages for the given HUC ID in the DataFrame.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        huc_id (str): HUC ID to find gages for.</span>
+<span class="sd">        df (pd.DataFrame): DataFrame of summary scores.</span>
+<span class="sd">        gage_file (Path): Path to the donor gage file containing gage_id, longitude, and latitude.</span>
+<span class="sd">        gage_id_col (str): Column name for gage ID in the gage file.</span>
+<span class="sd">        min_gages (int): Minimum number of gages required for each spatial unit.</span>
+<span class="sd">        gdf (gpd.GeoDataFrame): GeoDataFrame of hydrofabric (HUC12) polygons.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: A tuple containing a list of calibration gage IDs found for the HUC ID,  distances of the gages</span>
+<span class="sd">            to the HUC centroid, and the shared formulations.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># get all calibration gages with valid formulation and summary scores</span>
+    <span class="n">gages_calib</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;formulation&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;summary_score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()][</span><span class="n">gage_id_col</span><span class="p">]</span>
+        <span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="p">)</span>
+
+    <span class="c1"># iteratively find the nearest neighbor gages for the given HUC ID, increasing the neighborhood size</span>
+    <span class="c1"># by 100km each time until the minimum number of gages is met</span>
+    <span class="n">buffer</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># initial buffer size in kilometers</span>
+    <span class="n">gages</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">max_buffer</span> <span class="o">=</span> <span class="mi">2000</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">gages</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">min_gages</span> <span class="ow">and</span> <span class="n">buffer</span> <span class="o">&lt;=</span> <span class="n">max_buffer</span><span class="p">:</span>
+        <span class="c1"># find gages within the buffer around huc_id</span>
+        <span class="n">gages</span><span class="p">,</span> <span class="n">distances</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_gages_within_buffer</span><span class="p">(</span>
+            <span class="n">gage_file</span><span class="p">,</span> <span class="n">gage_id_col</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">gdf</span><span class="o">=</span><span class="n">gdf</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">huc_id</span>
+        <span class="p">)</span>
+
+        <span class="c1"># filter gages to only those that are calibrated, and filter distances accordingly</span>
+        <span class="n">filtered</span> <span class="o">=</span> <span class="p">[(</span><span class="n">g</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">gages</span><span class="p">,</span> <span class="n">distances</span><span class="p">)</span> <span class="k">if</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gages_calib</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">filtered</span><span class="p">:</span>
+            <span class="n">gages</span><span class="p">,</span> <span class="n">distances</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">filtered</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">gages</span><span class="p">,</span> <span class="n">distances</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+        <span class="c1"># if there are enough gages, check if they share the same formulations</span>
+        <span class="n">found_gages</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">gages</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">min_gages</span><span class="p">:</span>
+            <span class="n">found_gages</span><span class="p">,</span> <span class="n">gages</span><span class="p">,</span> <span class="n">formulations</span> <span class="o">=</span> <span class="n">_get_gages_with_shared_formulations</span><span class="p">(</span>
+                <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">gage_id_col</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">gages</span><span class="p">)],</span> <span class="n">min_gages</span><span class="o">=</span><span class="n">min_gages</span>
+            <span class="p">)</span>
+
+        <span class="c1"># if no gages are found, increase the buffer size and try again</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">found_gages</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">huc_id</span><span class="si">}</span><span class="s2">: Not enough gages found within </span><span class="si">{</span><span class="n">buffer</span><span class="si">}</span><span class="s2"> km buffer. Increasing buffer size by 100km.&quot;</span>
+            <span class="p">)</span>
+            <span class="n">buffer</span> <span class="o">+=</span> <span class="mi">100</span>  <span class="c1"># increase buffer size by 100 km</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">huc_id</span><span class="si">}</span><span class="s2">: Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">gages</span><span class="p">)</span><span class="si">}</span><span class="s2"> gages (</span><span class="si">{</span><span class="n">gages</span><span class="si">}</span><span class="s2">) within </span><span class="si">{</span><span class="n">buffer</span><span class="si">}</span><span class="s2"> km buffer.&quot;</span>
+            <span class="p">)</span>
+            <span class="k">break</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># if while loop exits normally (len(gages) &gt;= min_gages or buffer &gt; max_buffer)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">gages</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">min_gages</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Not enough calibrated gages found for </span><span class="si">{</span><span class="n">huc_id</span><span class="si">}</span><span class="s2"> after increasing buffer &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;to </span><span class="si">{</span><span class="n">buffer</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="si">}</span><span class="s2"> km. Minimum required is </span><span class="si">{</span><span class="n">min_gages</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">gages</span><span class="p">,</span> <span class="n">distances</span><span class="p">,</span> <span class="n">formulations</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_find_gages_upscaling</span><span class="p">(</span>
+    <span class="n">huc_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">gage_id_col</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">min_gages</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find gages for the given HUC ID in the DataFrame.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        huc_id (str): HUC ID to find gages for.</span>
+<span class="sd">        df (pd.DataFrame): DataFrame of summary scores.</span>
+<span class="sd">        gage_id_col (str): Column name for gage ID in the gage file.</span>
+<span class="sd">        min_gages (int): Minimum number of gages required for each spatial unit.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: A tuple containing a list of calibration gage IDs found for the HUC ID, the HUC level,</span>
+<span class="sd">        and the shared formulations.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># define valid HUC levels</span>
+    <span class="n">valid_huc_levels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;huc2&quot;</span><span class="p">,</span> <span class="s2">&quot;huc4&quot;</span><span class="p">,</span> <span class="s2">&quot;huc6&quot;</span><span class="p">,</span> <span class="s2">&quot;huc8&quot;</span><span class="p">,</span> <span class="s2">&quot;huc10&quot;</span><span class="p">,</span> <span class="s2">&quot;huc12&quot;</span><span class="p">]</span>
+    <span class="n">valid_huc_levels</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+
+    <span class="c1"># make sure current huc level is in the valid HUC levels</span>
+    <span class="n">current_huc_level</span> <span class="o">=</span> <span class="s2">&quot;huc&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">huc_id</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">current_huc_level</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_huc_levels</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Invalid current HUC level: </span><span class="si">{</span><span class="n">current_huc_level</span><span class="si">}</span><span class="s2">. Valid levels are: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">valid_huc_levels</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="n">gages</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">formulations</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">huc_level</span> <span class="o">=</span> <span class="n">current_huc_level</span>  <span class="c1"># Default to current if nothing better is found</span>
+
+    <span class="c1"># start from current huc level, loop through valid HUC levels to ensure sufficient calibrated gages</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">huc_level</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
+        <span class="n">valid_huc_levels</span><span class="p">[</span><span class="n">valid_huc_levels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">current_huc_level</span><span class="p">)</span> <span class="p">:]</span>
+    <span class="p">):</span>
+        <span class="c1"># count the number of unique gages in the new HUC level</span>
+        <span class="n">huc_digit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">huc_level</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;huc&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+        <span class="n">gages</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;huc_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[:</span><span class="n">huc_digit</span><span class="p">]</span> <span class="o">==</span> <span class="n">huc_id</span><span class="p">[:</span><span class="n">huc_digit</span><span class="p">]][</span><span class="n">gage_id_col</span><span class="p">]</span>
+            <span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="p">)</span>
+
+        <span class="c1"># remove NaN values from gages</span>
+        <span class="n">gages</span> <span class="o">=</span> <span class="p">[</span><span class="n">gage</span> <span class="k">for</span> <span class="n">gage</span> <span class="ow">in</span> <span class="n">gages</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">gage</span><span class="p">)]</span>
+        <span class="n">ngage</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">gages</span><span class="p">)</span>
+
+        <span class="c1"># if there are enough gages, check if they share the same formulations</span>
+        <span class="k">if</span> <span class="n">ngage</span> <span class="o">&gt;=</span> <span class="n">min_gages</span><span class="p">:</span>
+            <span class="n">found_gages</span><span class="p">,</span> <span class="n">gages</span><span class="p">,</span> <span class="n">formulations</span> <span class="o">=</span> <span class="n">_get_gages_with_shared_formulations</span><span class="p">(</span>
+                <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">gage_id_col</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">gages</span><span class="p">)],</span> <span class="n">min_gages</span><span class="o">=</span><span class="n">min_gages</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">found_gages</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">huc_id</span><span class="si">}</span><span class="s2">: upscaling HUC level from </span><span class="si">{</span><span class="n">current_huc_level</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">huc_level</span><span class="si">}</span><span class="s2"> &quot;</span>
+                <span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># logger.debug(f&quot;{huc_id}: found {len(gages)} gages ({gages}) at {huc_level} level.&quot;)</span>
+                <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">gages</span><span class="p">,</span> <span class="n">huc_level</span><span class="p">,</span> <span class="n">formulations</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_find_calibration_gages</span><span class="p">(</span>
+    <span class="n">huc_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">cs</span><span class="o">.</span><span class="n">Config</span><span class="p">,</span> <span class="n">gdf</span><span class="p">:</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">list</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find gages for the given HUC ID in the DataFrame.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        huc_id (str): HUC ID to find gages for.</span>
+<span class="sd">        df (pd.DataFrame): DataFrame of summary scores.</span>
+<span class="sd">        config (cs.Config): Configuration object containing settings.</span>
+<span class="sd">        gdf (gpd.GeoDataFrame): GeoDataFrame of hydrofabric (HUC12) polygons.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: A tuple containing the HUC level, the list of calibration gage IDs found for the HUC ID,</span>
+<span class="sd">            list of corresponding distances, and the list of shared formulations.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># get configuration settings</span>
+    <span class="n">gage_id_col</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">id_col</span><span class="p">[</span>
+        <span class="s2">&quot;gage&quot;</span>
+    <span class="p">]</span>  <span class="c1"># column name for gage ID in the DataFrame</span>
+    <span class="n">nmin_gages</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">spatial_unit</span><span class="o">.</span><span class="n">nmin_calib_basin</span>
+    <span class="p">)</span>  <span class="c1">#  minimum number of calibration gages required</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">spatial_unit</span><span class="o">.</span><span class="n">basin_fill_method</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="p">)</span>  <span class="c1"># method to find additional calibration gages if needed</span>
+    <span class="n">gage_file</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">donor_gage_file</span>  <span class="c1"># path to the donor gage file</span>
+
+    <span class="c1"># check if the huc_id is valid</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">huc_id</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">huc_id</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Invalid HUC ID: </span><span class="si">{</span><span class="n">huc_id</span><span class="si">}</span><span class="s2">. It should be a string with at least 2 characters.&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="c1"># remove rows with invalid gage_id_col, formulation, and summary_score columns in the DataFrame</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span>
+        <span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="n">gage_id_col</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+        <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;formulation&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+        <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;summary_score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+    <span class="p">]</span>
+
+    <span class="c1"># check number of calibration gages within the current huc_id</span>
+    <span class="n">gages0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;huc_id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">huc_id</span><span class="p">][</span><span class="n">gage_id_col</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">gages0</span> <span class="o">=</span> <span class="p">[</span><span class="n">gage</span> <span class="k">for</span> <span class="n">gage</span> <span class="ow">in</span> <span class="n">gages0</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">gage</span><span class="p">)]</span>  <span class="c1"># remove NaN values</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">gages0</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">nmin_gages</span><span class="p">:</span>
+        <span class="n">found_gages</span><span class="p">,</span> <span class="n">gages0</span><span class="p">,</span> <span class="n">formulations</span> <span class="o">=</span> <span class="n">_get_gages_with_shared_formulations</span><span class="p">(</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">gage_id_col</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">gages0</span><span class="p">)],</span> <span class="n">min_gages</span><span class="o">=</span><span class="n">nmin_gages</span>
+        <span class="p">)</span>
+
+    <span class="c1"># if there are enough gages at the current huc_id level, return them</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">gages0</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">nmin_gages</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">huc_id</span><span class="si">}</span><span class="s2">: found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">gages0</span><span class="p">)</span><span class="si">}</span><span class="s2"> calibration gages (</span><span class="si">{</span><span class="n">gages0</span><span class="si">}</span><span class="s2">) at the current level. No need to find additional gages.&quot;</span>
+        <span class="p">)</span>
+        <span class="n">huc_level</span> <span class="o">=</span> <span class="s2">&quot;huc&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">huc_id</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">huc_level</span><span class="p">,</span> <span class="n">gages0</span><span class="p">,</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">gages0</span><span class="p">),</span> <span class="n">formulations</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">huc_id</span><span class="si">}</span><span class="s2">: found only </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">gages0</span><span class="p">)</span><span class="si">}</span><span class="s2"> calibration gages (</span><span class="si">{</span><span class="n">gages0</span><span class="si">}</span><span class="s2">) at the current level. &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Need to find additional gages using the </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> method.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">nearest_neighbor_fallback</span><span class="p">():</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Not enough calibration gages found for </span><span class="si">{</span><span class="n">huc_id</span><span class="si">}</span><span class="s2"> after upscaling. &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">gages0</span><span class="p">)</span><span class="si">}</span><span class="s2"> gages (</span><span class="si">{</span><span class="n">gages0</span><span class="si">}</span><span class="s2">), minimum required is </span><span class="si">{</span><span class="n">nmin_gages</span><span class="si">}</span><span class="s2">. &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Use nearest-neighbor method for </span><span class="si">{</span><span class="n">huc_id</span><span class="si">}</span><span class="s2"> instead.&quot;</span>
+        <span class="p">)</span>
+        <span class="n">gages_nn</span><span class="p">,</span> <span class="n">dists_nn</span><span class="p">,</span> <span class="n">formulations</span> <span class="o">=</span> <span class="n">_find_gages_nearest_neighbor</span><span class="p">(</span>
+            <span class="n">huc_id</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">gage_file</span><span class="p">,</span> <span class="n">gage_id_col</span><span class="p">,</span> <span class="n">nmin_gages</span><span class="p">,</span> <span class="n">gdf</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">gages_nn</span><span class="p">,</span> <span class="n">dists_nn</span><span class="p">,</span> <span class="s2">&quot;huc&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">huc_id</span><span class="p">)),</span> <span class="n">formulations</span>
+
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;upscaling&quot;</span><span class="p">:</span>
+        <span class="c1"># find calibration gages using upscaling method</span>
+        <span class="n">gages</span><span class="p">,</span> <span class="n">huc_level</span><span class="p">,</span> <span class="n">formulations</span> <span class="o">=</span> <span class="n">_find_gages_upscaling</span><span class="p">(</span>
+            <span class="n">huc_id</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">gage_id_col</span><span class="p">,</span> <span class="n">nmin_gages</span>
+        <span class="p">)</span>
+        <span class="n">dists</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">gages</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">gages</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">nmin_gages</span><span class="p">:</span>
+            <span class="n">gages</span><span class="p">,</span> <span class="n">dists</span><span class="p">,</span> <span class="n">huc_level</span><span class="p">,</span> <span class="n">formulations</span> <span class="o">=</span> <span class="n">nearest_neighbor_fallback</span><span class="p">()</span>
+
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;nearest-neighbor&quot;</span><span class="p">:</span>
+        <span class="c1"># find calibration gages using nearest neighbor</span>
+        <span class="n">gages</span><span class="p">,</span> <span class="n">dists</span><span class="p">,</span> <span class="n">formulations</span> <span class="o">=</span> <span class="n">_find_gages_nearest_neighbor</span><span class="p">(</span>
+            <span class="n">huc_id</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">gage_file</span><span class="p">,</span> <span class="n">gage_id_col</span><span class="p">,</span> <span class="n">nmin_gages</span><span class="p">,</span> <span class="n">gdf</span>
+        <span class="p">)</span>
+        <span class="n">huc_level</span> <span class="o">=</span> <span class="s2">&quot;huc&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="n">huc_id</span><span class="p">)</span>
+        <span class="p">)</span>  <span class="c1"># HUC level is determined by the length of huc_id</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># raise error if the basin fill method is not recognized</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Unknown basin fill method: </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">. Supported methods are &#39;upscaling&#39; and &#39;nearest-neighbor&#39;.&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">huc_level</span><span class="p">,</span> <span class="n">gages</span><span class="p">,</span> <span class="n">dists</span><span class="p">,</span> <span class="n">formulations</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_formulation_costs</span><span class="p">(</span>
+    <span class="n">config</span><span class="p">:</span> <span class="n">cs</span><span class="o">.</span><span class="n">FormulationCostConfig</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get formulation costs from the configuration.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        config : cs.FormulationCostConfig</span>
+<span class="sd">            Configuration object containing formulation cost settings.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Optional[dict[str, float]]</span>
+<span class="sd">            Dictionary of formulation costs, keyed by formulation name. If no costs are defined, returns None.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">file</span><span class="p">:</span>
+        <span class="c1"># check &quot;formulation&quot; and &quot;cost&quot; columns in the cost file</span>
+        <span class="n">check_columns_dataframe</span><span class="p">(</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">file</span><span class="p">,</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;formulation&quot;</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="c1"># read the cost file</span>
+        <span class="n">cost_df</span> <span class="o">=</span> <span class="n">read_table</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">file</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cost_df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">cost_df</span><span class="p">[</span><span class="s2">&quot;formulation&quot;</span><span class="p">],</span> <span class="n">cost_df</span><span class="p">[</span><span class="s2">&quot;cost&quot;</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;No costs found in the file: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">file</span><span class="si">}</span><span class="s2">. Returning None.&quot;</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">elif</span> <span class="n">config</span><span class="o">.</span><span class="n">costs</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">costs</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="s2">&quot;No formulation costs defined in the configuration. Returning None.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_select_formulation_given_score</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;basin&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;total_score&quot;</span><span class="p">,</span>
+    <span class="n">id_col</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;gage&quot;</span><span class="p">:</span> <span class="s2">&quot;gage_id&quot;</span><span class="p">,</span> <span class="s2">&quot;divide&quot;</span><span class="p">:</span> <span class="s2">&quot;divide_id&quot;</span><span class="p">},</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute total score for each spatial unit based on the method specified.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df : pd.DataFrame</span>
+<span class="sd">            DataFrame containing summary scores for each formulation and calibrated basin.</span>
+<span class="sd">        method : str, optional</span>
+<span class="sd">            Method to compute total score, either &#39;basin&#39; or &#39;divide&#39;, by default &#39;basin&#39;.</span>
+<span class="sd">        type : str, optional</span>
+<span class="sd">            Type of total score to compute, either &#39;total_score&#39; or &#39;total_count&#39;, by default &#39;total_score&#39;.</span>
+<span class="sd">        id_col : dict[str, str], optional</span>
+<span class="sd">            Dictionary mapping spatial unit type to its identifier column name,</span>
+<span class="sd">            by default {&quot;gage&quot;: &quot;gage_id&quot;, &quot;divide&quot;: &quot;divide_id&quot;}.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame</span>
+<span class="sd">            DataFrame with total scores computed for each spatial unit.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">col1</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">id_col</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;gage&quot;</span><span class="p">,</span> <span class="s2">&quot;gage_id&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s2">&quot;basin&quot;</span> <span class="ow">and</span> <span class="s2">&quot;gage_id&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+        <span class="k">else</span> <span class="n">id_col</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;divide&quot;</span><span class="p">,</span> <span class="s2">&quot;divide_id&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="n">col1</span><span class="p">,</span> <span class="s2">&quot;formulation&quot;</span><span class="p">,</span> <span class="s2">&quot;summary_score&quot;</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># remove duplicate rows</span>
+    <span class="n">df1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="n">col1</span><span class="p">,</span> <span class="s2">&quot;formulation&quot;</span><span class="p">])</span>
+
+    <span class="c1"># drop rows with NaN values in the summary_score column</span>
+    <span class="n">df1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;summary_score&quot;</span><span class="p">])</span>
+
+    <span class="c1"># identify best formulation(s)</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;total_score&quot;</span><span class="p">:</span>
+        <span class="n">df1</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">method</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;formulation&quot;</span><span class="p">])[</span><span class="s2">&quot;summary_score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;total_count&quot;</span><span class="p">:</span>
+        <span class="n">df1</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">method</span><span class="p">]</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;formulation&quot;</span><span class="p">])[</span><span class="s2">&quot;summary_score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
+            <span class="s2">&quot;count&quot;</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Unknown method: </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">. Supported methods are &#39;total_score&#39; and &#39;total_count&#39;.&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="c1"># keep only the best formulation(s) with the highest total score</span>
+    <span class="n">df1</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="n">df1</span><span class="p">[</span><span class="n">method</span><span class="p">]</span> <span class="o">==</span> <span class="n">df1</span><span class="p">[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
+
+    <span class="c1"># if there are multiple formulations with the same total score, choose the one that has the lowest cost</span>
+    <span class="k">if</span> <span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">df1</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()]</span>
+
+    <span class="c1"># drop col1</span>
+    <span class="n">df1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">col1</span><span class="p">])</span>
+
+    <span class="c1"># remove duplicates</span>
+    <span class="n">df1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;formulation&quot;</span><span class="p">,</span> <span class="n">method</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">df1</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_identify_best_formulation_per_gage</span><span class="p">(</span>
+    <span class="n">df_score</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">gage_id_col</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">tolerance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">cost_dict</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Identify the best formulation for each gage based on summary scores and costs.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df_score : pd.DataFrame</span>
+<span class="sd">            DataFrame containing summary scores for each formulation and calibrated basin.</span>
+<span class="sd">        gage_id_col : str</span>
+<span class="sd">            Column name for gage ID in the gage file.</span>
+<span class="sd">        tolerance : float, optional</span>
+<span class="sd">            Tolerance for the summary score to consider formulations as equally good, by default 0.05.</span>
+<span class="sd">        cost_dict : dict, optional</span>
+<span class="sd">            Dictionary containing costs for each formulation, by default None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame</span>
+<span class="sd">            DataFrame with the best formulation for each gage and its score.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">max_scores</span> <span class="o">=</span> <span class="n">df_score</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">gage_id_col</span><span class="p">)[</span><span class="s2">&quot;summary_score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s2">&quot;max&quot;</span><span class="p">)</span>
+    <span class="n">best_per_gage</span> <span class="o">=</span> <span class="n">df_score</span><span class="p">[</span>
+        <span class="n">df_score</span><span class="p">[</span><span class="s2">&quot;summary_score&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">max_scores</span> <span class="o">-</span> <span class="n">max_scores</span> <span class="o">*</span> <span class="n">tolerance</span><span class="p">)</span>
+    <span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">cost_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># check if all formulations are in the cost_dict</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">best_per_gage</span><span class="p">[</span><span class="s2">&quot;formulation&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">cost_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="n">missed_formulations</span> <span class="o">=</span> <span class="n">best_per_gage</span><span class="p">[</span>
+                <span class="o">~</span><span class="n">best_per_gage</span><span class="p">[</span><span class="s2">&quot;formulation&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">cost_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="p">][</span><span class="s2">&quot;formulation&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Some formulations are missing costs in the configuration: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">missed_formulations</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="c1"># map costs to the formulations</span>
+        <span class="n">best_per_gage</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;cost&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_per_gage</span><span class="p">[</span><span class="s2">&quot;formulation&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">cost_dict</span><span class="p">)</span>
+
+        <span class="c1"># for each gage, select the formulation with the minimum cost</span>
+        <span class="n">best_per_gage</span> <span class="o">=</span> <span class="n">best_per_gage</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+            <span class="n">best_per_gage</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">gage_id_col</span><span class="p">)[</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+        <span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="c1"># if there are multiple formulations with the same minimum cost, keep the first one</span>
+        <span class="n">best_per_gage</span> <span class="o">=</span> <span class="n">best_per_gage</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="n">gage_id_col</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># choose the first formulation with the highest score for each gage</span>
+        <span class="n">best_per_gage</span> <span class="o">=</span> <span class="n">best_per_gage</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+            <span class="n">best_per_gage</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">gage_id_col</span><span class="p">)[</span><span class="s2">&quot;summary_score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+        <span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="c1"># initialize cost column to None</span>
+        <span class="n">best_per_gage</span><span class="p">[</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="n">best_per_gage</span>
+
+
+<div class="viewcode-block" id="select_formulation_donors_only">
+<a class="viewcode-back" href="../../../API/_autosummary/nwm_region_mgr.formreg.select_formulation.select_formulation_donors_only.html#nwm_region_mgr.formreg.select_formulation.select_formulation_donors_only">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">select_formulation_donors_only</span><span class="p">(</span>
+    <span class="n">config</span><span class="p">:</span> <span class="n">cs</span><span class="o">.</span><span class="n">Config</span><span class="p">,</span>
+    <span class="n">df_score</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">cost_dict</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Select formulations for donor basins only based on summary scores and costs.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        config : cs.Config</span>
+<span class="sd">            Configuration object containing settings for the regionalization.</span>
+<span class="sd">        df_score : pd.DataFrame</span>
+<span class="sd">            DataFrame containing summary scores for each formulation and calibrated basin.</span>
+<span class="sd">        cost_dict : Optional[dict], optional</span>
+<span class="sd">            Dictionary containing costs for each formulation, by default None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame</span>
+<span class="sd">            DataFrame with selected formulations and their scores.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># get the ID columns from the configuration</span>
+    <span class="n">id_cols</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">id_col</span>
+    <span class="n">gage_id_col</span> <span class="o">=</span> <span class="n">id_cols</span><span class="p">[</span><span class="s2">&quot;gage&quot;</span><span class="p">]</span>
+    <span class="n">divide_id_col</span> <span class="o">=</span> <span class="n">id_cols</span><span class="p">[</span><span class="s2">&quot;divide&quot;</span><span class="p">]</span>
+
+    <span class="c1"># score computing method, type, and tolerance</span>
+    <span class="n">score_tolerance</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">spatial_unit</span><span class="o">.</span><span class="n">best_formulation</span><span class="o">.</span><span class="n">tolerance</span>
+
+    <span class="c1"># identify the best formulation for each gage</span>
+    <span class="n">df_best_per_gage</span> <span class="o">=</span> <span class="n">_identify_best_formulation_per_gage</span><span class="p">(</span>
+        <span class="n">df_score</span><span class="p">,</span>
+        <span class="n">gage_id_col</span><span class="o">=</span><span class="n">gage_id_col</span><span class="p">,</span>
+        <span class="n">tolerance</span><span class="o">=</span><span class="n">score_tolerance</span><span class="p">,</span>
+        <span class="n">cost_dict</span><span class="o">=</span><span class="n">cost_dict</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># read the crosswalk file for gage/divide relationships</span>
+    <span class="n">col_dtype</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">gage_id_col</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+        <span class="n">divide_id_col</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">cwt_divide_gage</span> <span class="o">=</span> <span class="n">read_table</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">gage_divide_cwt_file</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">col_dtype</span><span class="p">)</span>
+
+    <span class="c1"># merge the crosswalk with the best formulations DataFrame</span>
+    <span class="n">df_selected</span> <span class="o">=</span> <span class="n">df_best_per_gage</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+        <span class="n">cwt_divide_gage</span><span class="p">[[</span><span class="n">gage_id_col</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(),</span>
+        <span class="n">on</span><span class="o">=</span><span class="n">gage_id_col</span><span class="p">,</span>
+        <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_selected</span></div>
+
+
+
+<div class="viewcode-block" id="select_formulation_all">
+<a class="viewcode-back" href="../../../API/_autosummary/nwm_region_mgr.formreg.select_formulation.select_formulation_all.html#nwm_region_mgr.formreg.select_formulation.select_formulation_all">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">select_formulation_all</span><span class="p">(</span>
+    <span class="n">config</span><span class="p">:</span> <span class="n">cs</span><span class="o">.</span><span class="n">Config</span><span class="p">,</span>
+    <span class="n">vpu</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">df_score</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">gdf_vpu</span><span class="p">:</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">,</span>
+    <span class="n">cost_dict</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Select formulation for all catchments in the VPU.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        config : cs.Config</span>
+<span class="sd">            Configuration object containing settings for the regionalization.</span>
+<span class="sd">        vpu : str</span>
+<span class="sd">            Vector Processing Unit (VPU) for which to select formulations.</span>
+<span class="sd">        df_score : pd.DataFrame</span>
+<span class="sd">            DataFrame containing summary scores for each formulation and calibrated basin.</span>
+<span class="sd">        gdf_vpu : gpd.GeoDataFrame</span>
+<span class="sd">            GeoDataFrame of the VPU polygons, used for spatial operations where needed.</span>
+<span class="sd">        cost_dict : Optional[dict], optional</span>
+<span class="sd">            Dictionary containing costs for each formulation, by default None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame</span>
+<span class="sd">            DataFrame with selected formulations and their scores.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># get the ID columns from the configuration</span>
+    <span class="n">id_cols</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">id_col</span>
+    <span class="n">gage_id_col</span> <span class="o">=</span> <span class="n">id_cols</span><span class="p">[</span><span class="s2">&quot;gage&quot;</span><span class="p">]</span>
+    <span class="n">divide_id_col</span> <span class="o">=</span> <span class="n">id_cols</span><span class="p">[</span><span class="s2">&quot;divide&quot;</span><span class="p">]</span>
+    <span class="n">huc12_id_col</span> <span class="o">=</span> <span class="n">id_cols</span><span class="p">[</span><span class="s2">&quot;huc12&quot;</span><span class="p">]</span>
+
+    <span class="c1"># score computing method, type, and tolerance</span>
+    <span class="n">score_method</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">spatial_unit</span><span class="o">.</span><span class="n">best_formulation</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">score_type</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">spatial_unit</span><span class="o">.</span><span class="n">best_formulation</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">score_tolerance</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">spatial_unit</span><span class="o">.</span><span class="n">best_formulation</span><span class="o">.</span><span class="n">tolerance</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Computing total score using method &#39;</span><span class="si">{</span><span class="n">score_method</span><span class="si">}</span><span class="s2">&#39; and type &#39;</span><span class="si">{</span><span class="n">score_type</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+    <span class="p">)</span>
+
+    <span class="c1"># crosswalk for gage/divide</span>
+    <span class="n">col_dtype</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">gage_id_col</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+        <span class="n">divide_id_col</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+        <span class="n">huc12_id_col</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">cwt_divide_gage</span> <span class="o">=</span> <span class="n">read_table</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">gage_divide_cwt_file</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">col_dtype</span><span class="p">)</span>
+
+    <span class="c1"># crosswalk for divide/huc12</span>
+    <span class="n">cwt_divide_huc12</span> <span class="o">=</span> <span class="n">read_table</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">divide_huc12_cwt_file</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">col_dtype</span><span class="p">)</span>
+
+    <span class="c1"># filter cwt_divide_huc12 with divides in gdf_vpu (i.e., only keep divides that are in the current VPU)</span>
+    <span class="n">cwt_divide_huc12</span> <span class="o">=</span> <span class="n">cwt_divide_huc12</span><span class="p">[</span>
+        <span class="n">cwt_divide_huc12</span><span class="p">[</span><span class="n">divide_id_col</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">gdf_vpu</span><span class="p">[</span><span class="n">divide_id_col</span><span class="p">])</span>
+    <span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># get spatial units for formulation selection</span>
+    <span class="n">huc_level</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">spatial_unit</span><span class="o">.</span><span class="n">huc_level</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">huc_digit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">huc_level</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;huc&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+
+    <span class="c1"># add huc_id column to cwt_divide_huc12 based on huc_digit</span>
+    <span class="n">cwt_divide_huc12</span><span class="p">[</span><span class="s2">&quot;huc_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cwt_divide_huc12</span><span class="p">[</span><span class="n">huc12_id_col</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[:</span><span class="n">huc_digit</span><span class="p">]</span>
+
+    <span class="c1"># make sure type of huc_id column is string</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">is_string_dtype</span><span class="p">(</span><span class="n">cwt_divide_huc12</span><span class="p">[</span><span class="s2">&quot;huc_id&quot;</span><span class="p">]):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Converting &#39;huc_id&#39; column to string type. Current type: </span><span class="si">{</span><span class="n">cwt_divide_huc12</span><span class="p">[</span><span class="s1">&#39;huc_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="p">)</span>
+        <span class="n">cwt_divide_huc12</span><span class="p">[</span><span class="s2">&quot;huc_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cwt_divide_huc12</span><span class="p">[</span><span class="s2">&quot;huc_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+    <span class="c1"># merge the two crosswalks first</span>
+    <span class="n">df_cwt</span> <span class="o">=</span> <span class="n">cwt_divide_huc12</span><span class="p">[[</span><span class="s2">&quot;huc_id&quot;</span><span class="p">,</span> <span class="n">huc12_id_col</span><span class="p">,</span> <span class="n">divide_id_col</span><span class="p">]]</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+        <span class="n">cwt_divide_gage</span><span class="p">[[</span><span class="n">gage_id_col</span><span class="p">,</span> <span class="n">divide_id_col</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(),</span>
+        <span class="n">on</span><span class="o">=</span><span class="n">divide_id_col</span><span class="p">,</span>
+        <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># then merge with the score DataFrame</span>
+    <span class="n">df_score</span> <span class="o">=</span> <span class="n">df_score</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_cwt</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="n">gage_id_col</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Selecting formulations for VPU </span><span class="si">{</span><span class="n">vpu</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">huc_level</span><span class="si">}</span><span class="s2"> level. &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_score</span><span class="p">[</span><span class="s1">&#39;huc_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span><span class="si">}</span><span class="s2"> unique </span><span class="si">{</span><span class="n">huc_level</span><span class="si">}</span><span class="s2"> IDs.&quot;</span>
+    <span class="p">)</span>
+
+    <span class="c1"># all unique huc_ids in the score DataFrame</span>
+    <span class="n">huc_ids</span> <span class="o">=</span> <span class="n">df_score</span><span class="p">[</span><span class="s2">&quot;huc_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+
+    <span class="c1"># remove NaN values from huc_ids</span>
+    <span class="n">huc_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">huc_id</span> <span class="k">for</span> <span class="n">huc_id</span> <span class="ow">in</span> <span class="n">huc_ids</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">huc_id</span><span class="p">)]</span>
+
+    <span class="c1"># get huc12 geometry for these huc_ids (to compute centroid distances between gages and huc_ids)</span>
+    <span class="n">huc12_hydro_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">huc12_hydrofabric_file</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Open with Fiona to read features in huc_ids</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">huc_digit</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">huc_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># assuming all huc_ids have the same length</span>
+    <span class="k">with</span> <span class="n">fiona</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">huc12_hydro_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">open_options</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;METHOD=ONLY_CCW&quot;</span><span class="p">])</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">src</span><span class="p">:</span>
+            <span class="n">huc_key</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">feat</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">huc12_id_col</span><span class="p">),</span> <span class="kc">None</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">huc_key</span> <span class="ow">and</span> <span class="n">feat</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">][</span><span class="n">huc_key</span><span class="p">][:</span><span class="n">huc_digit</span><span class="p">]</span> <span class="ow">in</span> <span class="n">huc_ids</span><span class="p">:</span>
+                <span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feat</span><span class="p">)</span>
+
+        <span class="c1"># Convert to GeoDataFrame</span>
+        <span class="n">huc12_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="o">.</span><span class="n">from_features</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">src</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+
+    <span class="c1"># loop through each unique huc_id and select formulation</span>
+    <span class="n">df_selected</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">huc_id</span> <span class="ow">in</span> <span class="n">huc_ids</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing HUC ID: </span><span class="si">{</span><span class="n">huc_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Find actual column name in gdf that matches huc12_id_col (case-insensitive)</span>
+        <span class="n">col_match</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">huc12_gdf</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">huc12_id_col</span><span class="o">.</span><span class="n">lower</span><span class="p">()),</span>
+            <span class="kc">None</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Use the matched column to filter huc12_gdf</span>
+        <span class="n">huc12_gdf_huc</span> <span class="o">=</span> <span class="n">huc12_gdf</span><span class="p">[</span>
+            <span class="n">huc12_gdf</span><span class="p">[</span><span class="n">col_match</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[:</span><span class="n">huc_digit</span><span class="p">]</span> <span class="o">==</span> <span class="n">huc_id</span>
+        <span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">huc12_gdf_huc</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;No geometry found for HUC ID: </span><span class="si">{</span><span class="n">huc_id</span><span class="si">}</span><span class="s2">. Please check the HUC12 hydrofabric file.&quot;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="n">huc_level</span><span class="p">,</span> <span class="n">gages</span><span class="p">,</span> <span class="n">dists</span><span class="p">,</span> <span class="n">formulations</span> <span class="o">=</span> <span class="n">_find_calibration_gages</span><span class="p">(</span>
+            <span class="n">huc_id</span><span class="p">,</span> <span class="n">df_score</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">huc12_gdf_huc</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">gages</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;No calibration gages found for HUC ID: </span><span class="si">{</span><span class="n">huc_id</span><span class="si">}</span><span class="s2">. &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Minimum required is </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">spatial_unit</span><span class="o">.</span><span class="n">nmin_calib_basin</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="c1"># filter the score DataFrame for identified gages and formulations</span>
+        <span class="n">df_huc</span> <span class="o">=</span> <span class="n">df_score</span><span class="p">[</span>
+            <span class="n">df_score</span><span class="p">[</span><span class="n">gage_id_col</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">gages</span><span class="p">)</span>
+            <span class="o">&amp;</span> <span class="n">df_score</span><span class="p">[</span><span class="s2">&quot;formulation&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">formulations</span><span class="p">)</span>
+        <span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="c1"># identify best formulation for each gage based on summary scores for formulation costs</span>
+        <span class="n">df_huc</span> <span class="o">=</span> <span class="n">_identify_best_formulation_per_gage</span><span class="p">(</span>
+            <span class="n">df_huc</span><span class="p">,</span>
+            <span class="n">gage_id_col</span><span class="o">=</span><span class="n">gage_id_col</span><span class="p">,</span>
+            <span class="n">tolerance</span><span class="o">=</span><span class="n">score_tolerance</span><span class="p">,</span>
+            <span class="n">cost_dict</span><span class="o">=</span><span class="n">cost_dict</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># select the best formulation for each huc_id based on the total score or count</span>
+        <span class="n">best_formulation</span> <span class="o">=</span> <span class="n">_select_formulation_given_score</span><span class="p">(</span>
+            <span class="n">df_huc</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">score_method</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">score_type</span>
+        <span class="p">)</span>
+
+        <span class="c1"># append the selected formulation to the list</span>
+        <span class="k">if</span> <span class="n">best_formulation</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;No valid formulations found for HUC ID: </span><span class="si">{</span><span class="n">huc_id</span><span class="si">}</span><span class="s2">. Skipping this HUC.&quot;</span>
+            <span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># add huc_id, huc_level, number of gages and vpu to the best formulation</span>
+        <span class="n">best_formulation</span><span class="p">[</span><span class="s2">&quot;huc_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">huc_id</span>
+        <span class="n">best_formulation</span><span class="p">[</span><span class="s2">&quot;upscale_huc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">huc_level</span>
+        <span class="n">best_formulation</span><span class="p">[</span><span class="s2">&quot;num_gages&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">gages</span><span class="p">)</span>
+        <span class="n">best_formulation</span><span class="p">[</span><span class="s2">&quot;distances&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dists</span><span class="p">]</span>
+        <span class="p">)</span>  <span class="c1"># join distances as a stringi</span>
+
+        <span class="n">df_selected</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_selected</span><span class="p">,</span> <span class="n">best_formulation</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># merge with cwt_divide_huc12 to get the divide_id</span>
+    <span class="n">df_selected</span> <span class="o">=</span> <span class="n">df_selected</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+        <span class="n">cwt_divide_huc12</span><span class="p">[[</span><span class="s2">&quot;huc_id&quot;</span><span class="p">,</span> <span class="n">divide_id_col</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(),</span>
+        <span class="n">on</span><span class="o">=</span><span class="s2">&quot;huc_id&quot;</span><span class="p">,</span>
+        <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># handle formulation selection for calibration gages</span>
+    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">approach_calib_basins</span> <span class="o">==</span> <span class="s2">&quot;regionalization&quot;</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">elif</span> <span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">approach_calib_basins</span> <span class="o">==</span> <span class="s2">&quot;summary_score&quot;</span><span class="p">:</span>
+        <span class="c1"># select formulations for donor gages based on the summary scores and costs</span>
+        <span class="n">df_selected_donors</span> <span class="o">=</span> <span class="n">select_formulation_donors_only</span><span class="p">(</span>
+            <span class="n">config</span><span class="p">,</span> <span class="n">df_score</span><span class="p">,</span> <span class="n">cost_dict</span><span class="o">=</span><span class="n">cost_dict</span>
+        <span class="p">)</span>
+
+        <span class="c1"># replace the formulation for donors in df_selected with the one from df_selected_donors</span>
+        <span class="n">form_map</span> <span class="o">=</span> <span class="n">df_selected_donors</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">divide_id_col</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span>
+            <span class="n">divide_id_col</span>
+        <span class="p">)[</span><span class="s2">&quot;formulation&quot;</span><span class="p">]</span>
+        <span class="n">df_selected</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;formulation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">df_selected</span><span class="p">[</span><span class="n">divide_id_col</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">form_map</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df_selected</span><span class="p">[</span><span class="s2">&quot;formulation&quot;</span><span class="p">])</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Unknown approach for assigning formulations to calibrated basins: &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">approach_calib_basins</span><span class="si">}</span><span class="s2">. Supported methods are &#39;regionalization&#39; and &#39;summary_score&#39;.&quot;</span>
+        <span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_selected</span></div>
+
+
+
+<div class="viewcode-block" id="check_gage_formulation_uniqueness">
+<a class="viewcode-back" href="../../../API/_autosummary/nwm_region_mgr.formreg.select_formulation.check_gage_formulation_uniqueness.html#nwm_region_mgr.formreg.select_formulation.check_gage_formulation_uniqueness">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_gage_formulation_uniqueness</span><span class="p">(</span>
+    <span class="n">df_form</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">config</span><span class="p">:</span> <span class="n">cs</span><span class="o">.</span><span class="n">Config</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check that each gage has a unique formulation assigned.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df_form : pd.DataFrame</span>
+<span class="sd">            DataFrame with selected formulations for each divide.</span>
+<span class="sd">        config : cs.Config</span>
+<span class="sd">            Configuration object containing settings for the regionalization.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple[pd.DataFrame, pd.DataFrame]</span>
+<span class="sd">            Tuple containing the new DataFrame with gage-formulation mapping, and</span>
+<span class="sd">            the updated DataFrame with divide-formulation mapping and</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># get formulation selected for each donor gage</span>
+    <span class="n">gage_id_col</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">id_col</span><span class="p">[</span><span class="s2">&quot;gage&quot;</span><span class="p">]</span>
+    <span class="n">divide_id_col</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">id_col</span><span class="p">[</span><span class="s2">&quot;divide&quot;</span><span class="p">]</span>
+    <span class="n">df_cwt</span> <span class="o">=</span> <span class="n">read_table</span><span class="p">(</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">gage_divide_cwt_file</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="n">gage_id_col</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">divide_id_col</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+    <span class="p">)</span>
+    <span class="n">df_cwt</span> <span class="o">=</span> <span class="n">df_cwt</span><span class="p">[[</span><span class="n">gage_id_col</span><span class="p">,</span> <span class="n">divide_id_col</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+    <span class="n">df_form_gage</span> <span class="o">=</span> <span class="n">df_form</span><span class="p">[[</span><span class="n">divide_id_col</span><span class="p">,</span> <span class="s2">&quot;formulation&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+    <span class="n">df_form_gage</span> <span class="o">=</span> <span class="n">df_cwt</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+        <span class="n">df_form_gage</span><span class="p">,</span>
+        <span class="n">on</span><span class="o">=</span><span class="n">divide_id_col</span><span class="p">,</span>
+        <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># check if any gage is associated with multiple formulations</span>
+    <span class="n">df_count</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df_form_gage</span><span class="p">[[</span><span class="n">gage_id_col</span><span class="p">,</span> <span class="s2">&quot;formulation&quot;</span><span class="p">]]</span>
+        <span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">gage_id_col</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">size</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">gages</span> <span class="o">=</span> <span class="n">df_count</span><span class="p">[</span><span class="n">df_count</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">][</span><span class="n">gage_id_col</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="c1"># loop through gages associated with multiple formulations to reassign them to</span>
+    <span class="c1"># the most frequent formulation for both df_form_gage and df_form</span>
+    <span class="k">for</span> <span class="n">gage</span> <span class="ow">in</span> <span class="n">gages</span><span class="p">:</span>
+        <span class="n">df1</span> <span class="o">=</span> <span class="n">df_form_gage</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_form_gage</span><span class="p">[</span><span class="n">gage_id_col</span><span class="p">]</span> <span class="o">==</span> <span class="n">gage</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+            <span class="n">by</span><span class="o">=</span><span class="s2">&quot;formulation&quot;</span>
+        <span class="p">)</span>
+        <span class="n">df_count</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;formulation&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">size</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">most_freq_form</span> <span class="o">=</span> <span class="n">df_count</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;formulation&quot;</span><span class="p">]</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Gage </span><span class="si">{</span><span class="n">gage</span><span class="si">}</span><span class="s2"> is associated with multiple formulations, &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;reassigning to the most frequent formulation </span><span class="si">{</span><span class="n">most_freq_form</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="n">df_form_gage</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_form_gage</span><span class="p">[</span><span class="n">gage_id_col</span><span class="p">]</span> <span class="o">==</span> <span class="n">gage</span><span class="p">,</span> <span class="s2">&quot;formulation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">most_freq_form</span>
+        <span class="p">)</span>
+        <span class="n">df_form</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_form</span><span class="p">[</span><span class="n">divide_id_col</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="n">divide_id_col</span><span class="p">]),</span> <span class="s2">&quot;formulation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">most_freq_form</span>
+        <span class="p">)</span>
+
+    <span class="c1"># ensure no duplicate rows in df_form_gage</span>
+    <span class="n">df_form_gage</span> <span class="o">=</span> <span class="n">df_form_gage</span><span class="p">[[</span><span class="n">gage_id_col</span><span class="p">,</span> <span class="s2">&quot;formulation&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">df_form_gage</span><span class="p">,</span> <span class="n">df_form</span></div>
+
+
+
+<div class="viewcode-block" id="save_formulation_results">
+<a class="viewcode-back" href="../../../API/_autosummary/nwm_region_mgr.formreg.select_formulation.save_formulation_results.html#nwm_region_mgr.formreg.select_formulation.save_formulation_results">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">save_formulation_results</span><span class="p">(</span>
+    <span class="n">df_form</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">df_form_gage</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">config</span><span class="p">:</span> <span class="n">cs</span><span class="o">.</span><span class="n">Config</span><span class="p">,</span>
+    <span class="n">vpu</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Save the selected formulations to the output file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df_form : pd.DataFrame</span>
+<span class="sd">            DataFrame with formualtion selected for each divide.</span>
+<span class="sd">        df_form_gage : pd.DataFrame</span>
+<span class="sd">            DataFrame with formualtion selected for each gage.</span>
+<span class="sd">        config : cs.Config</span>
+<span class="sd">            Configuration object containing settings for the regionalization.</span>
+<span class="sd">        vpu : str</span>
+<span class="sd">            Vector Processing Unit (VPU) for which to save formulations.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">co</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s2">&quot;formulation&quot;</span><span class="p">]</span>
+    <span class="n">co</span><span class="o">.</span><span class="n">save_to_file</span><span class="p">(</span>
+        <span class="n">df_form</span><span class="p">,</span> <span class="n">vpu</span><span class="o">=</span><span class="n">vpu</span><span class="p">,</span> <span class="n">data_str</span><span class="o">=</span><span class="s2">&quot;Formulation Selection&quot;</span><span class="p">,</span> <span class="n">use_stem_suffix</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+
+    <span class="c1"># merge with calibration parameter file to get parameters for each gage</span>
+    <span class="n">gage_id_col</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">id_col</span><span class="p">[</span><span class="s2">&quot;gage&quot;</span><span class="p">]</span>
+    <span class="n">df_pars</span> <span class="o">=</span> <span class="n">read_table</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">calib_param_file</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="n">gage_id_col</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">})</span>
+    <span class="n">df_pars</span> <span class="o">=</span> <span class="n">df_form_gage</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+        <span class="n">df_pars</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="n">gage_id_col</span><span class="p">,</span> <span class="s2">&quot;formulation&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+
+    <span class="c1"># save the parameters for each gage to the output file</span>
+    <span class="n">co</span><span class="o">.</span><span class="n">save_to_file</span><span class="p">(</span>
+        <span class="n">df_pars</span><span class="p">,</span>
+        <span class="n">vpu</span><span class="o">=</span><span class="n">vpu</span><span class="p">,</span>
+        <span class="n">data_str</span><span class="o">=</span><span class="s2">&quot;Formulation Selection (per gage with parameters)&quot;</span><span class="p">,</span>
+        <span class="n">use_stem_suffix</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="plot_formulation_results">
+<a class="viewcode-back" href="../../../API/_autosummary/nwm_region_mgr.formreg.select_formulation.plot_formulation_results.html#nwm_region_mgr.formreg.select_formulation.plot_formulation_results">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_formulation_results</span><span class="p">(</span>
+    <span class="n">df_selected</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">config</span><span class="p">:</span> <span class="n">cs</span><span class="o">.</span><span class="n">Config</span><span class="p">,</span>
+    <span class="n">vpu</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">gdf_vpu</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot the selected formulations for each spatial unit in the VPU.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df_selected : pd.DataFrame</span>
+<span class="sd">            DataFrame with selected formulations and their scores.</span>
+<span class="sd">        config : cs.Config</span>
+<span class="sd">            Configuration object containing settings for the regionalization.</span>
+<span class="sd">        vpu : str</span>
+<span class="sd">            Vector Processing Unit (VPU) for which to plot formulations.</span>
+<span class="sd">        gdf_vpu : Optional[gpd.GeoDataFrame], optional</span>
+<span class="sd">            GeoDataFrame of the VPU polygons, used for spatial operations where needed</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># generate plots if enabled</span>
+    <span class="n">cc</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s2">&quot;formulation&quot;</span><span class="p">]</span>
+    <span class="n">divide_id_col</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">id_col</span><span class="p">[</span><span class="s2">&quot;divide&quot;</span><span class="p">]</span>
+    <span class="n">score_method</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">spatial_unit</span><span class="o">.</span><span class="n">best_formulation</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">cc</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+        <span class="c1"># get geometry for divides if spatial map is enabled</span>
+        <span class="k">if</span> <span class="n">cc</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;spatial_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="c1"># merge the geometry with the selected formulations</span>
+            <span class="n">df_selected</span> <span class="o">=</span> <span class="n">df_selected</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+                <span class="n">gdf_vpu</span><span class="p">[[</span><span class="n">divide_id_col</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(),</span>
+                <span class="n">on</span><span class="o">=</span><span class="n">divide_id_col</span><span class="p">,</span>
+                <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="c1"># convert df_selected to a real GeoDataFrame for plotting</span>
+            <span class="n">df_selected</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
+                <span class="n">df_selected</span><span class="p">,</span>
+                <span class="n">geometry</span><span class="o">=</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span>
+                <span class="n">crs</span><span class="o">=</span><span class="n">gdf_vpu</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="c1"># plot the selected formulations</span>
+        <span class="n">columns_to_plot</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;columns_to_plot&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">columns_to_plot</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">columns_to_plot</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;formulation&quot;</span><span class="p">,</span> <span class="n">score_method</span><span class="p">,</span> <span class="s2">&quot;summary_score&quot;</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">]</span>
+        <span class="n">plot_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;vpu&quot;</span><span class="p">:</span> <span class="n">vpu</span><span class="p">,</span>
+            <span class="s2">&quot;var_str&quot;</span><span class="p">:</span> <span class="s2">&quot;Formulation Selection&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;columns&quot;</span><span class="p">:</span> <span class="n">columns_to_plot</span><span class="p">,</span>
+            <span class="s2">&quot;ncols&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">cc</span><span class="o">.</span><span class="n">plot_data</span><span class="p">(</span><span class="n">df_selected</span><span class="p">,</span> <span class="n">plot_dict</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="select_formulation">
+<a class="viewcode-back" href="../../../API/_autosummary/nwm_region_mgr.formreg.select_formulation.select_formulation.html#nwm_region_mgr.formreg.select_formulation.select_formulation">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">select_formulation</span><span class="p">(</span>
+    <span class="n">config</span><span class="p">:</span> <span class="n">cs</span><span class="o">.</span><span class="n">Config</span><span class="p">,</span>
+    <span class="n">vpu</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">df_score</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">gdf_vpu</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Head function to select formulations for catchments in the VPU.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        config : cs.Config</span>
+<span class="sd">            Configuration object containing settings for the regionalization.</span>
+<span class="sd">        vpu : str</span>
+<span class="sd">            Vector Processing Unit (VPU) for which to select formulations.</span>
+<span class="sd">        df_score : pd.DataFrame</span>
+<span class="sd">            DataFrame containing summary scores for each formulation and calibrated basin.</span>
+<span class="sd">        gdf_vpu : Optional[gpd.GeoDataFrame]</span>
+<span class="sd">            GeoDataFrame of the VPU polygons, used for spatial operations where needed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame</span>
+<span class="sd">            DataFrame with selected formulations and their scores.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># get formulation costs from the configuration</span>
+    <span class="n">formulation_costs</span> <span class="o">=</span> <span class="n">_get_formulation_costs</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">formulation_cost</span><span class="p">)</span>
+    <span class="n">cost_dict</span> <span class="o">=</span> <span class="n">formulation_costs</span> <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">consider_cost</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">calib_basins_only</span><span class="p">:</span>
+        <span class="c1"># select formulations for donor basins only</span>
+        <span class="n">df_formulation</span> <span class="o">=</span> <span class="n">select_formulation_donors_only</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">df_score</span><span class="p">,</span> <span class="n">cost_dict</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># select formulations for all catchments in the VPU</span>
+        <span class="n">df_formulation</span> <span class="o">=</span> <span class="n">select_formulation_all</span><span class="p">(</span>
+            <span class="n">config</span><span class="p">,</span> <span class="n">vpu</span><span class="p">,</span> <span class="n">df_score</span><span class="p">,</span> <span class="n">gdf_vpu</span><span class="p">,</span> <span class="n">cost_dict</span>
+        <span class="p">)</span>
+
+    <span class="c1"># add vpu column to the formulation DataFrame</span>
+    <span class="n">df_formulation</span><span class="p">[</span><span class="s2">&quot;vpu&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vpu</span>
+
+    <span class="c1"># rearrange the columns in the formulation DataFrame</span>
+    <span class="n">divide_id_col</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="o">.</span><span class="n">id_col</span><span class="p">[</span><span class="s2">&quot;divide&quot;</span><span class="p">]</span>
+    <span class="n">score_method</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">spatial_unit</span><span class="o">.</span><span class="n">best_formulation</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;vpu&quot;</span><span class="p">,</span>
+        <span class="n">divide_id_col</span><span class="p">,</span>
+        <span class="s2">&quot;formulation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;huc_id&quot;</span><span class="p">,</span>
+        <span class="n">score_method</span><span class="p">,</span>
+        <span class="s2">&quot;summary_score&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cost&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;num_gages&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="n">method1</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">spatial_unit</span><span class="o">.</span><span class="n">basin_fill_method</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">output_columns</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">columns</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;upscale_huc&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">method1</span> <span class="o">==</span> <span class="s2">&quot;upscaling&quot;</span> <span class="k">else</span> <span class="n">columns</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;distances&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">df_formulation</span> <span class="o">=</span> <span class="n">df_formulation</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">output_columns</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df_formulation</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="c1"># check that each gage has a unique formulation assigned</span>
+    <span class="n">df_form_gage</span><span class="p">,</span> <span class="n">df_formulation</span> <span class="o">=</span> <span class="n">check_gage_formulation_uniqueness</span><span class="p">(</span>
+        <span class="n">df_formulation</span><span class="p">,</span> <span class="n">config</span>
+    <span class="p">)</span>
+
+    <span class="c1"># save the selected formulations to the output file</span>
+    <span class="n">save_formulation_results</span><span class="p">(</span><span class="n">df_formulation</span><span class="p">,</span> <span class="n">df_form_gage</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">vpu</span><span class="p">)</span>
+
+    <span class="c1"># plot the selected formulations</span>
+    <span class="n">plot_formulation_results</span><span class="p">(</span><span class="n">df_formulation</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">vpu</span><span class="p">,</span> <span class="n">gdf_vpu</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_formulation</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, RTX.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+nwm\_region\_mgr.parreg.config\_schema.Birch
+============================================
+
+.. currentmodule:: nwm_region_mgr.parreg.config_schema
+
+.. autoclass:: Birch
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~Birch.model_computed_fields
+      
+      
+        ~Birch.model_config
+      
+      
+        ~Birch.model_extra
+      
+      
+        ~Birch.model_fields
+      
+      
+        ~Birch.model_fields_set
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~Birch.construct
+      
+      
+        ~Birch.copy
+      
+      
+        ~Birch.dict
+      
+      
+        ~Birch.from_orm
+      
+      
+        ~Birch.json
+      
+      
+        ~Birch.model_construct
+      
+      
+        ~Birch.model_copy
+      
+      
+        ~Birch.model_dump
+      
+      
+        ~Birch.model_dump_json
+      
+      
+        ~Birch.model_json_schema
+      
+      
+        ~Birch.model_parametrized_name
+      
+      
+        ~Birch.model_post_init
+      
+      
+        ~Birch.model_rebuild
+      
+      
+        ~Birch.model_validate
+      
+      
+        ~Birch.model_validate_json
+      
+      
+        ~Birch.model_validate_strings
+      
+      
+        ~Birch.parse_file
+      
+      
+        ~Birch.parse_obj
+      
+      
+        ~Birch.parse_raw
+      
+      
+        ~Birch.schema
+      
+      
+        ~Birch.schema_json
+      
+      
+        ~Birch.update_forward_refs
+      
+      
+        ~Birch.validate
+      
+
+   
+   

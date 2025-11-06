@@ -1,0 +1,6 @@
+nwm\_region\_mgr.parreg.synthetic\_data.default\_synthetic\_data
+================================================================
+
+.. currentmodule:: nwm_region_mgr.parreg.synthetic_data
+
+.. autofunction:: default_synthetic_data

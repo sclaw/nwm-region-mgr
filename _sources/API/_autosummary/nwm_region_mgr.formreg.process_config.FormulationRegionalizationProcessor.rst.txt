@@ -1,0 +1,82 @@
+nwm\_region\_mgr.formreg.process\_config.FormulationRegionalizationProcessor
+============================================================================
+
+.. currentmodule:: nwm_region_mgr.formreg.process_config
+
+.. autoclass:: FormulationRegionalizationProcessor
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~FormulationRegionalizationProcessor.divide_id_name
+      
+      
+        ~FormulationRegionalizationProcessor.donor_gage_file
+      
+      
+        ~FormulationRegionalizationProcessor.donor_gages
+      
+      
+        ~FormulationRegionalizationProcessor.donor_id_name
+      
+      
+        ~FormulationRegionalizationProcessor.drainage_area_name
+      
+      
+        ~FormulationRegionalizationProcessor.gage_crosswalk
+      
+      
+        ~FormulationRegionalizationProcessor.gage_crosswalk_file
+      
+      
+        ~FormulationRegionalizationProcessor.gage_id_name
+      
+      
+        ~FormulationRegionalizationProcessor.huc12_id_name
+      
+      
+        ~FormulationRegionalizationProcessor.load_and_process_config
+      
+      
+        ~FormulationRegionalizationProcessor.vpu_id_name
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~FormulationRegionalizationProcessor.get_vpu_gdf
+      
+      
+        ~FormulationRegionalizationProcessor.run_formreg_for_vpu
+      
+      
+        ~FormulationRegionalizationProcessor.set_logging
+      
+      
+        ~FormulationRegionalizationProcessor.set_vpu
+      
+      
+        ~FormulationRegionalizationProcessor.set_vpu_gdf
+      
+      
+        ~FormulationRegionalizationProcessor.timing_block
+      
+      
+        ~FormulationRegionalizationProcessor.validate_files
+      
+
+   
+   

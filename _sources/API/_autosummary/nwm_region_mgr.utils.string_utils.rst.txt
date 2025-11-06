@@ -1,0 +1,37 @@
+nwm\_region\_mgr.utils.string\_utils
+====================================
+
+.. automodule:: nwm_region_mgr.utils.string_utils
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+            .. rubric:: Functions
+
+            .. autosummary::
+                :toctree:
+                :nosignatures:
+                :template: autosummary/base.rst
+                
+                    expand_with_lists
+                    recursive_substitute
+                    recursive_substitute_multi_lists
+
+        
+    
+
+    
+        
+    
+
+
+    
+
+

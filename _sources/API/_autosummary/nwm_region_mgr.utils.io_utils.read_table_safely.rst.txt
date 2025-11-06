@@ -1,0 +1,6 @@
+nwm\_region\_mgr.utils.io\_utils.read\_table\_safely
+====================================================
+
+.. currentmodule:: nwm_region_mgr.utils.io_utils
+
+.. autofunction:: read_table_safely

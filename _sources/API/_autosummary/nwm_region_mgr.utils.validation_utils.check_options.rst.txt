@@ -1,0 +1,6 @@
+nwm\_region\_mgr.utils.validation\_utils.check\_options
+=======================================================
+
+.. currentmodule:: nwm_region_mgr.utils.validation_utils
+
+.. autofunction:: check_options

@@ -1,0 +1,140 @@
+nwm\_region\_mgr.utils.config\_utils.BaseOutputConfig
+=====================================================
+
+.. currentmodule:: nwm_region_mgr.utils.config_utils
+
+.. autoclass:: BaseOutputConfig
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~BaseOutputConfig.model_computed_fields
+      
+      
+        ~BaseOutputConfig.model_config
+      
+      
+        ~BaseOutputConfig.model_extra
+      
+      
+        ~BaseOutputConfig.model_fields
+      
+      
+        ~BaseOutputConfig.model_fields_set
+      
+      
+      
+      
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~BaseOutputConfig.check_format_if_dir
+      
+      
+        ~BaseOutputConfig.check_plot_config
+      
+      
+        ~BaseOutputConfig.check_plot_path
+      
+      
+        ~BaseOutputConfig.construct
+      
+      
+        ~BaseOutputConfig.copy
+      
+      
+        ~BaseOutputConfig.dict
+      
+      
+        ~BaseOutputConfig.from_orm
+      
+      
+        ~BaseOutputConfig.get_file_path
+      
+      
+        ~BaseOutputConfig.json
+      
+      
+        ~BaseOutputConfig.model_construct
+      
+      
+        ~BaseOutputConfig.model_copy
+      
+      
+        ~BaseOutputConfig.model_dump
+      
+      
+        ~BaseOutputConfig.model_dump_json
+      
+      
+        ~BaseOutputConfig.model_json_schema
+      
+      
+        ~BaseOutputConfig.model_parametrized_name
+      
+      
+        ~BaseOutputConfig.model_post_init
+      
+      
+        ~BaseOutputConfig.model_rebuild
+      
+      
+        ~BaseOutputConfig.model_validate
+      
+      
+        ~BaseOutputConfig.model_validate_json
+      
+      
+        ~BaseOutputConfig.model_validate_strings
+      
+      
+        ~BaseOutputConfig.parse_file
+      
+      
+        ~BaseOutputConfig.parse_obj
+      
+      
+        ~BaseOutputConfig.parse_raw
+      
+      
+        ~BaseOutputConfig.plot_data
+      
+      
+        ~BaseOutputConfig.read_from_file
+      
+      
+        ~BaseOutputConfig.save_to_file
+      
+      
+        ~BaseOutputConfig.schema
+      
+      
+        ~BaseOutputConfig.schema_json
+      
+      
+        ~BaseOutputConfig.update_forward_refs
+      
+      
+        ~BaseOutputConfig.validate
+      
+
+   
+   

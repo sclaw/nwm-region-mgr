@@ -1,0 +1,36 @@
+nwm\_region\_mgr.parreg.plot\_outputs
+=====================================
+
+.. automodule:: nwm_region_mgr.parreg.plot_outputs
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+            .. rubric:: Functions
+
+            .. autosummary::
+                :toctree:
+                :nosignatures:
+                :template: autosummary/base.rst
+                
+                    plot_donor_spatial_map
+                    plot_missing_attr_counts
+
+        
+    
+
+    
+        
+    
+
+
+    
+
+

@@ -1,0 +1,114 @@
+nwm\_region\_mgr.parreg.config\_schema.MetricEvalPeriod
+=======================================================
+
+.. currentmodule:: nwm_region_mgr.parreg.config_schema
+
+.. autoclass:: MetricEvalPeriod
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~MetricEvalPeriod.model_computed_fields
+      
+      
+        ~MetricEvalPeriod.model_config
+      
+      
+        ~MetricEvalPeriod.model_extra
+      
+      
+        ~MetricEvalPeriod.model_fields
+      
+      
+        ~MetricEvalPeriod.model_fields_set
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~MetricEvalPeriod.construct
+      
+      
+        ~MetricEvalPeriod.copy
+      
+      
+        ~MetricEvalPeriod.dict
+      
+      
+        ~MetricEvalPeriod.from_orm
+      
+      
+        ~MetricEvalPeriod.json
+      
+      
+        ~MetricEvalPeriod.model_construct
+      
+      
+        ~MetricEvalPeriod.model_copy
+      
+      
+        ~MetricEvalPeriod.model_dump
+      
+      
+        ~MetricEvalPeriod.model_dump_json
+      
+      
+        ~MetricEvalPeriod.model_json_schema
+      
+      
+        ~MetricEvalPeriod.model_parametrized_name
+      
+      
+        ~MetricEvalPeriod.model_post_init
+      
+      
+        ~MetricEvalPeriod.model_rebuild
+      
+      
+        ~MetricEvalPeriod.model_validate
+      
+      
+        ~MetricEvalPeriod.model_validate_json
+      
+      
+        ~MetricEvalPeriod.model_validate_strings
+      
+      
+        ~MetricEvalPeriod.parse_file
+      
+      
+        ~MetricEvalPeriod.parse_obj
+      
+      
+        ~MetricEvalPeriod.parse_raw
+      
+      
+        ~MetricEvalPeriod.schema
+      
+      
+        ~MetricEvalPeriod.schema_json
+      
+      
+        ~MetricEvalPeriod.update_forward_refs
+      
+      
+        ~MetricEvalPeriod.validate
+      
+
+   
+   

@@ -1,0 +1,6 @@
+nwm\_region\_mgr.utils.hydrofabric\_utils.find\_gages\_within\_buffer
+=====================================================================
+
+.. currentmodule:: nwm_region_mgr.utils.hydrofabric_utils
+
+.. autofunction:: find_gages_within_buffer

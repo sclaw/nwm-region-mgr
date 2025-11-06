@@ -1,0 +1,6 @@
+nwm\_region\_mgr.utils.dict\_utils.convert\_enum\_to\_value
+===========================================================
+
+.. currentmodule:: nwm_region_mgr.utils.dict_utils
+
+.. autofunction:: convert_enum_to_value

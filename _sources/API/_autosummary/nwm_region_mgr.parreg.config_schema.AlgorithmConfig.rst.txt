@@ -1,0 +1,122 @@
+nwm\_region\_mgr.parreg.config\_schema.AlgorithmConfig
+======================================================
+
+.. currentmodule:: nwm_region_mgr.parreg.config_schema
+
+.. autoclass:: AlgorithmConfig
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~AlgorithmConfig.model_computed_fields
+      
+      
+        ~AlgorithmConfig.model_config
+      
+      
+        ~AlgorithmConfig.model_extra
+      
+      
+        ~AlgorithmConfig.model_fields
+      
+      
+        ~AlgorithmConfig.model_fields_set
+      
+      
+      
+      
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~AlgorithmConfig.construct
+      
+      
+        ~AlgorithmConfig.copy
+      
+      
+        ~AlgorithmConfig.dict
+      
+      
+        ~AlgorithmConfig.from_orm
+      
+      
+        ~AlgorithmConfig.json
+      
+      
+        ~AlgorithmConfig.merge_algo_general
+      
+      
+        ~AlgorithmConfig.model_construct
+      
+      
+        ~AlgorithmConfig.model_copy
+      
+      
+        ~AlgorithmConfig.model_dump
+      
+      
+        ~AlgorithmConfig.model_dump_json
+      
+      
+        ~AlgorithmConfig.model_json_schema
+      
+      
+        ~AlgorithmConfig.model_parametrized_name
+      
+      
+        ~AlgorithmConfig.model_post_init
+      
+      
+        ~AlgorithmConfig.model_rebuild
+      
+      
+        ~AlgorithmConfig.model_validate
+      
+      
+        ~AlgorithmConfig.model_validate_json
+      
+      
+        ~AlgorithmConfig.model_validate_strings
+      
+      
+        ~AlgorithmConfig.parse_file
+      
+      
+        ~AlgorithmConfig.parse_obj
+      
+      
+        ~AlgorithmConfig.parse_raw
+      
+      
+        ~AlgorithmConfig.schema
+      
+      
+        ~AlgorithmConfig.schema_json
+      
+      
+        ~AlgorithmConfig.update_forward_refs
+      
+      
+        ~AlgorithmConfig.validate
+      
+
+   
+   

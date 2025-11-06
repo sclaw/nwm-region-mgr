@@ -1,0 +1,6 @@
+nwm\_region\_mgr.utils.hydrofabric\_utils.area\_weighted\_average
+=================================================================
+
+.. currentmodule:: nwm_region_mgr.utils.hydrofabric_utils
+
+.. autofunction:: area_weighted_average

@@ -1,0 +1,6 @@
+nwm\_region\_mgr.formreg.select\_formulation.check\_gage\_formulation\_uniqueness
+=================================================================================
+
+.. currentmodule:: nwm_region_mgr.formreg.select_formulation
+
+.. autofunction:: check_gage_formulation_uniqueness

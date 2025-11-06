@@ -1,0 +1,6 @@
+nwm\_region\_mgr.parreg.logging\_config.setup\_logging
+======================================================
+
+.. currentmodule:: nwm_region_mgr.parreg.logging_config
+
+.. autofunction:: setup_logging

@@ -1,0 +1,43 @@
+nwm\_region\_mgr.formreg.config\_schema
+=======================================
+
+.. automodule:: nwm_region_mgr.formreg.config_schema
+
+    
+        
+    
+
+    
+        
+            .. rubric:: Classes
+
+            .. autosummary::
+                :toctree:
+                :nosignatures:
+                :template: autosummary/class.rst
+                
+                    BestFormulation
+                    Config
+                    FormulationCostConfig
+                    FormulationGeneralSettings
+                    FormulationSpatialUnitConfig
+                    FormulationSummaryScoreConfig
+                    MetricConfig
+                    MetricEvalPeriod
+                    Orientation
+
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+
+

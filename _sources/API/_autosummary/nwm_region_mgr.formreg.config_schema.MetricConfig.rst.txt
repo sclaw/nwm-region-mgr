@@ -1,0 +1,117 @@
+nwm\_region\_mgr.formreg.config\_schema.MetricConfig
+====================================================
+
+.. currentmodule:: nwm_region_mgr.formreg.config_schema
+
+.. autoclass:: MetricConfig
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~MetricConfig.model_computed_fields
+      
+      
+        ~MetricConfig.model_config
+      
+      
+        ~MetricConfig.model_extra
+      
+      
+        ~MetricConfig.model_fields
+      
+      
+        ~MetricConfig.model_fields_set
+      
+      
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~MetricConfig.construct
+      
+      
+        ~MetricConfig.copy
+      
+      
+        ~MetricConfig.dict
+      
+      
+        ~MetricConfig.from_orm
+      
+      
+        ~MetricConfig.json
+      
+      
+        ~MetricConfig.model_construct
+      
+      
+        ~MetricConfig.model_copy
+      
+      
+        ~MetricConfig.model_dump
+      
+      
+        ~MetricConfig.model_dump_json
+      
+      
+        ~MetricConfig.model_json_schema
+      
+      
+        ~MetricConfig.model_parametrized_name
+      
+      
+        ~MetricConfig.model_post_init
+      
+      
+        ~MetricConfig.model_rebuild
+      
+      
+        ~MetricConfig.model_validate
+      
+      
+        ~MetricConfig.model_validate_json
+      
+      
+        ~MetricConfig.model_validate_strings
+      
+      
+        ~MetricConfig.parse_file
+      
+      
+        ~MetricConfig.parse_obj
+      
+      
+        ~MetricConfig.parse_raw
+      
+      
+        ~MetricConfig.schema
+      
+      
+        ~MetricConfig.schema_json
+      
+      
+        ~MetricConfig.update_forward_refs
+      
+      
+        ~MetricConfig.validate
+      
+
+   
+   

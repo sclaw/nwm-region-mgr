@@ -1,0 +1,6 @@
+nwm\_region\_mgr.utils.string\_utils.recursive\_substitute
+==========================================================
+
+.. currentmodule:: nwm_region_mgr.utils.string_utils
+
+.. autofunction:: recursive_substitute

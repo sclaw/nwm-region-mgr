@@ -1,0 +1,6 @@
+nwm\_region\_mgr.formreg.summary\_score.get\_formulations\_from\_stats
+======================================================================
+
+.. currentmodule:: nwm_region_mgr.formreg.summary_score
+
+.. autofunction:: get_formulations_from_stats

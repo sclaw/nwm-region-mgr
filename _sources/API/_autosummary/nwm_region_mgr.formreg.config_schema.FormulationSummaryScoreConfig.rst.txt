@@ -1,0 +1,123 @@
+nwm\_region\_mgr.formreg.config\_schema.FormulationSummaryScoreConfig
+=====================================================================
+
+.. currentmodule:: nwm_region_mgr.formreg.config_schema
+
+.. autoclass:: FormulationSummaryScoreConfig
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~FormulationSummaryScoreConfig.model_computed_fields
+      
+      
+        ~FormulationSummaryScoreConfig.model_config
+      
+      
+        ~FormulationSummaryScoreConfig.model_extra
+      
+      
+        ~FormulationSummaryScoreConfig.model_fields
+      
+      
+        ~FormulationSummaryScoreConfig.model_fields_set
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~FormulationSummaryScoreConfig.check_weights_sum_to_one
+      
+      
+        ~FormulationSummaryScoreConfig.construct
+      
+      
+        ~FormulationSummaryScoreConfig.copy
+      
+      
+        ~FormulationSummaryScoreConfig.dict
+      
+      
+        ~FormulationSummaryScoreConfig.from_orm
+      
+      
+        ~FormulationSummaryScoreConfig.json
+      
+      
+        ~FormulationSummaryScoreConfig.model_construct
+      
+      
+        ~FormulationSummaryScoreConfig.model_copy
+      
+      
+        ~FormulationSummaryScoreConfig.model_dump
+      
+      
+        ~FormulationSummaryScoreConfig.model_dump_json
+      
+      
+        ~FormulationSummaryScoreConfig.model_json_schema
+      
+      
+        ~FormulationSummaryScoreConfig.model_parametrized_name
+      
+      
+        ~FormulationSummaryScoreConfig.model_post_init
+      
+      
+        ~FormulationSummaryScoreConfig.model_rebuild
+      
+      
+        ~FormulationSummaryScoreConfig.model_validate
+      
+      
+        ~FormulationSummaryScoreConfig.model_validate_json
+      
+      
+        ~FormulationSummaryScoreConfig.model_validate_strings
+      
+      
+        ~FormulationSummaryScoreConfig.parse_file
+      
+      
+        ~FormulationSummaryScoreConfig.parse_obj
+      
+      
+        ~FormulationSummaryScoreConfig.parse_raw
+      
+      
+        ~FormulationSummaryScoreConfig.remove_zero_weighted_metrics
+      
+      
+        ~FormulationSummaryScoreConfig.schema
+      
+      
+        ~FormulationSummaryScoreConfig.schema_json
+      
+      
+        ~FormulationSummaryScoreConfig.update_forward_refs
+      
+      
+        ~FormulationSummaryScoreConfig.validate
+      
+      
+        ~FormulationSummaryScoreConfig.validate_all_metrics
+      
+
+   
+   

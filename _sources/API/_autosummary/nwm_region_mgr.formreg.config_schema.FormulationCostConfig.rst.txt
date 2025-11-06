@@ -1,0 +1,114 @@
+nwm\_region\_mgr.formreg.config\_schema.FormulationCostConfig
+=============================================================
+
+.. currentmodule:: nwm_region_mgr.formreg.config_schema
+
+.. autoclass:: FormulationCostConfig
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~FormulationCostConfig.model_computed_fields
+      
+      
+        ~FormulationCostConfig.model_config
+      
+      
+        ~FormulationCostConfig.model_extra
+      
+      
+        ~FormulationCostConfig.model_fields
+      
+      
+        ~FormulationCostConfig.model_fields_set
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~FormulationCostConfig.construct
+      
+      
+        ~FormulationCostConfig.copy
+      
+      
+        ~FormulationCostConfig.dict
+      
+      
+        ~FormulationCostConfig.from_orm
+      
+      
+        ~FormulationCostConfig.json
+      
+      
+        ~FormulationCostConfig.model_construct
+      
+      
+        ~FormulationCostConfig.model_copy
+      
+      
+        ~FormulationCostConfig.model_dump
+      
+      
+        ~FormulationCostConfig.model_dump_json
+      
+      
+        ~FormulationCostConfig.model_json_schema
+      
+      
+        ~FormulationCostConfig.model_parametrized_name
+      
+      
+        ~FormulationCostConfig.model_post_init
+      
+      
+        ~FormulationCostConfig.model_rebuild
+      
+      
+        ~FormulationCostConfig.model_validate
+      
+      
+        ~FormulationCostConfig.model_validate_json
+      
+      
+        ~FormulationCostConfig.model_validate_strings
+      
+      
+        ~FormulationCostConfig.parse_file
+      
+      
+        ~FormulationCostConfig.parse_obj
+      
+      
+        ~FormulationCostConfig.parse_raw
+      
+      
+        ~FormulationCostConfig.schema
+      
+      
+        ~FormulationCostConfig.schema_json
+      
+      
+        ~FormulationCostConfig.update_forward_refs
+      
+      
+        ~FormulationCostConfig.validate
+      
+
+   
+   

@@ -1,0 +1,118 @@
+nwm\_region\_mgr.parreg.config\_schema.HDBSCAN
+==============================================
+
+.. currentmodule:: nwm_region_mgr.parreg.config_schema
+
+.. autoclass:: HDBSCAN
+
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      
+        ~HDBSCAN.model_computed_fields
+      
+      
+        ~HDBSCAN.model_config
+      
+      
+        ~HDBSCAN.model_extra
+      
+      
+        ~HDBSCAN.model_fields
+      
+      
+        ~HDBSCAN.model_fields_set
+      
+      
+      
+      
+      
+      
+      
+
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      
+      
+        ~HDBSCAN.construct
+      
+      
+        ~HDBSCAN.copy
+      
+      
+        ~HDBSCAN.dict
+      
+      
+        ~HDBSCAN.from_orm
+      
+      
+        ~HDBSCAN.json
+      
+      
+        ~HDBSCAN.model_construct
+      
+      
+        ~HDBSCAN.model_copy
+      
+      
+        ~HDBSCAN.model_dump
+      
+      
+        ~HDBSCAN.model_dump_json
+      
+      
+        ~HDBSCAN.model_json_schema
+      
+      
+        ~HDBSCAN.model_parametrized_name
+      
+      
+        ~HDBSCAN.model_post_init
+      
+      
+        ~HDBSCAN.model_rebuild
+      
+      
+        ~HDBSCAN.model_validate
+      
+      
+        ~HDBSCAN.model_validate_json
+      
+      
+        ~HDBSCAN.model_validate_strings
+      
+      
+        ~HDBSCAN.parse_file
+      
+      
+        ~HDBSCAN.parse_obj
+      
+      
+        ~HDBSCAN.parse_raw
+      
+      
+        ~HDBSCAN.schema
+      
+      
+        ~HDBSCAN.schema_json
+      
+      
+        ~HDBSCAN.update_forward_refs
+      
+      
+        ~HDBSCAN.validate
+      
+
+   
+   

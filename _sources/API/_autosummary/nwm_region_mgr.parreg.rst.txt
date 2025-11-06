@@ -1,0 +1,45 @@
+﻿nwm\_region\_mgr.parreg
+=======================
+
+.. automodule:: nwm_region_mgr.parreg
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+        .. rubric:: Modules
+
+        .. autosummary::
+            :toctree:
+            :template: autosummary/module.rst
+            :recursive:
+            
+                config_schema
+                funcs_clust
+                funcs_dist
+                logging_config
+                manual_pairings
+                pairer
+                plot_outputs
+                process_config
+                synthetic_data
+                unsupervised_random_forest
+                utils_algo
+
+    
+
+

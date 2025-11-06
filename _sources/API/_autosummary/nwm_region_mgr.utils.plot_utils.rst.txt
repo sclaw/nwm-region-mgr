@@ -1,0 +1,37 @@
+nwm\_region\_mgr.utils.plot\_utils
+==================================
+
+.. automodule:: nwm_region_mgr.utils.plot_utils
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+            .. rubric:: Functions
+
+            .. autosummary::
+                :toctree:
+                :nosignatures:
+                :template: autosummary/base.rst
+                
+                    plot_histogram
+                    plot_point_map
+                    plot_spatial_map
+
+        
+    
+
+    
+        
+    
+
+
+    
+
+
