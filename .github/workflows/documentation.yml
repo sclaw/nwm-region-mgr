@@ -22,9 +22,6 @@ jobs:
       - name: Debug Python imports
         run: |
           python -c "import nwm_region_mgr.parreg.config_schema; print('Import OK')"
-      - name: API build
-        run: |
-          sphinx-apidoc -o  docs/source/API nwm_region_mgr/ -M -E -T -d 1
       - name: Sphinx build
         run: |
           sphinx-build docs/source docs/build
