@@ -8,15 +8,20 @@ Functions:
 
 """
 
+import csv
+import logging
 from enum import Enum
 from pathlib import Path
 from typing import Union
 
 import pandas as pd
 import yaml
+from charset_normalizer import from_path
 from pydantic import BaseModel
 
 from nwm_region_mgr.utils.dict_utils import convert_enum_to_value, remove_nulls
+
+logger = logging.getLogger(__name__)
 
 # Module-level cache
 _table_cache: dict[Path, pd.DataFrame] = {}
@@ -109,36 +114,89 @@ def save_data(
         )
 
 
-def read_table_old(
-    file_path: Path | str, dtype: dict[str, str] | None = None
+def read_table_safely(
+    file_path: str,
+    quotechar: str = '"',
+    escapechar: str = "\\",
+    fallback_encodings: list[str] = ["utf-8", "utf-8-sig", "latin1", "cp1252"],
+    dtype: dict = None,
 ) -> pd.DataFrame:
-    """Read table from a csv or parquet file.
+    """Read a delimited text file (CSV/TSV) safely.
+
+    With:  1. Automatic encoding detection.
+           2. Automatic delimiter detection.
+           3. Optional dtype specification.
+           4. Fallback encodings if decoding fails.
 
     Args:
-        file_path (Path | str): Path to the file to read, with file format determined by the file extension
-        (.csv or .parquet).
-        dtype (dict[str, str] | None): Optional dictionary specifying the data types for specific columns.
+        file_path : str
+            Path to the file.
+        quotechar : str
+            Character used to quote fields.
+        escapechar : str
+            Character used to escape quotechar inside quoted fields.
+        fallback_encodings : list[str]
+            Encodings to try if detection fails.
+        dtype : dict, optional
+            Column name to dtype mapping (like in pd.read_csv).
 
     Returns:
-        pd.DataFrame: DataFrame containing the data from the file.
+        pd.DataFrame
+            Loaded DataFrame.
 
     """
-    file_path = Path(file_path)
-    if not file_path.exists():
-        raise FileNotFoundError(f"{file_path} does not exist")
+    # Detect encoding
+    try:
+        detection = from_path(file_path).best()
+        detected_encoding = (
+            detection.encoding
+            if detection and detection.encoding
+            else fallback_encodings[0]
+        )
+        logger.debug(f"Detected encoding: {detected_encoding}")
+    except Exception as e:
+        logger.debug(f"Encoding detection failed: {e}")
+        detected_encoding = fallback_encodings[0]
 
-    suffix = file_path.suffix.lower()
-    if suffix == ".csv":
-        df = pd.read_csv(file_path, dtype=dtype)
-    elif suffix == ".parquet":
-        df = pd.read_parquet(file_path)
-    else:
-        raise ValueError(f"Unsupported file format: {suffix}")
+    # Detect delimiter
+    try:
+        with open(file_path, "r", encoding=detected_encoding, errors="ignore") as f:
+            sample = f.read(2048)
+            sniffer = csv.Sniffer()
+            dialect = sniffer.sniff(sample, delimiters=[",", "\t", ";", "|"])
+            delimiter = dialect.delimiter
+        logger.debug(f"Detected delimiter: '{delimiter}'")
+    except Exception as e:
+        logger.debug(f"Delimiter detection failed, defaulting to comma: {e}")
+        delimiter = ","
 
-    # remove leading/trailing whitespace from column names
-    df.columns = df.columns.str.strip()
+    # Try reading with detected encoding and fallbacks
+    tried = set()
+    for enc in [detected_encoding] + fallback_encodings:
+        if enc in tried:
+            continue
+        tried.add(enc)
+        try:
+            df = pd.read_csv(
+                file_path,
+                encoding=enc,
+                quotechar=quotechar,
+                escapechar=escapechar,
+                delimiter=delimiter,
+                dtype=dtype,
+            )
+            logger.debug(
+                f"Successfully read file with encoding: {enc} and delimiter: '{delimiter}'"
+            )
+            return df
+        except UnicodeDecodeError:
+            logger.error(f"Failed with encoding: {enc}")
+        except Exception as e:
+            logger.error(f"Error reading file with encoding {enc}: {e}")
 
-    return df
+    raise UnicodeDecodeError(
+        "utf-8", b"", 0, 1, "Unable to read file with tried encodings"
+    )
 
 
 def read_table(
@@ -168,10 +226,8 @@ def read_table(
 
     # Load file based on suffix
     suffix = file_path.suffix.lower()
-    if suffix == ".csv":
-        df = pd.read_csv(file_path, dtype=dtype)
-    elif suffix == ".tsv":
-        df = pd.read_csv(file_path, sep="\t", dtype=dtype)
+    if suffix in [".csv", ".tsv", ".txt"]:
+        df = read_table_safely(file_path, dtype=dtype)
     elif suffix == ".parquet":
         df = pd.read_parquet(file_path)
         if dtype:

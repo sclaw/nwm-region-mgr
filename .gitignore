@@ -1,5 +1,15 @@
 # Data and outputs
-data/
+data/*
+
+# Allow Git to see the 'inputs' folder itself
+!data/inputs/
+
+# Ignore everything inside 'inputs' by default
+data/inputs/*
+
+# But unignore the specific subfolder you want
+!data/inputs/attr_config/
+!data/inputs/attr_config/**
 
 # Virtual environments
 venv/
@@ -15,6 +25,7 @@ __pycache__/
 # Editor configs
 .vscode/
 
-# Specific project paths
-pkgs/parreg/build
-pkgs/parreg/tests/test_data/test_outputs
+# Documentation
+docs/build/*
+docs/source/API/*
+!docs/source/API/index.rst

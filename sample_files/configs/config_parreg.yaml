@@ -1,8 +1,8 @@
 ### general 
 general:
   n_procs: 3  # number of processes to use for parallel processing, -1 for all available cores
-  attr_dataset_list: ['ngen', 'hlr']
-  algorithm_list: ['gower', "urf"]  # list of algorithms to use for parameter regionalization
+  attr_dataset_list: ['hlr','streamcat']
+  algorithm_list: ['kmedoids']  # list of algorithms to use for parameter regionalization
   #algorithm_list: ['gower','urf','kmeans', 'kmedoids', 'hdbscan', 'birch']
 
 donor:
@@ -25,13 +25,18 @@ attr_datasets:
   ngen:
     attr_list: 
     attr_select_file: '{base_dir}/inputs/attr_config/attr_selection_ngen.csv'
-    attr_data_file: '{base_dir}/inputs/attr_datasets/attr_ngen_{domain}.parquet'
+    attr_data_file: '{base_dir}/inputs/attr_datasets/ngen/attr_ngen_{domain}.parquet'
     base_attr_list: ['elevation', 'slope', 'aspect']
   hlr:
     attr_list:
     attr_select_file: '{base_dir}/inputs/attr_config/attr_selection_hlr.csv'
-    attr_data_file: '{base_dir}/inputs/attr_datasets/attr_hlr_{domain}.parquet'
-    base_attr_list: ['PPT']
+    attr_data_file: '{base_dir}/inputs/attr_datasets/hlr/attr_hlr_{domain}.parquet'
+    base_attr_list: ['PPT', 'SAND']
+  streamcat:
+    attr_list:
+    attr_select_file: '{base_dir}/inputs/attr_config/attr_selection_streamcat.csv'
+    attr_data_file: '{base_dir}/inputs/attr_datasets/streamcat/attr_streamcat_{domain}.parquet'
+    base_attr_list: ['Precip_Minus_EVT', 'Elev', 'BFI']
 
 snow_cover:
   consider_snowness: True  # whether to perform regionalization separately for snow-covered and snow-free basins
@@ -63,7 +68,7 @@ output:
       plots:
         spatial_map: True
         histogram: True
-        columns_to_plot: ['hlr_PMPE', 'hlr_SAND', 'ngen_dksat', 'ngen_smcmax']  # attributes to plot
+        columns_to_plot: ['streamcat_Elev', 'streamcat_BFI', 'streamcat_Precip_Minus_EVT','hlr_PMPE', 'hlr_SAND','hlr_TAVE']  # attributes to plot
     config_final:
       save: True
       path: '{base_dir}/outputs/{run_name}/config_parreg_final.yaml'

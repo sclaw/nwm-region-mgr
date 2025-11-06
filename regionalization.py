@@ -9,6 +9,8 @@ import logging
 from argparse import RawTextHelpFormatter
 from pathlib import Path
 
+import matplotlib
+
 from nwm_region_mgr.formreg import config_schema as fcs
 from nwm_region_mgr.formreg.process_config import FormulationRegionalizationProcessor
 from nwm_region_mgr.parreg import config_schema as pcs
@@ -16,6 +18,7 @@ from nwm_region_mgr.parreg.manual_pairings import ManualPairer
 from nwm_region_mgr.parreg.process_config import ParameterRegionalizationProcessor
 
 logger = logging.getLogger(__name__)
+matplotlib.use("Agg")
 
 
 def main(config_dir: str | Path, config_files: list[str]):

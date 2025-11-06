@@ -38,7 +38,7 @@ The National Water Model (NWM) NextGen framework is a modular hydrologic modelin
 
 ![framework](_images/framework.png)
 
-### A critical tool for forecast skill
+## A critical tool for forecast skill
 Hydrologic models benefit strongly from calibration. Tools in this repository
 make the most out of limited observational data by intelligently transferring optimal
 parameter sets beyond calibrated catchments. This tool depends on data from a calibration and validation
@@ -140,5 +140,5 @@ User Guide<user_guide.rst>
 FAQ<faq.rst>
 Config Builder<config_builder/index.rst>
 Technical Reference <tech_reference/index.md>
-API </API/nwm_region_mgr.rst>
+API </API/index.rst>
 :::

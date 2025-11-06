@@ -2,6 +2,7 @@
 
 import logging
 from pathlib import Path
+from typing import Optional
 
 import geopandas as gpd
 from shapely.geometry import GeometryCollection, Point
@@ -118,42 +119,46 @@ def find_gages_within_buffer(
 
 
 def area_weighted_average(
-    gdf_fine: gpd.GeoDataFrame,
-    gdf_coarse: gpd.GeoDataFrame,
+    gdf_target: gpd.GeoDataFrame,
+    gdf_source: gpd.GeoDataFrame,
     value_col: str,
-    fine_id_col: str = "divide_id",
+    target_id_col: str = "divide_id",
     crs_proj: str = "EPSG:5070",
 ) -> gpd.GeoDataFrame:
-    """Map area-weighted average of `value_col` from coarse polygons to fine polygons.
+    """Map area-weighted average of `value_col` from source polygons to target polygons.
+
+    The function computes the area-weighted average of a specified attribute from
+    source polygons (gdf_source) and assigns it to target polygons (gdf_target) based
+    on their spatial intersection. It works in both directions: coarse-to-fine and fine-to-coarse.
 
     Args:
-        gdf_fine: GeoDataFrame with finer polygons
-        gdf_coarse: GeoDataFrame with coarser polygons and the value to be averaged
-        value_col: Name of the column in gdf_coarse to average
-        fine_id_col: Name of unique identifier column in gdf_fine (default is 'divide_id')
+        gdf_target: GeoDataFrame with target polygons
+        gdf_source: GeoDataFrame with source polygons and the value to be averaged
+        value_col: Name of the column in gdf_source to average
+        target_id_col: Name of unique identifier column in gdf_target (default is 'divide_id')
         crs_proj: Projected CRS (in meters) for accurate area computation (default is 'EPSG:5070')
 
     Returns:
-        gdf_fine with a new column: `{value_col}_weighted`
+        gdf_target with a new column: `{value_col}_weighted`
 
     """
     # Reproject to projected CRS
-    gdf_fine = gdf_fine.to_crs(crs_proj).copy()
-    gdf_coarse = gdf_coarse.to_crs(crs_proj).copy()
+    gdf_target = gdf_target.to_crs(crs_proj).copy()
+    gdf_source = gdf_source.to_crs(crs_proj).copy()
 
-    # Ensure unique ID on fine polygons
-    if fine_id_col not in gdf_fine.columns:
-        gdf_fine = gdf_fine.reset_index(drop=True)
-        gdf_fine[fine_id_col] = gdf_fine.index
+    # Ensure unique ID on target polygons
+    if target_id_col not in gdf_target.columns:
+        gdf_target = gdf_target.reset_index(drop=True)
+        gdf_target[target_id_col] = gdf_target.index
 
     # Ensure valid geometries before overlay
-    gdf_fine["geometry"] = gdf_fine.geometry.buffer(0)
-    gdf_coarse["geometry"] = gdf_coarse.geometry.buffer(0)
+    gdf_target["geometry"] = gdf_target.geometry.buffer(0)
+    gdf_source["geometry"] = gdf_source.geometry.buffer(0)
 
     # Overlay to get intersections
     intersected = gpd.overlay(
-        gdf_fine[[fine_id_col, "geometry"]],
-        gdf_coarse[["geometry", value_col]],
+        gdf_target[[target_id_col, "geometry"]],
+        gdf_source[["geometry", value_col]],
         how="intersection",
     )
 
@@ -171,15 +176,15 @@ def area_weighted_average(
     # Weighted value = value * area
     intersected["weighted_value"] = intersected[value_col] * intersected["area"]
 
-    # Sum weighted values and areas for each fine polygon
-    area_sum = intersected.groupby(fine_id_col)["area"].sum()
-    value_sum = intersected.groupby(fine_id_col)["weighted_value"].sum()
+    # Sum weighted values and areas for each target polygon
+    area_sum = intersected.groupby(target_id_col)["area"].sum()
+    value_sum = intersected.groupby(target_id_col)["weighted_value"].sum()
 
     # Compute area-weighted average
     weighted_avg = value_sum / area_sum
 
-    # Assign back to fine GeoDataFrame
+    # Assign back to target GeoDataFrame
     new_col = f"{value_col}_weighted"
-    gdf_fine[new_col] = gdf_fine[fine_id_col].map(weighted_avg)
+    gdf_target[new_col] = gdf_target[target_id_col].map(weighted_avg)
 
-    return gdf_fine
+    return gdf_target

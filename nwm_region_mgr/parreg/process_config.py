@@ -231,7 +231,7 @@ class ParameterRegionalizationProcessor(BaseConfigProcessor):
         # Fix invalid geometries using buffer(0)
         if not gdf.is_valid.all():
             n_invalid = (~gdf.is_valid).sum()
-            logger.info(
+            logger.debug(
                 f"Fixing {n_invalid} invalid geometries in hydrofabric_gdf_3857."
             )
             gdf["geometry"] = gdf.buffer(0)

@@ -14,30 +14,30 @@ from utils import area_weighted_average
 attr = "snw_pc_syr"  # annual average snow cover percent in subbasins
 
 # Path to the HydroATLAS shapefile
-hydroatlas_file = (
-    "/home/yuqiong.liu/work/data/HydroATLAS/BasinATLAS_v10_shp/BasinATLAS_v10_lev12.shp"
-)
+hydroatlas_file = Path(
+    "~/data/HydroATLAS/BasinATLAS_v10_shp/BasinATLAS_v10_lev12.shp"
+).expanduser()
 
 # get all vpu ids from file names
 vpu_ids = [
     f.stem.split("_")[1]
-    for f in Path("/home/yuqiong.liu/work/data/gpkg_v2.2/vpu_divides").glob(
-        "vpu_*.gpkg"
-    )
+    for f in Path("~/data/hydrofabric/gpkg_v2.2/vpu_divides")
+    .expanduser()
+    .glob("vpu_*.gpkg")
 ]
 
 # loop through each vpu to process snow cover data
 for vpu in vpu_ids:
     # Define the output file path
     output_file = (
-        "/home/yuqiong.liu/work/data/ngen_reg/inputs/snow_frac/vpu"
+        "~/repos/nwm-region-mgr/data/inputs/snow_frac/vpu"
         + str(vpu)
         + "_snow_frac.parquet"
     )
-    output_file = Path(output_file)
-    output_file.parent.mkdir(
-        parents=True, exist_ok=True
-    )  # create parent directories if they don't exist
+    output_file = Path(output_file).expanduser()
+
+    # create parent directories if they don't exist
+    output_file.parent.mkdir(parents=True, exist_ok=True)
     if output_file.exists():
         print(f"Output file {output_file} already exists. Skipping VPU {vpu}.")
         continue
@@ -45,7 +45,9 @@ for vpu in vpu_ids:
     print(f"Processing VPU: {vpu}")
 
     # NextGen gpkg file
-    gpkg_file = f"/home/yuqiong.liu/work/data/gpkg_v2.2/vpu_divides/vpu_{vpu}.gpkg"
+    gpkg_file = Path(
+        f"~/data/hydrofabric/gpkg_v2.2/vpu_divides/vpu_{vpu}.gpkg"
+    ).expanduser()
     gdf_ngen = gpd.read_file(gpkg_file, layer="divides")
     gdf_ngen = gdf_ngen[["divide_id", "geometry"]]
 
@@ -67,10 +69,10 @@ for vpu in vpu_ids:
 
     # compute area-weighted average of snow cover percent
     gdf_ngen = area_weighted_average(
-        gdf_fine=gdf_ngen,
-        gdf_coarse=gdf_hydroatlas,
+        gdf_target=gdf_ngen,
+        gdf_source=gdf_hydroatlas,
         value_col=attr,
-        fine_id_col="divide_id",
+        target_id_col="divide_id",
         crs_proj="EPSG:5070",
     )
 

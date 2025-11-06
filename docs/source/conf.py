@@ -31,6 +31,7 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx_design",
     "sphinxcontrib.rsvgconverter",
+    "sphinx.ext.viewcode",  # adds [source] links
 ]
 
 source_suffix = {
@@ -40,12 +41,16 @@ source_suffix = {
 }
 
 # MyST
-myst_enable_extensions = ["colon_fence", "deflist", "dollarmath", "amsmath"]
+myst_enable_extensions = [
+    "colon_fence",
+    "deflist",
+    "dollarmath",
+    "amsmath",
+]
 
-# numpydoc_show_class_members = False
 autosummary_generate = True
-
-templates_path = ["_templates"]
+autosummary_generate_overwrite = True
+templates_path = ["./_templates"]
 exclude_patterns = ["production"]
 
 master_doc = "index"
